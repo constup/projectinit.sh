@@ -1,0 +1,8 @@
+/.idea/*
+/.project
+/composer.phar
+/php-cs-fixer.phar
+/phpunit.phar
+/.php_cs.cache
+/vendor/*
+/codeCoverage/*
