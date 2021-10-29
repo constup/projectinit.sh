@@ -1,37 +1,58 @@
-## Welcome to GitHub Pages
+## ProjectInit
 
-You can use the [editor on GitHub](https://github.com/constup/projectinit.sh/edit/github_pages/docs/index.md) to maintain and preview the content for your website in Markdown files.
+**NOTE**: This page and the rest of the documentation is currently work in progress. Once the final version is 
+published, this note will be removed. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Setup your next software project in seconds 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```shell
+cd projectinit.sh/build
+sh php_init_generic.sh
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Install, configure, build and run
 
-### Jekyll Themes
+Install by cloning the repository:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/constup/projectinit.sh/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```shell
+git clone git@github.com:constup/projectinit.sh.git
+```
 
-### Support or Contact
+or by downloading the latest release.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Completely cross-platform
+
+ProjectInit.sh is tested on Linux, Windows and MacOS. For detailed instructions on how to install Bash and supporting
+tools (like wget, curl,...) on your operating system, check out this Documentation section.
+
+### Spend more time on actual work
+
+If you are building, maintaining and/or contributing to multiple projects or git repositories, ProjectInit.sh can help 
+you set up everything you need to start a new project or setup an existing one on a new computer.
+All of your projects will also be set up in exactly the same way, just the way you like it.
+
+### Make it your own
+
+ProjectInit.sh comes with a default set of bash scripts separated into components. Each master script is a compilation
+of individual component scripts.
+
+You are free to mix the components or write your own to cover your perfect setup.
+
+### Beginner? Learn with ProjectInit.sh
+
+ProjectInit.sh is written in Bash and divided into individual components. Want to learn how to download Composer from
+terminal? Take a look at `component/phar/download_composer.sh`:
+
+```shell
+echo ""
+curl "https://getcomposer.org/composer.phar" --output composer.phar
+php composer.phar self-update
+echo ""
+php composer.phar --version
+```
+
+Since this is all written in Bash, you can run commands from the script directly in your terminal and even learn how 
+to set up a project yourself by using just terminal - no tools needed.
+
+
+
