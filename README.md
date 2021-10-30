@@ -55,7 +55,7 @@ If you want a fresh start, run `./cleanup_builds.sh` and then configure and/or g
     - check if the project's directory is a Git repository and initialize Git repository if it isn't;
     - download the latest **Composer**
     - download the latest **PHP CS Fixer**
-    - setup Git user name and user email for the repository
+    - setup Git username and user email for the repository
     - setup `.gitignore`
     - composer install
 

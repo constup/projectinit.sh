@@ -6,7 +6,7 @@ echo -e "\n./config/params/git_user_configuration.sh not found. Create it by cop
     exit 1
 fi
 # prepare build destination file
-BUILD_FILE="./build/init_generic.sh"
+BUILD_FILE="./build/php_init_generic.sh"
 mkdir -p ./build
 rm -rf ${BUILD_FILE}
 touch ${BUILD_FILE}
@@ -37,13 +37,13 @@ cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 cat "./component/technical/switch_to_project_dir.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 ## download phars
-cat "./component/phar/download_composer.sh" >> "${BUILD_FILE}"
+cat "./component/phar/composer/download_latest.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 
-cat "./component/phar/download_php_cs_fixer.sh" >> "${BUILD_FILE}"
+cat "./component/phar/php_cs_fixer/download_v3.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 
-cat "./component/phar/download_phpunit.sh" >> "${BUILD_FILE}"
+cat "./component/phar/phpunit/download_v9.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 ## configure git user
 cat "./config/params/git_user_configuration.sh" >> "${BUILD_FILE}"
@@ -57,10 +57,10 @@ cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 cat "./component/composer/init_composer.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 ## add PHP CS Fixer configuration
-cat "./component/phpcsfixer/generate_generic.sh" >> "${BUILD_FILE}"
+cat "./component/phpcsfixer/v3/generate_generic.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 ## add PHPUnit configuration
-cat "./component/phpunit/generate_generic.sh" >> "${BUILD_FILE}"
+cat "./component/phpunit/v9/generate_generic.sh" >> "${BUILD_FILE}"
 cat "./component/helper/draw_separator.sh" >> "${BUILD_FILE}"
 ## create base project base directories
 cat "./component/technical/create_project_base_directories.sh" >> "${BUILD_FILE}"
