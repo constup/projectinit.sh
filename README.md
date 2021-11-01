@@ -1,4 +1,4 @@
-# PHP Project initialization scripts
+# [ProjectInit.sh](https://projectinit.sh)
 
 ## Description
 
@@ -6,7 +6,7 @@ This is a set of bash scripts intended to start up projects. The workflow is sim
 
 ## OS support
 
-This is a set of bash scripts. **Linux** is nativelly supported.
+This is a set of bash scripts. **Linux** is natively supported.
 
 **Windows** is supported on terminal emulators which support bash (`Cmder`, `ConEmu`, `Mingw` or any other). During development, the scripts were tested on `Cmder`, but they should work in any other terminal emulator.
 
@@ -16,7 +16,11 @@ This is a set of bash scripts. **Linux** is nativelly supported.
 
 ### Step #1 - Configure
 
-`./config/template/` directory contains parameter placeholder scripts. Copy each of them to `./config/params/` directory and fill them with your own parameters. Once set up, you can use them in any of your projects.
+Simply run: 
+
+```shell
+sh ./configure.sh
+```
 
 ### Step #2 - Generate
 

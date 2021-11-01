@@ -1,2 +1,4 @@
 set -e
-source ./generate_php_init_generic.sh
+cd ./generator/php
+source generate_init_generic.sh
+cd ../../
