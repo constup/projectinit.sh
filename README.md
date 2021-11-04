@@ -4,7 +4,10 @@ A set of bash scripts to kickstart software projects.
 
 ## OS support
 
-- **Linux**:
+**Note**: Depending on what each tool in ProjectInit.sh is supposed to do, you may need additional software installed,
+but nothing which you probably don't already have in your development environment.
+
+- **Linux**: Bash is the most common shell on any Linux distro, so ProjectInit.sh is supported as well.
 
 - **Windows**: Supported in terminal emulators and environments that can run Bash ([Cmder](https://cmder.net/), 
 [ConEmu](https://conemu.github.io/), [Mingw](https://www.mingw-w64.org/),...). During development,
