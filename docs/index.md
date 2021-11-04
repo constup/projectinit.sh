@@ -6,11 +6,11 @@ published, this note will be removed.
 ### Setup your next software project in seconds 
 
 ```shell
-cd projectinit.sh/build
-sh php_init_generic.sh
+cd projectinit.sh/bin/php
+sh init_generic.sh
 ```
 
-### Install, configure, build and run
+### Install, configure and run
 
 Install by cloning the repository:
 
@@ -18,11 +18,17 @@ Install by cloning the repository:
 git clone git@github.com:constup/projectinit.sh.git
 ```
 
-or by downloading the latest release.
+or by downloading the latest release from [https://github.com/constup/projectinit.sh/releases](https://github.com/constup/projectinit.sh/releases).
+
+Configure ProjectInit.sh by running:
+
+```shell
+sh configure.sh
+```
 
 ### Completely cross-platform
 
-ProjectInit.sh is tested on Linux, Windows and MacOS. For detailed instructions on how to install Bash and supporting
+ProjectInit.sh is tested on Linux, Windows and macOS. For detailed instructions on how to install Bash and supporting
 tools (like wget, curl,...) on your operating system, check out this Documentation section.
 
 ### Spend more time on actual work
@@ -41,18 +47,14 @@ You are free to mix the components or write your own to cover your perfect setup
 ### Beginner? Learn with ProjectInit.sh
 
 ProjectInit.sh is written in Bash and divided into individual components. Want to learn how to download Composer from
-terminal? Take a look at `component/phar/download_composer.sh`:
+terminal? Take a look at `src/php/composer/composer.sh`:
 
 ```shell
-echo ""
-curl "https://getcomposer.org/composer.phar" --output composer.phar
-php composer.phar self-update
-echo ""
-php composer.phar --version
+download_latest_composer_phar () {
+  echo ""
+  wget -O composer.phar "https://getcomposer.org/composer.phar"
+  php composer.phar self-update
+  echo ""
+  php composer.phar --version
+}
 ```
-
-Since this is all written in Bash, you can run commands from the script directly in your terminal and even learn how 
-to set up a project yourself by using just terminal - no tools needed.
-
-
-
