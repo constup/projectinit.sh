@@ -1,67 +1,57 @@
 # [ProjectInit.sh](https://projectinit.sh)
 
-## Description
-
-This is a set of bash scripts intended to start up projects. The workflow is simple: Configure, Generate, Run.
+A set of bash scripts to kickstart software projects.
 
 ## OS support
 
-This is a set of bash scripts. **Linux** is natively supported.
+- **Linux**:
 
-**Windows** is supported on terminal emulators which support bash (`Cmder`, `ConEmu`, `Mingw` or any other). During development, the scripts were tested on `Cmder`, but they should work in any other terminal emulator.
+- **Windows**: Supported in terminal emulators and environments that can run Bash ([Cmder](https://cmder.net/), 
+[ConEmu](https://conemu.github.io/), [Mingw](https://www.mingw-w64.org/),...). During development,
+ProjectInit.sh is tested on [Cmder](https://cmder.net/) with additional Linux tools installed with 
+[Scoop](https://scoop.sh/) (for example: `wget`).
 
-**OSX** is not tested.
+- **MacOS**: Since *zsh* is default terminal, you will need to have Bash installed.
 
-## Use
+If you need help installing bash or any other prerequisites, take a look at the [Prerequisites](./doc/PREREQUISITES.md) documentation page.
 
-### Step #1 - Configure
+## Installation
 
-Simply run: 
+### Step 1
+
+Clone this repository: `git clone git@github.com:constup/projectinit.sh.git`
+
+or
+
+Download the latest release.
+
+### Step 2
+
+Configure ProjectInit.sh by running:
 
 ```shell
-sh ./configure.sh
+cd projectinit.sh
+sh configure.sh
 ```
 
-### Step #2 - Generate
+## How to use
 
-#### Method #1 - Run all generators
+All tools (scripts) are located in `bin` folder of ProjectInit.sh, separated into directories based on a language or 
+technology they are covering.
 
-Just run:
+Just open your bash terminal, `cd` into the desired `bin` subdirectory and run.
 
-```bash
-sh ./run_generators.sh
+Example:
+
+```shell
+cd bin/php
+sh init_generic.sh
 ```
 
-Generated project init scripts will be placed in `./build/` directory.
+## Available tools
 
-#### Method #2 - Run an individual generator
-
-You can run an individual generator from the root directory of this repository.
-Generator scripts have the `generate_` prefix.
-
-### Step #3 - Run
-
-To use a generated init script, run it from the `./build/` directory.
-
-```bash
-cd build
-sh some_script.sh
-```
-
-## Cleaning up build directory
-
-If you want a fresh start, run `./cleanup_builds.sh` and then configure and/or generate the scripts again.
-
-## Available scripts
-
-- `init_generic.sh`
-    - check if project directory exists and create one if it doesn't;
-    - check if the project's directory is a Git repository and initialize Git repository if it isn't;
-    - download the latest **Composer**
-    - download the latest **PHP CS Fixer**
-    - setup Git username and user email for the repository
-    - setup `.gitignore`
-    - composer install
+- PHP:
+  - `init_generic.sh`:
 
 ## Additional resources 
 
