@@ -26,7 +26,7 @@ Clone this repository: `git clone git@github.com:constup/projectinit.sh.git`
 
 or
 
-Download the latest release.
+Download the latest release from [https://github.com/constup/projectinit.sh/releases](https://github.com/constup/projectinit.sh/releases).
 
 ### Step 2
 
