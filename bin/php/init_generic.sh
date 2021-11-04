@@ -42,16 +42,22 @@ draw_separator
 
 # composer
 init_composer_v2
+draw_separator
 
 # PHP CS Fixer configuration
 generate_generic_phpcsfixer_v3
+draw_separator
 
 # PHPUnit configuration
 generate_generic_phpunit_configuration_file_v9
+draw_separator
 
 # create project base directories
 create_project_base_directories
+draw_separator
 
 # wrapup
 switch_to_tool_dir
 draw_separator
+
+echo "ProjectInit.sh completed setting up the project. Have fun!"
