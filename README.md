@@ -33,7 +33,6 @@ Download the latest release from [https://github.com/constup/projectinit.sh/rele
 Configure ProjectInit.sh by running:
 
 ```shell
-cd projectinit.sh
 sh configure.sh
 ```
 
