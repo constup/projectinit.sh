@@ -10,6 +10,8 @@ cd projectinit.sh/bin/php
 sh init_generic.sh
 ```
 
+[Check out the list of available tools here.](list_of_tools.md)
+
 ### Install, configure and run
 
 Install by cloning the repository:
@@ -53,6 +55,7 @@ terminal? Take a look at `src/php/composer/composer.sh`:
 download_latest_composer_phar () {
   echo ""
   wget -O composer.phar "https://getcomposer.org/composer.phar"
+  chmod +x composer.phar
   php composer.phar self-update
   echo ""
   php composer.phar --version
