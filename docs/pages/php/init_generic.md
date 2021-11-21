@@ -36,4 +36,4 @@ not change them. It will only add new configuration files or directories to your
 - wget
 
 ---
-[[The list of tools](../../list_of_tools.md)]
+[[The list of tools](../../list_of_tools.md)][[Home page](../../index.md)]
