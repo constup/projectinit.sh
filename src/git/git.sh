@@ -35,13 +35,38 @@ is_git_directory () {
 }
 
 setup_git_user_configuration () {
-  source "${TOOL_DIR}\config\params\git_user_configuration.sh"
   echo ""
   echo "Configuring Git user..."
-  git config user.name "${GIT_USER_NAME}"
-  git config user.email "${GIT_USER_EMAIL}"
-  echo "User name: ${GIT_USER_NAME}"
-  echo "User email: ${GIT_USER_EMAIL}"
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
+  echo "Your current Git username is: "
+  git config user.name
+  echo "Your current Git user email is: "
+  git config user.email
+  echo "What would you like to do?"
+  local git_user_configuration_options=("Use predefined username and email (listed above), if available" "Use username and email configured in ProjectInit.sh" "Enter username and email manually")
+  select guco in "${git_user_configuration_options[@]}"; do
+    case $guco in
+      "Use predefined username and email (listed above), if available" )
+        break;;
+      "Use username and email configured in ProjectInit.sh" )
+        source "${TOOL_DIR}\config\params\git_user_configuration.sh"
+        git config user.name "${GIT_USER_NAME}"
+        git config user.email "${GIT_USER_EMAIL}"
+        echo "User name: ${GIT_USER_NAME}"
+        echo "User email: ${GIT_USER_EMAIL}"
+        break;;
+      "Enter username and email manually" )
+        echo "Enter Git username:"
+        local git_username_manual
+        read -r git_username_manual
+        echo "Enter Git user email:"
+        local git_user_email_manual
+        read -r git_user_email_manual
+        git config user.name "${git_username_manual}"
+        git config user.email "${git_user_email_manual}"
+        break;;
+      esac
+  done
   echo "Git user configured."
 }
 
