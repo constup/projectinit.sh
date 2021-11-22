@@ -28,6 +28,7 @@ download_latest_composer_phar () {
   echo ""
   wget -O composer.phar "https://getcomposer.org/composer.phar"
   php composer.phar self-update
+  chmod +x composer.phar
   echo ""
   php composer.phar --version
 }

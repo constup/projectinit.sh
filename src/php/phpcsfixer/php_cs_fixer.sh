@@ -16,6 +16,7 @@ generate_generic_phpcsfixer_v3 () {
 download_phpcsfixer_v3 () {
   echo ""
   wget -O php-cs-fixer.phar "https://cs.symfony.com/download/php-cs-fixer-v3.phar"
+  chmod +x php-cs-fixer.phar
   echo ""
   php php-cs-fixer.phar --version
 }
