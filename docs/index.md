@@ -64,8 +64,7 @@ download_latest_composer_phar () {
 ### Demo
 
 This demo video shows an example of creating a new Symfony 5 web application by using ProjectInit.sh v0.1.2-alpha.
-
-<div class='video_wrapper'>
-<iframe src='//www.youtube.com/embed/kR6ppQMqTQ4' allowfullscreen>
+<div>
+<iframe src='//www.youtube.com/embed/kR6ppQMqTQ4' style="top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen>
 </iframe>
 </div>
