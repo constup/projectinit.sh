@@ -8,6 +8,7 @@ sh init_generic.sh
 ## Can be used for:
 
 - Creating a new composer package (library, project,...);
+- Creating a new Symfony 5 application;
 - Continuing work on an existing composer package;
 - Continuing work on an existing project written in some PHP framework (ex. Symfony);
 
