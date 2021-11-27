@@ -57,7 +57,7 @@ generate_generic_phpunit_configuration_file_v9
 draw_separator
 
 # create project base directories
-create_project_base_directories
+create_php_project_base_directories
 draw_separator
 
 # wrapup
