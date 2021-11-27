@@ -38,18 +38,22 @@ setup_git_user_configuration () {
   echo ""
   echo "Configuring Git user..."
   cd "${PROJECT_ROOT_DIR}" || exit 1;
-  echo "Your current Git username is: "
+  echo "Your global Git username is: "
   git config user.name
-  echo "Your current Git user email is: "
+  echo "Your global Git user email is: "
   git config user.email
+  source "${TOOL_DIR}\config\params\git_user_configuration.sh"
+  echo "ProjectInit.sh configured Git username: "
+  echo "${GIT_USER_NAME}"
+  echo "ProjectInit.sh configured Git email: "
+  echo "${GIT_USER_EMAIL}"
   echo "What would you like to do?"
-  local git_user_configuration_options=("Use predefined username and email (listed above), if available" "Use username and email configured in ProjectInit.sh" "Enter username and email manually")
+  local git_user_configuration_options=("Use global username and email" "Use username and email configured in ProjectInit.sh" "Enter username and email manually")
   select guco in "${git_user_configuration_options[@]}"; do
     case $guco in
-      "Use predefined username and email (listed above), if available" )
+      "Use global username and email" )
         break;;
       "Use username and email configured in ProjectInit.sh" )
-        source "${TOOL_DIR}\config\params\git_user_configuration.sh"
         git config user.name "${GIT_USER_NAME}"
         git config user.email "${GIT_USER_EMAIL}"
         echo "User name: ${GIT_USER_NAME}"
