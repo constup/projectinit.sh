@@ -61,3 +61,11 @@ download_latest_composer_phar () {
   php composer.phar --version
 }
 ```
+### Demo
+
+This demo video shows an example of creating a new Symfony 5 web application by using ProjectInit.sh v0.1.2-alpha.
+
+<div class='video_wrapper'>
+<iframe src='//www.youtube.com/watch?v=kR6ppQMqTQ4?rel=0' allowfullscreen>
+</iframe>
+</div>
