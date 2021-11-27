@@ -8,6 +8,7 @@ source ../../src/software/version_display.sh
 source ../../src/php/composer/composer.sh
 source ../../src/php/phpcsfixer/php_cs_fixer.sh
 source ../../src/php/phpunit/phpunit.sh
+source ../../src/php/project.sh
 
 check_user_configuration
 init_directories
@@ -38,6 +39,9 @@ draw_separator
 # configure git
 setup_git_user_configuration
 generate_generic_gitignore_for_php
+draw_separator
+
+php_new_or_existing_project
 draw_separator
 
 # composer
