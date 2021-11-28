@@ -2,6 +2,7 @@
 
 generate_generic_phpcsfixer_v3 () {
   echo ""
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
   echo "Checking .php-cs-fixer.dist.php in ${PROJECT_ROOT_DIR}..."
   if [ ! -f "${PROJECT_ROOT_DIR}/.php-cs-fixer.dist.php" ]; then
       echo "${PROJECT_ROOT_DIR}/.php-cs-fixer.dist.php does not exist. Creating .php-cs-fixer.dist.php automatically..."
@@ -15,6 +16,7 @@ generate_generic_phpcsfixer_v3 () {
 
 download_phpcsfixer_v3 () {
   echo ""
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
   wget -O php-cs-fixer.phar "https://cs.symfony.com/download/php-cs-fixer-v3.phar"
   chmod +x php-cs-fixer.phar
   echo ""
