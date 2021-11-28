@@ -1,7 +1,7 @@
 # Prerequisites
 
 ProjectInit.sh is a set of Bash scripts. It's trying to use as many default commands available in Bash
-and/or on you operating system as possible. It's also using the tools which you should already have in
+and/or on your operating system as possible. It's also using the tools which you should already have in
 your development environment (for example, if you're setting up a PHP project, local PHP is required).
 
 ## Linux
@@ -33,6 +33,8 @@ Open a terminal and install required tools with Scoop:
 ```shell
 scoop install wget git
 ```
+
+You can now open a new Bash terminal in Cmder and run any ProjectInit.sh script.
 
 ## MacOS
 
