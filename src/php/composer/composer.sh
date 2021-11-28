@@ -9,6 +9,7 @@ init_composer_v2 () {
       select ccico in "${component_composer_init_composer_options[@]}"; do
           case $ccico in
               "Initialize composer" )
+                 cd "${PROJECT_ROOT_DIR}" || exit 1;
                   php ./composer.phar init;
                   php ./composer.phar install;
                   break;;
@@ -26,6 +27,7 @@ init_composer_v2 () {
 
 download_latest_composer_phar () {
   echo ""
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
   wget -O composer.phar "https://getcomposer.org/composer.phar"
   php composer.phar self-update
   chmod +x composer.phar

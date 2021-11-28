@@ -2,6 +2,7 @@
 
 generate_generic_phpunit_configuration_file_v9 () {
   echo ""
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
   echo "Checking phpunit.xml.dist in ${PROJECT_ROOT_DIR}..."
   if [ ! -f "${PROJECT_ROOT_DIR}/phpunit.xml.dist" ]; then
       echo "${PROJECT_ROOT_DIR}/phpunit.xml.dist does not exist. Creating phpunit.xml.dist automatically..."
@@ -15,6 +16,7 @@ generate_generic_phpunit_configuration_file_v9 () {
 
 download_phpunit_v9 () {
   echo ""
+  cd "${PROJECT_ROOT_DIR}" || exit 1;
   wget -O phpunit.phar https://phar.phpunit.de/phpunit-9.phar
   chmod +x phpunit.phar
   echo ""
