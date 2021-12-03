@@ -11,7 +11,11 @@ select cso in "${configuration_script_options[@]}"; do
       read -r GIT_USER_NAME
       echo "Git user email:"
       read -r GIT_USER_EMAIL
-      rm ./config/params/git_user_configuration.sh
+      rm  -rf ./config/params/git_user_configuration.sh
+      mkdir -p ./config/params
+      touch ./config/params/git_user_configuration.sh
+      echo "#!/bin/bash" >> ./config/params/git_user_configuration.sh
+      echo "" >> ./config/params/git_user_configuration.sh
       echo "GIT_USER_NAME=\"${GIT_USER_NAME}\"" >> ./config/params/git_user_configuration.sh
       echo "GIT_USER_EMAIL=\"${GIT_USER_EMAIL}\"" >> ./config/params/git_user_configuration.sh
       echo
