@@ -6,3 +6,5 @@
 /.php_cs.cache
 /vendor/*
 /codeCoverage/*
+/auth.json
+/.php-cs-fixer.cache
