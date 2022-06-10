@@ -68,3 +68,10 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 <iframe src='//www.youtube.com/embed/kR6ppQMqTQ4' style="top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen>
 </iframe>
 </div>
+
+### Release history highlights
+
+ - **10.06.2022. - 0.1.5-alpha**: Added support for creating Symfony 6 projects.
+ - **03.12.2021. - 0.1.4-alpha**: Fixes.
+ - **28.12.2021. - 0.1.3-alpha**: QoL improvements.
+ - **27.11.2021. - 0.1.2-alpha**: Added support for creating Symfony 5 projects.
