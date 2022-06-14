@@ -19,7 +19,24 @@ is_git_directory () {
                   echo "Enter repository URL:";
                   local PROJECT_REPO_URL;
                   read -r PROJECT_REPO_URL;
-                  cd "${PROJECT_ROOT_DIR}" && git clone "${PROJECT_REPO_URL}" .;
+                  cd "${PROJECT_ROOT_DIR}" || exit 1;
+                  git clone "${PROJECT_REPO_URL}" . || local command_failed=1;
+                  if [ ${command_failed:-0} -eq 1 ]
+                  then
+                    echo "Cloning of Git repository failed. Let's add your SSH key to the Agent and see if that helps.";
+                    echo "Repository's SSH key:";
+                    local repository_ssh_key;
+                    local user_home_dir;
+                    user_home_dir="$(cd ~ && pwd)";
+                    read -r -e repository_ssh_key;
+                    if [[ ${repository_ssh_key::1} == "~" ]]
+                    then
+                      repository_ssh_key=${repository_ssh_key/\~/${user_home_dir}};
+                    fi
+                    eval "$(ssh-agent -s)";
+                    ssh-add "${repository_ssh_key}";
+                    git clone "${PROJECT_REPO_URL}" .;
+                  fi
                   cd "${TOOL_DIR}" || exit 1;
                   break;;
               "Create a new repository" )

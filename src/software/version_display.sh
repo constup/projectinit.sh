@@ -24,6 +24,12 @@ npm_version () {
   npm --version
 }
 
+nvm_version () {
+  echo ""
+  echo "NVM version:"
+  nvm version
+}
+
 php_version () {
   echo ""
   echo "PHP version:"
