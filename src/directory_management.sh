@@ -7,7 +7,7 @@ init_directories () {
   script_parent_dir="$(dirname "$(pwd)")"
   TOOL_DIR="$(dirname "$script_parent_dir")"
   echo "Your project's root directory:"
-  read -r PROJECT_ROOT_DIR
+  read -r -e PROJECT_ROOT_DIR
   echo "Tool directory: ${TOOL_DIR}"
   echo "Project root dir: ${PROJECT_ROOT_DIR}"
   echo "Directory initialization completed."
