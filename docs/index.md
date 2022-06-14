@@ -71,6 +71,7 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 
 ### Release history highlights
 
+ - **15.06.2022. - 0.1.6-alpha**: You will be asked for your SSH key if repository cloning fails. Autocomplete capability has been added to a couple of file input queries.
  - **10.06.2022. - 0.1.5-alpha**: Added support for creating Symfony 6 projects.
  - **03.12.2021. - 0.1.4-alpha**: Fixes.
  - **28.12.2021. - 0.1.3-alpha**: QoL improvements.
