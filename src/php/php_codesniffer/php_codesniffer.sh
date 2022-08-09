@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#######################################
+# Download the latest version of PHP Code Sniffer PHAR to your project's root directory.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+# Arguments:
+#  None
+#######################################
 download_php_codesniffer_latest () {
   echo ""
   cd "${PROJECT_ROOT_DIR}" || exit 1;

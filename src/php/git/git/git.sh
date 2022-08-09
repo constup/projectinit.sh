@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#######################################
+# Check if .gitignore file exists in our project's root directory.
+# If it doesn't, copy the generic .gitignore file.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+#   TOOL_DIR         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
 generate_generic_gitignore_for_symfony () {
     echo ""
   echo "Checking .gitignore in ${PROJECT_ROOT_DIR}..."

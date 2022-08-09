@@ -17,10 +17,10 @@ is_git_directory () {
           case $cgigdo in
               "Clone an existing repository" )
                   echo "Enter repository URL:";
-                  local PROJECT_REPO_URL;
-                  read -r PROJECT_REPO_URL;
+                  local project_repo_url;
+                  read -r project_repo_url;
                   cd "${PROJECT_ROOT_DIR}" || exit 1;
-                  git clone "${PROJECT_REPO_URL}" . || local command_failed=1;
+                  git clone "${project_repo_url}" . || local command_failed=1;
                   if [ ${command_failed:-0} -eq 1 ]
                   then
                     echo "Cloning of Git repository failed. Let's add your SSH key to the Agent and see if that helps.";
@@ -35,7 +35,7 @@ is_git_directory () {
                     fi
                     eval "$(ssh-agent -s)";
                     ssh-add "${repository_ssh_key}";
-                    git clone "${PROJECT_REPO_URL}" .;
+                    git clone "${project_repo_url}" .;
                   fi
                   cd "${TOOL_DIR}" || exit 1;
                   break;;

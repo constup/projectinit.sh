@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#######################################
+# Create a new Symfony 5 Web application.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+# Arguments:
+#  None
+#######################################
 create_new_symfony5_project_web_application_composer () {
   echo ""
   cd "${PROJECT_ROOT_DIR}" || exit 1;
@@ -9,6 +16,13 @@ create_new_symfony5_project_web_application_composer () {
   echo "New Symfony 5 Web application setup completed."
 }
 
+#######################################
+# Create a new Symfony 5 Console or API application.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+# Arguments:
+#  None
+#######################################
 create_new_symfony5_project_api_composer () {
   echo ""
   cd "${PROJECT_ROOT_DIR}" || exit 1;
@@ -18,6 +32,13 @@ create_new_symfony5_project_api_composer () {
   echo "New Symfony 5 microservice, console or API application setup completed."
 }
 
+#######################################
+# Create a new Symfony 6 Web Application.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+# Arguments:
+#  None
+#######################################
 create_new_symfony6_project_web_application_composer () {
   echo ""
   cd "${PROJECT_ROOT_DIR}" || exit 1;
@@ -28,6 +49,13 @@ create_new_symfony6_project_web_application_composer () {
   echo "New Symfony 6 Web application setup completed."
 }
 
+#######################################
+# Create a new Symfony 6 Console or API application.
+# Globals:
+#   PROJECT_ROOT_DIR - root directory of your project
+# Arguments:
+#  None
+#######################################
 create_new_symfony6_project_api_composer () {
   echo ""
   cd "${PROJECT_ROOT_DIR}" || exit 1;

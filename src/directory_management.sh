@@ -1,38 +1,68 @@
 #!/bin/bash
 
+#######################################
+# Initialize directories for the project. This function sets `project_root_dir` and `tool_dir` global variables. You can
+# re-use them after this initialization whenever needed.
+# Globals:
+#   project_root_dir - root directory of your project
+#   tool_dir         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
 init_directories () {
   echo ""
   echo "Initializing directories..."
   local script_parent_dir
   script_parent_dir="$(dirname "$(pwd)")"
-  TOOL_DIR="$(dirname "$script_parent_dir")"
+  tool_dir="$(dirname "$script_parent_dir")"
   echo "Your project's root directory:"
-  read -r -e PROJECT_ROOT_DIR
-  echo "Tool directory: ${TOOL_DIR}"
-  echo "Project root dir: ${PROJECT_ROOT_DIR}"
+  read -r -e project_root_dir
+  echo "Tool directory: ${tool_dir}"
+  echo "Project root dir: ${project_root_dir}"
   echo "Directory initialization completed."
 }
 
+#######################################
+# Change the active directory to project's root directory.
+# Globals:
+#   project_root_dir - root directory of your project
+# Arguments:
+#  None
+#######################################
 switch_to_project_dir () {
-  cd "${PROJECT_ROOT_DIR}" || exit 1
-  echo "Directory changed to ${PROJECT_ROOT_DIR}"
+  cd "${project_root_dir}" || exit 1
+  echo "Directory changed to ${project_root_dir}"
 }
 
+#######################################
+# Change the active directory to projectinit.sh root directory.
+# Globals:
+#   tool_dir - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
 switch_to_tool_dir () {
-  cd "${TOOL_DIR}" || exit 1
-  echo "Directory changed to ${TOOL_DIR}"
+  cd "${tool_dir}" || exit 1
+  echo "Directory changed to ${tool_dir}"
 }
 
+#######################################
+# Check if project's root directory exists and offer to create it if it does not.
+# Globals:
+#   project_root_dir - root directory of your project
+# Arguments:
+#  None
+#######################################
 setup_root_project_directory () {
   echo ""
   echo "Checking if your project root directory exists..."
-  if [ ! -d "${PROJECT_ROOT_DIR}" ]; then
+  if [ ! -d "${project_root_dir}" ]; then
       echo "Your project directory doesn't exist. What do you want to do?"
       local component_project_directory_exists_options=("Create directory" "Exit this tool")
       select cpdeo in "${component_project_directory_exists_options[@]}"; do
           case $cpdeo in
               "Create directory" )
-                  mkdir -p "${PROJECT_ROOT_DIR}";
+                  mkdir -p "${project_root_dir}";
                   echo -e "\nDirectory created.\n";
                   break;;
               "Exit this tool" )
