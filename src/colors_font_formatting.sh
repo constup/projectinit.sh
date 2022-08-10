@@ -1,9 +1,21 @@
 #!/bin/bash
 
+#######################################
+# Draw a simple separator.
+# Arguments:
+#  None
+#######################################
 draw_separator () {
   echo "--------------------------------------"
 }
 
+#######################################
+# Set text color in terminal.
+# Arguments:
+#   1 - one of the offered values from the `case` statement.
+# Example:
+#   set_color('red');
+#######################################
 set_color () {
   case $1 in
     'reset color')

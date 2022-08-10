@@ -1,10 +1,35 @@
+# IDE
+## JetBrains
 /.idea/*
+## VSCode
+/.vscode
+## Atom
 /.project
+
+# PHP PHAR tools
 /composer.phar
 /php-cs-fixer.phar
 /phpunit.phar
+
+# Tools cache files
+## PHP CS Fixer cache files (od and new format)
 /.php_cs.cache
-/vendor/*
-/codeCoverage/*
-/auth.json
 /.php-cs-fixer.cache
+
+# 3rd party packages
+## PHP/Composer
+/vendor/*
+## NodeJS
+/node_modules/*
+
+# Production code
+## NodeJS
+/dist/*
+
+# QA automation
+## PHPUnit (ProjectInit.sh naming convention)
+/codeCoverage/*
+
+# Authentification files
+## Github - used for loading Github repositories as private PHP libraries (with Composer)
+/auth.json
