@@ -2,6 +2,8 @@
 
 A set of bash scripts to kickstart software projects.
 
+<img src="https://img.shields.io/badge/license-GNU%20GPL%203.0-brightgreen" alt="GNU GPL 3.0 License badge" />
+
 ## OS support
 
 **Note**: Depending on what each tool in ProjectInit.sh is supposed to do, you may need additional software installed,
@@ -72,3 +74,7 @@ sh init_generic.sh
 ## Additional resources 
 
 - [Integrations with editors and IDEs](doc/TOOL_INTEGRATIONS.md)
+- 
+## License
+
+GNU GPL 3.0 - Full license is available in [LICENSE](./LICENSE) file.
