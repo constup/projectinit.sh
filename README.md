@@ -74,7 +74,7 @@ sh init_generic.sh
 ## Additional resources 
 
 - [Integrations with editors and IDEs](doc/TOOL_INTEGRATIONS.md)
-- 
+
 ## License
 
 GNU GPL 3.0 - Full license is available in [LICENSE](./LICENSE) file.
