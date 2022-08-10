@@ -16,7 +16,12 @@ ProjectInit.sh is tested on [Cmder](https://cmder.net/) with additional Linux to
 
 - **MacOS**: Since *zsh* is default terminal, you will need to have Bash installed.
 
-If you need help installing bash or any other prerequisites, take a look at the [Prerequisites](./doc/PREREQUISITES.md) documentation page.
+If you need help installing bash or any other prerequisites, take a look at the [Prerequisites](./doc/PREREQUISITES.md) 
+documentation page.
+
+## Coding style
+
+ProjectInit.sh uses [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html) as a coding standard.
 
 ## Installation
 
@@ -26,7 +31,8 @@ Clone this repository: `git clone git@github.com:constup/projectinit.sh.git`
 
 or
 
-Download the latest release from [https://github.com/constup/projectinit.sh/releases](https://github.com/constup/projectinit.sh/releases).
+Download the latest release from 
+[https://github.com/constup/projectinit.sh/releases](https://github.com/constup/projectinit.sh/releases).
 
 ### Step 2
 
@@ -54,6 +60,14 @@ sh init_generic.sh
 
 - PHP:
   - `init_generic.sh`:
+    - Composer package
+    - Symfony 5 web application
+    - Symfony 5 console or API application
+    - Symfony 6 web application
+    - Symfony 6 console or APiI application
+- NodeJS
+  - `init_generic.sh`
+    - NestJS application
 
 ## Additional resources 
 

@@ -8,16 +8,16 @@ select cso in "${configuration_script_options[@]}"; do
   case $cso in
     "Configure ProjectInit.sh" )
       echo "Git username:"
-      read -r GIT_USER_NAME
+      read -r git_user_name
       echo "Git user email:"
-      read -r GIT_USER_EMAIL
+      read -r git_user_email
       rm  -rf ./config/params/git_user_configuration.sh
       mkdir -p ./config/params
       touch ./config/params/git_user_configuration.sh
       echo "#!/bin/bash" >> ./config/params/git_user_configuration.sh
       echo "" >> ./config/params/git_user_configuration.sh
-      echo "GIT_USER_NAME=\"${GIT_USER_NAME}\"" >> ./config/params/git_user_configuration.sh
-      echo "GIT_USER_EMAIL=\"${GIT_USER_EMAIL}\"" >> ./config/params/git_user_configuration.sh
+      echo "GIT_USER_NAME=\"${git_user_name}\"" >> ./config/params/git_user_configuration.sh
+      echo "GIT_USER_EMAIL=\"${git_user_email}\"" >> ./config/params/git_user_configuration.sh
       echo
       break;;
     "Exit" )
