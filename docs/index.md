@@ -12,6 +12,9 @@ ProjectInit.sh are:
 - Creating a new project in an organized and standardized way.
 - To be fully compatible with your existing projects and repositories and not override any of your existing project
   settings.
+- Fully functional on all major operating systems.
+- Modular with features separated into components and functions, so that users can easily compose their own scripts by 
+  using already implemented components.
 
 Running ProjectInit.sh scripts is easy. Example for a PHP project: 
 
