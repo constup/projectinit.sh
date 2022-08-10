@@ -60,6 +60,14 @@ sh init_generic.sh
 
 - PHP:
   - `init_generic.sh`:
+    - Composer package
+    - Symfony 5 web application
+    - Symfony 5 console or API application
+    - Symfony 6 web application
+    - Symfony 6 console or APiI application
+- NodeJS
+  - `init_generic.sh`
+    - NestJS application
 
 ## Additional resources 
 
