@@ -3,14 +3,31 @@
 **NOTE**: This page and the rest of the documentation is currently work in progress. Once the final version is 
 published, this note will be removed. 
 
-### Setup your next software project in seconds 
+### Description
+
+ProjectInit.sh is a tool which blends a perfect mix of interactive user input and automation. It will ask you about the 
+most important decisions when setting up your project, but will also keep the boring stuff automated. The core ideas of
+ProjectInit.sh are:
+
+- Creating a new project in an organized and standardized way.
+- To be fully compatible with your existing projects and repositories and not override any of your existing project
+  settings.
+
+Running ProjectInit.sh scripts is easy. Example for a PHP project: 
 
 ```shell
-cd projectinit.sh/bin/php
+cd bin/php
 sh init_generic.sh
 ```
 
-[Check out the list of available tools here.](list_of_tools.md)
+### Supported types of projects
+
+- PHP Composer library
+- Symfony 5 web, console or API application
+- Symfony 6 web, console or API application
+- NestJS application
+
+[See the full list of available tools and features here.](list_of_tools.md)
 
 ### Install, configure and run
 
@@ -41,8 +58,8 @@ All of your projects will also be set up in exactly the same way, just the way y
 
 ### Make it your own
 
-ProjectInit.sh comes with a default set of bash scripts separated into components. Each master script is a compilation
-of individual component scripts.
+ProjectInit.sh comes with a default set of bash scripts separated into components and functions. Each master script is a
+compilation of individual Bash functions.
 
 You are free to mix the components or write your own to cover your perfect setup.
 
