@@ -56,6 +56,17 @@ nvm_version () {
 }
 
 #######################################
+# Show version of NestJS
+# Arguments:
+#  None
+#######################################
+nestjs_version () {
+  echo ""
+  echo "NestJS version:"
+  nest --version
+}
+
+#######################################
 # Show version of PHP.
 # Arguments:
 #  None

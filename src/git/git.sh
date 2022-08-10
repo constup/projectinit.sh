@@ -10,7 +10,7 @@ check_user_configuration () {
 is_git_directory () {
   echo ""
   echo "Checking if your project root dir is a Git repository..."
-  if [ ! -d "${PROJECT_ROOT_DIR}/.git/" ]; then
+  if [ ! -d "${project_root_dir}/.git/" ]; then
       echo "Your project's root directory is not a Git repository. What do you want to do?"
       local component_git_is_git_directory_options=("Clone an existing repository" "Create a new repository" "Exit this tool")
       select cgigdo in "${component_git_is_git_directory_options[@]}"; do
@@ -19,7 +19,7 @@ is_git_directory () {
                   echo "Enter repository URL:";
                   local project_repo_url;
                   read -r project_repo_url;
-                  cd "${PROJECT_ROOT_DIR}" || exit 1;
+                  cd "${project_root_dir}" || exit 1;
                   git clone "${project_repo_url}" . || local command_failed=1;
                   if [ ${command_failed:-0} -eq 1 ]
                   then
@@ -37,11 +37,11 @@ is_git_directory () {
                     ssh-add "${repository_ssh_key}";
                     git clone "${project_repo_url}" .;
                   fi
-                  cd "${TOOL_DIR}" || exit 1;
+                  cd "${tool_dir}" || exit 1;
                   break;;
               "Create a new repository" )
-                  cd "${PROJECT_ROOT_DIR}" && git init;
-                  cd "${TOOL_DIR}" || exit 1;
+                  cd "${project_root_dir}" && git init;
+                  cd "${tool_dir}" || exit 1;
                   break;;
               "Exit this tool" )
                   exit 1;;
@@ -54,12 +54,12 @@ is_git_directory () {
 setup_git_user_configuration () {
   echo ""
   echo "Configuring Git user..."
-  cd "${PROJECT_ROOT_DIR}" || exit 1;
+  cd "${project_root_dir}" || exit 1;
   echo "Your global Git username is: "
   git config user.name
   echo "Your global Git user email is: "
   git config user.email
-  source "${TOOL_DIR}\config\params\git_user_configuration.sh"
+  source "${tool_dir}\config\params\git_user_configuration.sh"
   echo "ProjectInit.sh configured Git username: "
   echo "${GIT_USER_NAME}"
   echo "ProjectInit.sh configured Git email: "
@@ -93,13 +93,13 @@ setup_git_user_configuration () {
 
 generate_generic_gitignore_for_php () {
   echo ""
-  echo "Checking .gitignore in ${PROJECT_ROOT_DIR}..."
-  if [ ! -f "${PROJECT_ROOT_DIR}/.gitignore" ]; then
-      echo "${PROJECT_ROOT_DIR}/.gitignore does not exist. Creating .gitignore automatically..."
-      touch "${PROJECT_ROOT_DIR}/.gitignore"
-      cat "${TOOL_DIR}/src/git/generic_gitignore/generic.gitignore" >> "${PROJECT_ROOT_DIR}/.gitignore"
+  echo "Checking .gitignore in ${project_root_dir}..."
+  if [ ! -f "${project_root_dir}/.gitignore" ]; then
+      echo "${project_root_dir}/.gitignore does not exist. Creating .gitignore automatically..."
+      touch "${project_root_dir}/.gitignore"
+      cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" >> "${project_root_dir}/.gitignore"
   else
-      echo "${PROJECT_ROOT_DIR}/.gitignore exists. Skipping automatic creation..."
+      echo "${project_root_dir}/.gitignore exists. Skipping automatic creation..."
   fi
   echo ".gitignore setup completed."
 }

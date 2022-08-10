@@ -24,7 +24,6 @@ git_version
 draw_separator
 
 # project root directory setup
-
 draw_separator
 is_git_directory
 draw_separator

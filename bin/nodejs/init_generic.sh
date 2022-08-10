@@ -7,6 +7,7 @@ source ../../src/directory_management.sh
 source ../../src/software/version_display.sh
 source ../../src/nodejs/package_manager/nvm.sh
 source ../../src/nodejs/node/node.sh
+source ../../src/nodejs/project.sh
 
 check_user_configuration
 init_directories
@@ -33,10 +34,10 @@ switch_to_project_dir
 
 # configure git
 setup_git_user_configuration
-# generate_generic_gitignore_for_nodejs
 draw_separator
-# nodejs_new_or_existing_project
-# draw separator
+
+nodejs_new_or_existing_project
+draw_separator
 
 # wrapup
 switch_to_tool_dir
