@@ -75,6 +75,11 @@ sh init_generic.sh
 
 - [Integrations with editors and IDEs](doc/TOOL_INTEGRATIONS.md)
 
+## Supporting development
+
+"*Programmer [ proh-gram-er ] - An organism which consumes coffee and produces source code.*"
+<a href="https://www.buymeacoffee.com/puEW3HvWvP" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## License
 
 GNU GPL 3.0 - Full license is available in [LICENSE](./LICENSE) file.
