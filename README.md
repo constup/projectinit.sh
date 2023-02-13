@@ -66,7 +66,7 @@ sh init_generic.sh
     - Symfony 5 web application
     - Symfony 5 console or API application
     - Symfony 6 web application
-    - Symfony 6 console or APiI application
+    - Symfony 6 console or APi application
 - NodeJS
   - `init_generic.sh`
     - NestJS application
