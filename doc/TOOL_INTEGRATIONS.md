@@ -8,7 +8,7 @@ Integrations are optional. You can use scripts from a terminal. However, you can
 
 You must have bash Windows executable. `bash.exe` can be found, for example, in Git for Windows or Cmder.
 
-Each `.sh` file in `./build/` directory can be integrated as a separate External Tool in PHPStorm.
+Each `.sh` file in `./bin/` directory can be integrated as a separate External Tool in PHPStorm.
 
 Open PHPStorm settings (`Ctrl+Alt+s`), go to `Tools > External Tools` and add an external tool for the desired script with the following parameters:
 
