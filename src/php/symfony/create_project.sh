@@ -64,3 +64,36 @@ create_new_symfony6_project_api_composer () {
   cp -a temp/. . && rm -rf temp/
   echo "New Symfony 6 microservice, console or API application setup completed."
 }
+
+#######################################
+# Create a new Symfony 7 Web Application.
+# Globals:
+#   project_root_dir - root directory of your project
+# Arguments:
+#  None
+#######################################
+create_new_symfony7_project_web_application_composer () {
+  echo ""
+  cd "${project_root_dir}" || exit 1;
+  echo "Setting up a new Symfony 7 traditional web application..."
+  php composer.phar create-project symfony/skeleton:"7.0.*@dev" temp
+  cp -a temp/. . && rm -rf temp/
+  php composer.phar require webapp
+  echo "New Symfony 7 Web application setup completed."
+}
+
+#######################################
+# Create a new Symfony 7 Console or API application.
+# Globals:
+#   project_root_dir - root directory of your project
+# Arguments:
+#  None
+#######################################
+create_new_symfony7_project_api_composer () {
+  echo ""
+  cd "${project_root_dir}" || exit 1;
+  echo "Setting up a new Symfony 7 microservice, console or API application using Composer..."
+  php composer.phar create-project symfony/skeleton:"7.0.*@dev" temp
+  cp -a temp/. . && rm -rf temp/
+  echo "New Symfony 7 microservice, console or API application setup completed."
+}

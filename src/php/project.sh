@@ -64,10 +64,16 @@ choose_php_project_type () {
   echo ""
   cd "${project_root_dir}" || exit 1;
   echo "Choose the type of your project:"
-  local php_project_type=("Composer package" "Symfony 5 traditional web application" "Symfony 5 microservice, console or API application" "Symfony 6 traditional web application" "Symfony 6 microservice, console or API application")
+  local php_project_type=("Composer package" "Symfony 5 traditional web application" "Symfony 5 microservice, console or API application" "Symfony 6 traditional web application" "Symfony 6 microservice, console or API application"  "Symfony 7 traditional web application" "Symfony 7 microservice, console or API application")
   select ppt in "${php_project_type[@]}"; do
     case $ppt in
       "Composer package" )
+        break;;
+      "Symfony 7 traditional web application" )
+        create_new_symfony7_project_web_application_composer
+        break;;
+      "Symfony 7 microservice, console or API application" )
+        create_new_symfony7_project_api_composer
         break;;
       "Symfony 6 traditional web application" )
         create_new_symfony6_project_web_application_composer
