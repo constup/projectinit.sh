@@ -26,8 +26,9 @@ sh init_generic.sh
 ### Supported types of projects
 
 - PHP Composer library
-- Symfony 5 web, console or API application
+- Symfony 7 web, console or API application
 - Symfony 6 web, console or API application
+- Symfony 5 web, console or API application
 - NestJS application
 
 [See the full list of available tools and features here.](list_of_tools.md)
@@ -91,6 +92,7 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 
 ### Release history highlights
 
+ - **09.12.2023. - 0.2.2-alpha**: Symfony 7.0 support.
  - **09.12.2023. - 0.2.1-alpha**: Various improvements, added a choice for PHPUnit version and bumping available Symfony
 version to 6.4.
  - **10.08.2022. - 0.2.0-alpha**: Added support for creating NestJS projects. Code now follows 
