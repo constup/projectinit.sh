@@ -122,7 +122,7 @@ setup_git_user_configuration () {
 # Arguments:
 #  None
 #######################################
-generate_generic_gitignore_for_php () {
+generate_generic_gitignore () {
   echo ""
   echo "Checking .gitignore in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/.gitignore" ]; then
@@ -130,7 +130,19 @@ generate_generic_gitignore_for_php () {
       touch "${project_root_dir}/.gitignore"
       cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" >> "${project_root_dir}/.gitignore"
   else
-      echo "${project_root_dir}/.gitignore exists. Skipping automatic creation..."
+      echo "${project_root_dir}/.gitignore exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
+      local keep_or_replace_gitignore=("Keep the original" "Replace it with generic")
+      select korg in "${keep_or_replace_gitignore[@]}"; do
+        case $korg in
+          "Keep the original" )
+            echo "Keeping the original .gitignore..."
+            break;;
+          "Replace it with generic" )
+            echo "Replacing the existing .gitignore with generic one..."
+            cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" > "${project_root_dir}/.gitignore"
+            break;;
+        esac
+      done
   fi
   echo ".gitignore setup completed."
 }

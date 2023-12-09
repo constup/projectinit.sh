@@ -1,35 +1,52 @@
 # IDE
 ## JetBrains
-/.idea/*
+/.idea/
 ## VSCode
 /.vscode
 ## Atom
 /.project
 
 # PHP PHAR tools
-/composer.phar
-/php-cs-fixer.phar
-/phpunit.phar
+/*.phar
 
 # Tools cache files
-## PHP CS Fixer cache files (od and new format)
+## PHP CS Fixer cache files (old and new format)
 /.php_cs.cache
 /.php-cs-fixer.cache
 
 # 3rd party packages
 ## PHP/Composer
-/vendor/*
+/vendor/
 ## NodeJS
-/node_modules/*
+/node_modules/
 
 # Production code
+## Symfony
+/public/
 ## NodeJS
-/dist/*
+/dist/
 
 # QA automation
 ## PHPUnit (ProjectInit.sh naming convention)
-/codeCoverage/*
+/codeCoverage/
 
 # Authentification files
 ## Github - used for loading Github repositories as private PHP libraries (with Composer)
 /auth.json
+
+# Sercrets
+## Symfony
+/config/secrets/dev/dev.decrypt.private.php
+/config/secrets/prod/prod.decrypt.private.php
+
+# .env files
+## Universal
+.env.local
+.env.localtest
+## Symfony
+.env.local.php
+.env.*.local
+
+# Temporary files and runtime
+## Symfony
+/var/
