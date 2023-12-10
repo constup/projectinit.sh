@@ -92,6 +92,7 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 
 ### Release history highlights
 
+ - **10.12.2023. - 0.2.3-alpha**: Support for a bunch of tools in generic `.gitignore`.
  - **09.12.2023. - 0.2.2-alpha**: Symfony 7.0 support.
  - **09.12.2023. - 0.2.1-alpha**: Various improvements, added a choice for PHPUnit version and bumping available Symfony
 version to 6.4.
