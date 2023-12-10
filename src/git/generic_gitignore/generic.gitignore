@@ -1,35 +1,74 @@
 # IDE
 ## JetBrains
-/.idea/*
+/.idea/
 ## VSCode
-/.vscode
+/.vscode/
 ## Atom
-/.project
+/.project/
+## Sublime
+*.sublime-workspace
+## AWS Cloud9
+/.c9/
 
 # PHP PHAR tools
-/composer.phar
-/php-cs-fixer.phar
-/phpunit.phar
+/*.phar
 
 # Tools cache files
-## PHP CS Fixer cache files (od and new format)
+## PHP CS Fixer cache files (old and new format)
 /.php_cs.cache
 /.php-cs-fixer.cache
 
 # 3rd party packages
 ## PHP/Composer
-/vendor/*
+/vendor/
 ## NodeJS
-/node_modules/*
+/node_modules/
 
 # Production code
+## Symfony
+/public/
 ## NodeJS
-/dist/*
+/dist/
 
 # QA automation
 ## PHPUnit (ProjectInit.sh naming convention)
-/codeCoverage/*
+/codeCoverage/
+## General convention
+/coverage/
+## IstanbulJS
+/.nyc_output/
 
 # Authentification files
 ## Github - used for loading Github repositories as private PHP libraries (with Composer)
 /auth.json
+
+# Sercrets
+## Symfony
+/config/secrets/dev/dev.decrypt.private.php
+/config/secrets/prod/prod.decrypt.private.php
+
+# .env files
+## Universal
+.env.local
+.env.localtest
+## Symfony
+.env.local.php
+.env.*.local
+
+# Temporary files and runtime
+## Symfony
+/var/
+
+# Operating system
+## macOS
+.DS_Store
+
+# Logs
+## General convention
+/logs/
+## npm
+npm-debug.log
+pnpm-debug.log
+## yarn
+yarn-debug.log
+yarn-error.log

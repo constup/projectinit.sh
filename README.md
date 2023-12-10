@@ -2,6 +2,8 @@
 
 A set of bash scripts to kickstart software projects.
 
+<img src="https://img.shields.io/badge/license-GNU%20GPL%203.0-brightgreen" alt="GNU GPL 3.0 License badge" />
+
 ## OS support
 
 **Note**: Depending on what each tool in ProjectInit.sh is supposed to do, you may need additional software installed,
@@ -64,7 +66,7 @@ sh init_generic.sh
     - Symfony 5 web application
     - Symfony 5 console or API application
     - Symfony 6 web application
-    - Symfony 6 console or APiI application
+    - Symfony 6 console or API application
 - NodeJS
   - `init_generic.sh`
     - NestJS application
@@ -72,3 +74,12 @@ sh init_generic.sh
 ## Additional resources 
 
 - [Integrations with editors and IDEs](doc/TOOL_INTEGRATIONS.md)
+
+## Supporting development
+
+"*Programmer [ proh-gram-er ] - An organism which consumes coffee and produces source code.*"
+<a href="https://www.buymeacoffee.com/puEW3HvWvP" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+## License
+
+GNU GPL 3.0 - Full license is available in [LICENSE](./LICENSE) file.

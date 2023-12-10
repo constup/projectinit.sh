@@ -32,12 +32,10 @@ switch_to_project_dir
 # download phars
 download_latest_composer_phar
 download_phpcsfixer_v3
-download_phpunit_v9
 draw_separator
 
 # configure git
 setup_git_user_configuration
-generate_generic_gitignore_for_php
 draw_separator
 
 php_new_or_existing_project
@@ -52,12 +50,15 @@ generate_generic_phpcsfixer_v3
 draw_separator
 
 # PHPUnit configuration
-generate_generic_phpunit_configuration_file_v9
+pick_phpunit_version
 draw_separator
 
 # create project base directories
 create_php_project_base_directories
 draw_separator
+
+# .gitignore
+generate_generic_gitignore
 
 # wrapup
 switch_to_tool_dir

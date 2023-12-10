@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#######################################
+# Check if Git user configuration for projectinit.sh is present.
+# Arguments:
+#  None
+#######################################
 check_user_configuration () {
     if [ ! -f ../../config/params/git_user_configuration.sh ]; then
     echo -e "\n../../config/params/git_user_configuration.sh not found. Run configure.sh to complete configuration."
@@ -7,6 +12,16 @@ check_user_configuration () {
     fi
 }
 
+#######################################
+# Check if your project's root directory is a Git repository. If it is not, offer to create a new repository or clone an
+# existing one. If the cloning of the existing one fails, this function will also try to load an SSH key provided by the
+# user.
+# Globals:
+#   project_root_dir - root directory of your project
+#   tool_dir         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
 is_git_directory () {
   echo ""
   echo "Checking if your project root dir is a Git repository..."
@@ -51,6 +66,14 @@ is_git_directory () {
   echo "Your project root directory is a Git repository."
 }
 
+#######################################
+# Configure user.name and user.email for a Git repository.
+# Globals:
+#   project_root_dir - root directory of your project
+#   tool_dir         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
 setup_git_user_configuration () {
   echo ""
   echo "Configuring Git user..."
@@ -91,7 +114,15 @@ setup_git_user_configuration () {
   echo "Git user configured."
 }
 
-generate_generic_gitignore_for_php () {
+#######################################
+# Check if your project has a .gitignore file. If it doesn't, add a generic .gitignore file.
+# Globals:
+#   project_root_dir - root directory of your project
+#   tool_dir         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
+generate_generic_gitignore () {
   echo ""
   echo "Checking .gitignore in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/.gitignore" ]; then
@@ -99,7 +130,19 @@ generate_generic_gitignore_for_php () {
       touch "${project_root_dir}/.gitignore"
       cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" >> "${project_root_dir}/.gitignore"
   else
-      echo "${project_root_dir}/.gitignore exists. Skipping automatic creation..."
+      echo "${project_root_dir}/.gitignore exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
+      local keep_or_replace_gitignore=("Keep the original" "Replace it with generic")
+      select korg in "${keep_or_replace_gitignore[@]}"; do
+        case $korg in
+          "Keep the original" )
+            echo "Keeping the original .gitignore..."
+            break;;
+          "Replace it with generic" )
+            echo "Replacing the existing .gitignore with generic one..."
+            cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" > "${project_root_dir}/.gitignore"
+            break;;
+        esac
+      done
   fi
   echo ".gitignore setup completed."
 }
