@@ -2,9 +2,13 @@
 ## JetBrains
 /.idea/
 ## VSCode
-/.vscode
+/.vscode/
 ## Atom
-/.project
+/.project/
+## Sublime
+*.sublime-workspace
+## AWS Cloud9
+/.c9/
 
 # PHP PHAR tools
 /*.phar
@@ -29,6 +33,10 @@
 # QA automation
 ## PHPUnit (ProjectInit.sh naming convention)
 /codeCoverage/
+## General convention
+/coverage/
+## IstanbulJS
+/.nyc_output/
 
 # Authentification files
 ## Github - used for loading Github repositories as private PHP libraries (with Composer)
@@ -50,3 +58,17 @@
 # Temporary files and runtime
 ## Symfony
 /var/
+
+# Operating system
+## macOS
+.DS_Store
+
+# Logs
+## General convention
+/logs/
+## npm
+npm-debug.log
+pnpm-debug.log
+## yarn
+yarn-debug.log
+yarn-error.log
