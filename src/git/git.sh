@@ -82,7 +82,7 @@ setup_git_user_configuration () {
   git config user.name
   echo "Your global Git user email is: "
   git config user.email
-  source "${tool_dir}\config\params\git_user_configuration.sh"
+  source "${tool_dir}/config/params/git_user_configuration.sh"
   echo "ProjectInit.sh configured Git username: "
   echo "${GIT_USER_NAME}"
   echo "ProjectInit.sh configured Git email: "
