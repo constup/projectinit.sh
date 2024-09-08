@@ -1,4 +1,5 @@
 /.idea/*
 /.project
 /config/params/*.sh
-/local
+/local/
+/temp/

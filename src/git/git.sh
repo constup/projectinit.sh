@@ -79,9 +79,9 @@ setup_git_user_configuration () {
   echo "Configuring Git user..."
   cd "${project_root_dir}" || exit 1;
   echo "Your global Git username is: "
-  git config user.name
+  git config --global user.name || echo "not configured"
   echo "Your global Git user email is: "
-  git config user.email
+  git config --global user.email || echo "not configured"
   source "${tool_dir}/config/params/git_user_configuration.sh"
   echo "ProjectInit.sh configured Git username: "
   echo "${GIT_USER_NAME}"
@@ -127,13 +127,12 @@ generate_generic_gitignore () {
   echo "Checking .gitignore in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/.gitignore" ]; then
       echo "${project_root_dir}/.gitignore does not exist. Creating .gitignore automatically..."
-      touch "${project_root_dir}/.gitignore"
-      cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" >> "${project_root_dir}/.gitignore"
+      cp "${tool_dir}"/src/git/generic_gitignore/generic.gitignore "${project_root_dir}"/.gitignore
   else
       echo "${project_root_dir}/.gitignore exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
-      local keep_or_replace_gitignore=("Keep the original" "Replace it with generic")
-      select korg in "${keep_or_replace_gitignore[@]}"; do
-        case $korg in
+      local keep_or_replace=("Keep the original" "Replace it with generic")
+      select kor in "${keep_or_replace[@]}"; do
+        case $kor in
           "Keep the original" )
             echo "Keeping the original .gitignore..."
             break;;

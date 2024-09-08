@@ -15,10 +15,21 @@ generate_generic_phpunit_configuration_file_v9 () {
   echo "Checking phpunit.xml.dist in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/phpunit.xml.dist" ]; then
       echo "${project_root_dir}/phpunit.xml.dist does not exist. Creating phpunit.xml.dist automatically..."
-      touch "${project_root_dir}/phpunit.xml.dist"
-      cat "${tool_dir}/src/php/phpunit/generic_configuration_files/v9.xml.dist" >> "${project_root_dir}/phpunit.xml.dist"
+      cp "${tool_dir}"/src/php/phpunit/generic_configuration_files/v9.xml.dist "${project_root_dir}"/phpunit.xml.dist
   else
-      echo "${project_root_dir}/phpunit.xml.dist exists. Skipping automatic creation..."
+      echo "${project_root_dir}/phpunit.xml.dist exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
+      local keep_or_replace=("Keep the original" "Replace it with generic")
+      select kor in "${keep_or_replace[@]}"; do
+        case $kor in
+          "Keep the original" )
+            echo "Keeping the original PHPUnit configuration..."
+            break;;
+          "Replace it with generic" )
+            echo "Replacing the existing PHPUnit configuration wit generic one..."
+            cat "${tool_dir}"/src/php/phpunit/generic_configuration_files/v9.xml.dist > "${project_root_dir}"/phpunit.xml.dist
+            break;;
+        esac
+      done
   fi
   echo "phpunit.xml.dist setup completed."
 }
@@ -54,10 +65,21 @@ generate_generic_phpunit_configuration_file_v10 () {
   echo "Checking phpunit.xml.dist in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/phpunit.xml.dist" ]; then
       echo "${project_root_dir}/phpunit.xml.dist does not exist. Creating phpunit.xml.dist automatically..."
-      touch "${project_root_dir}/phpunit.xml.dist"
-      cat "${tool_dir}/src/php/phpunit/generic_configuration_files/v10.xml.dist" >> "${project_root_dir}/phpunit.xml.dist"
+      cp "${tool_dir}"/src/php/phpunit/generic_configuration_files/v10.xml.dist "${project_root_dir}"/phpunit.xml.dist
   else
-      echo "${project_root_dir}/phpunit.xml.dist exists. Skipping automatic creation..."
+      echo "${project_root_dir}/phpunit.xml.dist exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
+      local keep_or_replace=("Keep the original" "Replace it with generic")
+      select kor in "${keep_or_replace[@]}"; do
+        case $kor in
+          "Keep the original" )
+            echo "Keeping the original PHPUnit configuration..."
+            break;;
+          "Replace it with generic" )
+            echo "Replacing the existing .gitignore with generic one..."
+            cat "${tool_dir}"/src/php/phpunit/generic_configuration_files/v10.xml.dist > "${project_root_dir}"/phpunit.xml.dist
+            break;;
+        esac
+      done
   fi
   echo "phpunit.xml.dist setup completed."
 }

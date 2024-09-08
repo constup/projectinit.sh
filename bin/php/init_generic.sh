@@ -64,4 +64,4 @@ generate_generic_gitignore
 switch_to_tool_dir
 draw_separator
 
-echo "ProjectInit.sh completed setting up the project. Have fun!"
+echo "ProjectInit.sh completed setting up the project in ${project_root_dir}."
