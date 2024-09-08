@@ -27,9 +27,10 @@ is_git_directory () {
   echo "Checking if your project root dir is a Git repository..."
   if [ ! -d "${project_root_dir}/.git/" ]; then
       echo "Your project's root directory is not a Git repository. What do you want to do?"
-      local component_git_is_git_directory_options=("Clone an existing repository" "Create a new repository" "Exit this tool")
-      select cgigdo in "${component_git_is_git_directory_options[@]}"; do
-          case $cgigdo in
+      local component_git_is_git_directory_options=("Clone an existing repository" "Create a new repository")
+      local selection
+      select selection in "${component_git_is_git_directory_options[@]}"; do
+          case $selection in
               "Clone an existing repository" )
                   echo "Enter repository URL:";
                   local project_repo_url;
@@ -58,8 +59,6 @@ is_git_directory () {
                   cd "${project_root_dir}" && git init;
                   cd "${tool_dir}" || exit 1;
                   break;;
-              "Exit this tool" )
-                  exit 1;;
           esac
       done
   fi
@@ -67,7 +66,7 @@ is_git_directory () {
 }
 
 #######################################
-# Configure user.name and user.email for a Git repository.
+# Configure `user.name` and `user.email` for a Git repository.
 # Globals:
 #   project_root_dir - root directory of your project
 #   tool_dir         - root directory of projectinit.sh
@@ -82,6 +81,7 @@ setup_git_user_configuration () {
   git config --global user.name || echo "not configured"
   echo "Your global Git user email is: "
   git config --global user.email || echo "not configured"
+  # shellcheck source=./../../config/params/git_user_configuration.sh
   source "${tool_dir}/config/params/git_user_configuration.sh"
   echo "ProjectInit.sh configured Git username: "
   echo "${GIT_USER_NAME}"
@@ -89,8 +89,9 @@ setup_git_user_configuration () {
   echo "${GIT_USER_EMAIL}"
   echo "What would you like to do?"
   local git_user_configuration_options=("Use global username and email" "Use username and email configured in ProjectInit.sh" "Enter username and email manually")
-  select guco in "${git_user_configuration_options[@]}"; do
-    case $guco in
+  local selection
+  select selection in "${git_user_configuration_options[@]}"; do
+    case $selection in
       "Use global username and email" )
         break;;
       "Use username and email configured in ProjectInit.sh" )
@@ -131,8 +132,9 @@ generate_generic_gitignore () {
   else
       echo "${project_root_dir}/.gitignore exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
       local keep_or_replace=("Keep the original" "Replace it with generic")
-      select kor in "${keep_or_replace[@]}"; do
-        case $kor in
+      local selection
+      select selection in "${keep_or_replace[@]}"; do
+        case $selection in
           "Keep the original" )
             echo "Keeping the original .gitignore..."
             break;;
