@@ -13,6 +13,19 @@ check_user_configuration () {
 }
 
 #######################################
+# Initialize new Git repository in project's root directory.
+# Globals:
+#   project_root_dir - root directory of your project
+#   tool_dir         - root directory of projectinit.sh
+# Arguments:
+#  None
+#######################################
+create_new_repo() {
+  cd "${project_root_dir}" && git init;
+  cd "${tool_dir}" || exit 1;
+}
+
+#######################################
 # Check if your project's root directory is a Git repository. If it is not, offer to create a new repository or clone an
 # existing one. If the cloning of the existing one fails, this function will also try to load an SSH key provided by the
 # user.
@@ -56,8 +69,7 @@ is_git_directory () {
                   cd "${tool_dir}" || exit 1;
                   break;;
               "Create a new repository" )
-                  cd "${project_root_dir}" && git init;
-                  cd "${tool_dir}" || exit 1;
+                  create_new_repo
                   break;;
           esac
       done
