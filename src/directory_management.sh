@@ -47,7 +47,7 @@ switch_to_tool_dir () {
 }
 
 #######################################
-# Check if project's root directory exists and offer to create it if it does not.
+# Check if project's root directory exists and create it if it does not.
 # Globals:
 #   project_root_dir - root directory of your project
 # Arguments:
@@ -57,18 +57,8 @@ setup_root_project_directory () {
   echo ""
   echo "Checking if your project root directory exists..."
   if [ ! -d "${project_root_dir}" ]; then
-      echo "Your project directory doesn't exist. What do you want to do?"
-      local component_project_directory_exists_options=("Create directory" "Exit this tool")
-      select cpdeo in "${component_project_directory_exists_options[@]}"; do
-          case $cpdeo in
-              "Create directory" )
-                  mkdir -p "${project_root_dir}";
-                  echo -e "\nDirectory created.\n";
-                  break;;
-              "Exit this tool" )
-                  exit 1;;
-          esac
-      done
+      echo "Project directory does not exist. Creating..."
+      mkdir -p "${project_root_dir}";
   fi
   echo "Project directory is available."
 }
