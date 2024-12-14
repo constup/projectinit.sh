@@ -49,7 +49,11 @@ inject_installer_properties() {
   echo "docker image name..."
   perl -pi -e "s/~~~image name~~~/projectinit\/${PROJECTINIT_DOCKER_PROJECT_SERVICE_NAME}:installer/g" "${project_root_dir}"/docker-compose.yml
   echo "unit testing..."
-  perl -pi -e "s/~~~unit testing~~~/${PROJECTINIT_DOCKER_PHPUNIT}/g" "${project_root_dir}"/start.sh
+  perl -pi -e "s/~~~unit testing~~~/ ${PROJECTINIT_DOCKER_PHPUNIT}/g" "${project_root_dir}"/start.sh
+  if [ -n "$PROJECTINIT_DOCKER_DATABASE_SERVICE_NAME" ]; then
+    echo "orm..."
+    perl -pi -e "s/#composer require symfony\/orm-pack/composer require symfony\/orm-pack/g" "${project_root_dir}/start.sh"
+  fi
   if [ "$PROJECTINIT_DOCKER_SYMFONY_APP_TYPE" = "full" ]; then
     echo "symfony project type..."
     perl -pi -e "s/~~~web app~~~/--webapp/g" "${project_root_dir}"/start.sh

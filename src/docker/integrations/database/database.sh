@@ -31,7 +31,6 @@ gather_database_properties() {
     read -r -e PROJECTINIT_DOCKER_DATABASE_USERNAME
     echo "Enter database password:"
     read -r -e PROJECTINIT_DOCKER_DATABASE_PASSWORD
-
   fi
 }
 
