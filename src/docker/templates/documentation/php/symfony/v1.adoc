@@ -1,0 +1,40 @@
+= ProjectInit.sh README
+:toc:
+:toclevels: 5
+
+== Introduction
+
+This project has been set up by link:https://projectinit.sh[ProjectInit.sh]. This readme file contains some useful
+instructions on how to use and modify the project.
+
+== Environments
+
+The project is completely dockerized and supports the following environments:
+
+- Local development environment
+- Dev/testing environment
+- Production environment
+
+== Installing additional PHP extensions
+
+PHP extensions are installed using https://github.com/mlocati/docker-php-extension-installer. ProjectInit.sh has
+installed only a minimum set of required extensions for the project, based on your choices during installation.
+
+To see the list of available PHP extensions, visit https://github.com/mlocati/docker-php-extension-installer.
+
+To install additional PHP extensions, add them to a desired `Dockerfile` as a parameter of `install-php-extensions`
+command. For more information and troubleshooting, refer to the PHP extension installer's documentation.
+
+== Globally available container software
+
+Docker containers have the following globally available software:
+
+- Composer
+- Symfony CLI
+- Git - required for installing private Composer packages from Git repositories
+- Zip/Unzip - required if you want to use zip PHP extension
+- wget - generally useful to have for various download operations. Curl should be included in PHP's default docker
+image
+- dumb-init - a simple process supervisor and init system designed to run as PID 1 inside minimal container
+environments. For more information and why it is good to have dumb-init as an entry point in Docker containers, see
+https://github.com/Yelp/dumb-init

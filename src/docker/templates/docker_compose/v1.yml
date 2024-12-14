@@ -1,0 +1,14 @@
+services:
+  ~~~database service~~~
+  ~~~service name~~~:
+    container_name: ~~~container name~~~
+    depends_on:
+    build:
+      context: ./
+      dockerfile: Dockerfile_dev
+    image: ~~~image name~~~
+    restart: "always"
+    ports:
+      - "~~~host port~~~:8080"
+    volumes:
+      - ./:/usr/src/app

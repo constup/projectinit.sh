@@ -1,0 +1,41 @@
+FROM php:~~~language version~~~
+
+WORKDIR /usr/src/app
+COPY . .
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN mkdir /usr/src/temp_install && \
+    apt-get update && \
+    curl -1sLf /usr/src/temp_install/setup.deb.sh 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && \
+    apt-get install -y \
+        git \
+        zip \
+        unzip \
+        wget \
+        symfony-cli \
+        dumb-init && \
+    chmod +x /usr/bin/composer && \
+    chmod +x /usr/local/bin/install-php-extensions && \
+    sync && \
+    install-php-extensions \
+        apcu \
+        intl \
+        zip \
+        gmp \
+        #pdo_pgsql \
+        #pdo_mysql \
+        pcov \
+        xdebug && \
+    groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
+    chown -R phpuser:phpgroup /usr/src/app
+
+USER phpuser
+RUN git config --global --add safe.directory /usr/src/app && \
+    cd /usr/src/app && \
+    composer install
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "/usr/src/app/start.sh"]
