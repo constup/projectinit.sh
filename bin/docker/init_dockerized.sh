@@ -10,6 +10,7 @@ source ../../src/docker/integrations/database/database.sh
 source ../../src/docker/common/templates.sh
 source ../../src/docker/common/installer.sh
 source ../../src/docker/common/project.sh
+source ../../src/php/project.sh
 
 check_user_configuration
 init_directories
@@ -38,6 +39,8 @@ copy_project_templates
 inject_project_service_properties
 inject_database_properties
 cleanup_project_templates
-#build_project
+create_php_project_base_directories
+generate_generic_gitignore
+build_project
 
 echo "ProjectInit.sh completed setting up the project in ${project_root_dir}"
