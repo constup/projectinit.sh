@@ -20,6 +20,7 @@ draw_separator
 # configure git
 create_new_repo
 setup_git_user_configuration
+docker_configure_gitignore
 
 # gather basic information
 docker_pick_language
@@ -40,7 +41,7 @@ inject_project_service_properties
 inject_database_properties
 cleanup_project_templates
 create_php_project_base_directories
-generate_generic_gitignore
+docker_replace_gitignore_if_needed
 build_project
 
 echo "ProjectInit.sh completed setting up the project in ${project_root_dir}"

@@ -155,7 +155,7 @@ generate_generic_gitignore() {
     cp "${tool_dir}"/src/git/generic_gitignore/generic.gitignore "${project_root_dir}"/.gitignore
   else
     echo "${project_root_dir}/.gitignore exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
-    local keep_or_replace=("Keep the original" "Replace it with generic")
+    local keep_or_replace=("Keep the original" "Replace it with ProjectInit.sh .gitignore")
     local selection
     select selection in "${keep_or_replace[@]}"; do
       case $selection in
@@ -163,7 +163,7 @@ generate_generic_gitignore() {
         echo "Keeping the original .gitignore..."
         break
         ;;
-      "Replace it with generic")
+      "Replace it with ProjectInit.sh .gitignore")
         echo "Replacing the existing .gitignore with generic one..."
         cat "${tool_dir}/src/git/generic_gitignore/generic.gitignore" >"${project_root_dir}/.gitignore"
         break
@@ -172,4 +172,39 @@ generate_generic_gitignore() {
     done
   fi
   echo ".gitignore setup completed."
+}
+
+#######################################
+# Ask whether to replace the existing (or, better to say, automatically generated) .gitignore with ProjectInit.sh
+# .gitignore. Used in dockerized projects.
+# Globals:
+#   project_root_dir                  - root directory of your project
+#   tool_dir                          - root directory of projectinit.sh
+#   PROJECTINIT_DOCKER_REPLACE_GITIGNORE - a flag for whether to keep the existing .gitignore or replace it
+# Arguments:
+#  None
+#######################################
+docker_configure_gitignore() {
+  echo ""
+  echo "Do you want to use the default .gitignore (if there is any) or ProjectInit.sh .gitignore file?"
+  local options=("Use the default .gitignore" "Use ProjectInit.sh .gitignore")
+  local selection
+  select selection in "${options[@]}"; do
+    case $selection in
+      "Use the default .gitignore")
+        PROJECTINIT_DOCKER_REPLACE_GITIGNORE=0
+        break
+        ;;
+      "Use ProjectInit.sh .gitignore")
+        PROJECTINIT_DOCKER_REPLACE_GITIGNORE=1
+        break
+        ;;
+    esac
+  done
+}
+
+docker_replace_gitignore_if_needed() {
+  if [ "$PROJECTINIT_DOCKER_REPLACE_GITIGNORE" -eq 1 ]; then
+    cp -f "${tool_dir}/src/git/generic_gitignore/generic.gitignore" "${project_root_dir}/.gitignore"
+  fi
 }
