@@ -9,6 +9,8 @@
 *.sublime-workspace
 ## AWS Cloud9
 /.c9/
+## Visual Studio
+/.vs/
 
 # PHP PHAR tools
 /*.phar

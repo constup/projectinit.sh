@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #######################################
-# Pick a version of a Symfony 7.1. project. The versions are limited to what Symfony 7.1. supports.
+# Pick a version of a Symfony 7.2. project. The versions are limited to what Symfony 7.2. supports.
 # Globals:
 #   PROJECTINIT_DOCKER_PROJECT_LANGUAGE_VERSION - selected PHP version, default is 8.2
 # Arguments:
