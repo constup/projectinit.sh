@@ -14,6 +14,8 @@ setup_project_templates() {
   PROJECTINIT_DOCKER_TEMPLATE_DOCKER_COMPOSE="${tool_dir}/src/docker/templates/docker_compose/v1.yml"
   # shellcheck source=../../../templates/dockerfile/php/symfony/dev_v1
   PROJECTINIT_DOCKER_TEMPLATE_DOCKERFILE_DEV="${tool_dir}/src/docker/templates/dockerfile/php/symfony/dev_v1"
+  # shellcheck source=../../../templates/dockerfile/php/symfony/prod_v1
+  PROJECTINIT_DOCKER_TEMPLATE_DOCKERFILE_PROD="${tool_dir}/src/docker/templates/dockerfile/php/symfony/prod_v1"
   # shellcheck source=../../../templates/startup_script/php/symfony/installer_v1.sh
   PROJECTINIT_DOCKER_TEMPLATE_STARTUP="${tool_dir}/src/docker/templates/startup_script/php/symfony/v1.sh"
   # shellcheck source=../../../templates/documentation/php/symfony/v1.adoc
