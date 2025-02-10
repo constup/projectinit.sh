@@ -27,6 +27,8 @@
 /node_modules/
 
 # Production code
+## Symfony
+/public/bundles/
 ## NodeJS
 /dist/
 
