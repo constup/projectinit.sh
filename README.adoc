@@ -1,0 +1,96 @@
+= ProjectInit.sh
+:toc:
+:toclevels: 5
+
+Interactive bash tool for kickstarting software projects.
+
+== OS support
+
+*Note*: Depending on what each tool in ProjectInit.sh is supposed to do, you may need additional software installed,
+but nothing which you probably don't already have in your development environment.
+
+* *Linux*: Bash is the most common shell on any Linux distro, so ProjectInit.sh is supported as well.
+
+* *Windows*: Supported in terminal emulators and environments that can run Bash (https://cmder.app/[Cmder],
+https://conemu.github.io/[ConEmu], https://www.mingw-w64.org/[Mingw],…). During development,
+ProjectInit.sh is tested on https://cmder.app/[Cmder] with additional Linux tools installed with
+https://scoop.sh/[Scoop] (for example: `wget`).
+
+* *MacOS*: Since _zsh_ is default terminal, you will need to have Bash installed.
+
+If you need help installing bash or any other prerequisites, take a look at the link:./doc/PREREQUISITES.md[Prerequisites]
+documentation page.
+
+== Installation
+
+=== Step 1 - Install
+
+Clone this repository: `git clone git@github.com:constup/projectinit.sh.git`
+
+or
+
+Download the latest release from link:https://github.com/constup/projectinit.sh/releases[Releases] page.
+
+=== Step 2 - Configure
+
+Configure ProjectInit.sh by running:
+
+[source,shell]
+----
+sh configure.sh
+----
+
+== How to use
+
+All tools (scripts) are located in `bin` folder of ProjectInit.sh, separated into directories based on a language or
+technology they are covering.
+
+Just open your bash terminal, `cd` into the desired `bin` subdirectory and run.
+
+Example:
+
+[source,shell]
+----
+cd bin/php
+sh init_generic.sh
+----
+
+== Available tools
+
+=== Bare metal
+
+* PHP:
+** `bin/php/init_generic.sh`:
+*** Composer package
+*** Symfony 5 web application
+*** Symfony 5 console or API application
+*** Symfony 6 web application
+*** Symfony 6 console or API application
+* NodeJS
+** `bin/nodejs/init_generic.sh`
+*** NestJS application
+
+=== Dockerized
+
+* Supported languages:
+** PHP
+*** Symfony 7.1
+*** Symfony 7.2
+* Supported databases:
+** PostgreSQL
+
+== Additional resources
+
+* link:doc/TOOL_INTEGRATIONS.md[Integrations with editors and IDEs]
+
+== Supporting development
+
+"_Programmer [ proh-gram-er ] - An organism which consumes coffee and produces source code._"
+
+link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
+
+link:https://ko-fi.com/E1E3VQUK2[image:https://ko-fi.com/img/githubbutton_sm.svg[Ko-fi]]
+
+== License
+
+GNU GPL 3.0 - Full license is available in link:./LICENSE[LICENSE] file.

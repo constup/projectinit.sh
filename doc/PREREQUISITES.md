@@ -12,7 +12,7 @@ No special prerequisites are required. Most Linux distributions already have Bas
 
 There's a couple of ways to use Bash tools on Windows:
 
-- [Cmder](https://cmder.net/)
+- [Cmder](https://cmder.app/)
 - [ConEmu](https://conemu.github.io/)
 - [Cygwin](https://www.cygwin.com/)
 - [MSYS2](https://www.msys2.org/)
@@ -20,7 +20,7 @@ There's a couple of ways to use Bash tools on Windows:
 - [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install)
 - Bash terminal in [Git for Windows](https://gitforwindows.org/)
 
-This guide will cover a setup with [Cmder](https://cmder.net/) as terminal emulator and [Scoop](https://scoop.sh) 
+This guide will cover a setup with [Cmder](https://cmder.app/) as terminal emulator and [Scoop](https://scoop.sh) 
 as package manager.
 
 If you need to install Cmder and Scoop, check out this blog post (by the original author of ProjectInit.sh): 
