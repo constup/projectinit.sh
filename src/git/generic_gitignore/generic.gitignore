@@ -27,6 +27,8 @@
 /node_modules/
 
 # Production code
+## Docker
+compose.yaml
 ## Symfony
 /public/bundles/
 ## NodeJS
