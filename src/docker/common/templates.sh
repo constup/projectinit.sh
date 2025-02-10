@@ -27,7 +27,7 @@ copy_project_templates() {
   echo "dockerfile for dev..."
   cp -f "${PROJECTINIT_DOCKER_TEMPLATE_DOCKERFILE_DEV}" "${project_root_dir}/Dockerfile_dev"
   echo "dockerfile for prod..."
-  cp -f "${PROJECTINIT_DOCKER_TEMPLATE_DOCKERFILE_DEV}" "${project_root_dir}/Dockerfile"
+  cp -f "${PROJECTINIT_DOCKER_TEMPLATE_DOCKERFILE_PROD}" "${project_root_dir}/Dockerfile"
   echo "startup script..."
   cp -f "${PROJECTINIT_DOCKER_TEMPLATE_STARTUP}" "${project_root_dir}/start.sh"
   echo "readme..."
