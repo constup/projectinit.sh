@@ -19,6 +19,7 @@ pick_database_engine() {
 
 gather_database_properties() {
   if [ -n "$PROJECTINIT_DOCKER_DATABASE_TYPE" ]; then
+    source "${tool_dir}/src/general.sh"
     echo ""
     echo "Enter database Docker service name:"
     read -r -e PROJECTINIT_DOCKER_DATABASE_SERVICE_NAME
@@ -33,7 +34,7 @@ gather_database_properties() {
     echo "Enter database username:"
     read -r -e PROJECTINIT_DOCKER_DATABASE_USERNAME
     echo "Enter database password:"
-    read -r -e PROJECTINIT_DOCKER_DATABASE_PASSWORD
+    PROJECTINIT_DOCKER_DATABASE_PASSWORD=$(read_password)
   fi
 }
 
