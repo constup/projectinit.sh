@@ -26,6 +26,7 @@ gather_database_properties() {
     read -r -e PROJECTINIT_DOCKER_DATABASE_HOST_PORT
     echo "Enter database version:"
     echo "To see the list of available database engine versions, visit $PROJECTINIT_DOCKER_DATABASE_URL"
+    echo "Note: Only numbered versions are valid. Using 'latest' will not work."
     read -r -e PROJECTINIT_DOCKER_DATABASE_ENGINE_VERSION
     echo "Database name:"
     read -r -e PROJECTINIT_DOCKER_DATABASE_NAME
