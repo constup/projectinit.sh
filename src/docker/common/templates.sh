@@ -99,6 +99,8 @@ cleanup_project_templates() {
   echo "database engines..."
   perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile_dev"
   perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile_dev"
+  perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile"
+  perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile"
   if [ "$PROJECTINIT_DOCKER_SERVICE_DEPENDENCIES" -eq 0 ]; then
     echo "container dependencies..."
     perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose_dev.yaml"
