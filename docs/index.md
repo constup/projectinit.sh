@@ -10,6 +10,7 @@ most important decisions when setting up your project, but will also keep the bo
 ProjectInit.sh are:
 
 - Creating a new project in an organized and standardized way.
+- Both local and containerized projects are supported.
 - To be fully compatible with your existing projects and repositories and not override any of your existing project
   settings.
 - Fully functional on all major operating systems.
@@ -30,6 +31,8 @@ sh init_generic.sh
 - Symfony 6 web, console or API application
 - Symfony 5 web, console or API application
 - NestJS application
+- Dockerized Symfony 7 application
+- PostgreSQL support for dockerized environments
 
 [See the full list of available tools and features here.](list_of_tools.md)
 
@@ -92,6 +95,8 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 
 ### Release history highlights
 
+ - **11.02.2025. - 0.3.0-alpha**: Added support for creating and managing dockerized environments. Dockerized Symfony 7 
+applications with PostgreSQL support.
  - **26.12.2023. - 0.2.4-alpha**: Fix for git script for Unix systems.
  - **10.12.2023. - 0.2.3-alpha**: Support for a bunch of tools in generic `.gitignore`.
  - **09.12.2023. - 0.2.2-alpha**: Symfony 7.0 support.
