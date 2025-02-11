@@ -15,10 +15,21 @@ generate_generic_phpcsfixer_v3 () {
   echo "Checking .php-cs-fixer.dist.php in ${project_root_dir}..."
   if [ ! -f "${project_root_dir}/.php-cs-fixer.dist.php" ]; then
       echo "${project_root_dir}/.php-cs-fixer.dist.php does not exist. Creating .php-cs-fixer.dist.php automatically..."
-      touch "${project_root_dir}/.php-cs-fixer.dist.php"
-      cat "${tool_dir}/src/php/phpcsfixer/generic_dist_files/v3.dist.php" >> "${project_root_dir}/.php-cs-fixer.dist.php"
+      cp "${tool_dir}"/src/php/phpcsfixer/generic_dist_files/v3.dist.php "${project_root_dir}"/.php-cs-fixer.dist.php
   else
-      echo "${project_root_dir}/.php-cs-fixer.dist.php exists. Skipping automatic creation..."
+      echo "${project_root_dir}/.php-cs-fixer.dist.php exists. Do you want to keep it, or replace it with Projectinit.sh generic .gitignore?"
+      local keep_or_replace_phpcsfixer=("Keep the original" "Replace it with generic")
+      select korp in "${keep_or_replace_phpcsfixer[@]}"; do
+        case $korp in
+          "Keep the original" )
+            echo "Keeping the original PHP CS Fixer configuration..."
+            break;;
+          "Replace it with generic" )
+            echo "Replacing the existing PHP CS Fixer configuration with generic one..."
+            cat "${tool_dir}"/src/php/phpcsfixer/generic_dist_files/v3.dist.php > "${project_root_dir}"/.php-cs-fixer.dist.php
+            break;;
+        esac
+      done
   fi
   echo ".php-cs-fixer.dist.php setup completed."
 }

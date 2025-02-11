@@ -1,0 +1,118 @@
+= ProjectInit.sh
+:toc:
+:toclevels: 5
+
+== Supporting development
+
+link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
+link:https://ko-fi.com/E1E3VQUK2[image:https://ko-fi.com/img/githubbutton_sm.svg[Ko-fi]]
+
+== Description
+
+Interactive Bash tool for kickstarting software projects. No additional software or abstraction layers. ProjectInit is
+made to just automate creating libraries, projects and environments the same way you would do manually.
+
+Set up a containerized or local (bare metal) environment for developing applications or libraries in just a couple of
+guided prompts.
+
+Supports multiple programming languages and frameworks. Whether it's a npm package, composer library, NestJS or Symfony
+application, ProjectInit got it covered.
+
+== Key features
+
+* Written in POSIX compliant Bash. Available on Linux, Windows and MacOS.
+* Create new or continue working on the existing projects, whether it's a full application or a library
+* Set up a project using locally installed tools (languages, package managers,...) or containers (Docker)
+* Containerized projects with zero dependencies (except for Docker or Podman).
+* Support for multiple languages, frameworks and types of libraries
+* No additional abstraction layer. Projects created with ProjectInit are raw, just like you've set up them yourself
+manually
+* No bloatware
+
+== Prerequisites
+
+* Bash
+** *Linux* - Bash should be available by default. If it's not, consult your distro's documentation to see how to
+install it.
+** *Windows* - Any terminal emulator that supports Bash will do (link:https://cmder.app/[Cmder],
+link:https://conemu.github.io/[ConEmu], link:https://www.mingw-w64.org/[mingw-w64],...)
+** *MacOS* - MacOS uses zsh as the default shell. You will have to set up Bash. Consult MacOS documentation or online
+resources to see how to do that.
+* When using ProjectInit with *locally installed* languages and tools:
+** Depending on what you are setting up, some dependencies will be required, most notably a correct language version of
+the programming language that you want to work on
+** Other dependencies might be required. ProjectInit will check these dependencies and let you know if anything is
+missing.
+* When running ProjectInit to create *containerized projects*:
+** Docker.
+** No other dependencies required.
+
+== Installation
+
+=== Step 1 - Install
+
+Clone this repository:
+
+[source,shell]
+----
+git clone git@github.com:constup/projectinit.sh.git
+----
+
+or
+
+Download the latest release from link:https://github.com/constup/projectinit.sh/releases[Releases] page.
+
+=== Step 2 - Configure
+
+Configure ProjectInit.sh by running:
+
+[source,shell]
+----
+sh configure.sh
+----
+
+== How to use
+
+All tools (scripts) are located in ProjectInit's `bin` folder, separated into directories based on a language or
+technology they are covering. Just open your bash terminal, `cd` into the desired `bin` subdirectory and run.
+
+Example:
+
+[source,shell]
+----
+cd bin/php
+sh init_generic.sh
+----
+
+== Supported project types
+
+=== Bare metal
+
+* PHP
+** Composer library
+** Symfony application (supported versions: 5, 6)
+* NodeJS
+** NestJS application
+
+=== Containerized
+
+* PHP
+** Symfony application (supported versions: 7.1, 7.2)
+* Databases
+** PostgreSQL
+
+== More documentation
+
+* link:doc/TOOL_INTEGRATIONS.adoc[Integrations with editors and IDEs]
+
+== Supporting development
+
+If you like this tool or find it useful, consider buying me a nice cup of coffee. Coffee fuels open source.
+
+link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
+link:https://ko-fi.com/E1E3VQUK2[image:https://ko-fi.com/img/githubbutton_sm.svg[Ko-fi]]
+
+== License
+
+link:./LICENSE[GNU GPL 3.0] (also available online at:
+link:https://www.gnu.org/licenses/gpl-3.0.en.html[GNU General Public License 3.0])

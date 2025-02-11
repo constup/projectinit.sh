@@ -9,6 +9,8 @@
 *.sublime-workspace
 ## AWS Cloud9
 /.c9/
+## Visual Studio
+/.vs/
 
 # PHP PHAR tools
 /*.phar
@@ -25,8 +27,10 @@
 /node_modules/
 
 # Production code
+## Docker
+compose.yaml
 ## Symfony
-/public/
+/public/bundles/
 ## NodeJS
 /dist/
 
@@ -72,3 +76,8 @@ pnpm-debug.log
 ## yarn
 yarn-debug.log
 yarn-error.log
+
+# Docker volumes
+## Database
+/postgres_volume/
+/mysql_volume/
