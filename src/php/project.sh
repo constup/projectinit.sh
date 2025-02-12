@@ -70,22 +70,22 @@ choose_php_project_type () {
       "Composer package" )
         break;;
       "Symfony 7 traditional web application" )
-        create_new_symfony7_project_web_application_composer
+        create_symfony_project "7.2" "full" "composer"
         break;;
       "Symfony 7 microservice, console or API application" )
-        create_new_symfony7_project_api_composer
+        create_symfony_project "7.2" "api" "composer"
         break;;
       "Symfony 6 traditional web application" )
-        create_new_symfony6_project_web_application_composer
+        create_symfony_project "6.4" "full" "composer"
         break;;
       "Symfony 6 microservice, console or API application" )
-        create_new_symfony6_project_api_composer
+        create_symfony_project "6.4" "api" "composer"
         break;;
       "Symfony 5 traditional web application" )
-        create_new_symfony5_project_web_application_composer
+        create_symfony_project "5.4" "full" "composer"
         break;;
       "Symfony 5 microservice, console or API application" )
-        create_new_symfony5_project_api_composer
+        create_symfony_project "5.4" "api" "composer"
         break;;
     esac
   done
