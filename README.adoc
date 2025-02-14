@@ -88,13 +88,17 @@ sh init_generic.sh
 
 === Bare metal
 
+Set up a project using your own already installed tech stack.
+
 * PHP
 ** Composer library
-** Symfony application (supported versions: 5, 6)
+** Symfony application (web and cli/API)
 * NodeJS
 ** NestJS application
 
 === Containerized
+
+Set up a project in a container.
 
 * PHP
 ** Symfony application (supported versions: 7.1, 7.2)
