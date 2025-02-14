@@ -95,6 +95,7 @@ This demo video shows an example of creating a new Symfony 5 web application by 
 
 ### Release history highlights
 
+ - **14.02.2025. - 0.3.1-alpha**: Improved the flow for creating Symfony applications.
  - **11.02.2025. - 0.3.0-alpha**: Added support for creating and managing dockerized environments. Dockerized Symfony 7 
 applications with PostgreSQL support.
  - **26.12.2023. - 0.2.4-alpha**: Fix for git script for Unix systems.
