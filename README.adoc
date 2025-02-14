@@ -88,18 +88,52 @@ sh init_generic.sh
 
 === Bare metal
 
+Set up a project using your own already installed tech stack.
+
 * PHP
 ** Composer library
-** Symfony application (supported versions: 5, 6)
+** Symfony application (web and cli/API)
 * NodeJS
 ** NestJS application
 
 === Containerized
 
+Set up a project in a container.
+
 * PHP
 ** Symfony application (supported versions: 7.1, 7.2)
 * Databases
 ** PostgreSQL
+
+== Comparison to other tools
+
+There are a number of tools for setting up and managing development environments for various programming languages
+(for example: DDEV, Lando,...). What makes ProjectInit different is that it focuses on setting up projects, not
+environments. You can set up a complete containerized development environment with ProjectInit, but that is only a side
+effect of using containers.
+
+Here is how ProjectInit is different from other tools:
+
+* Environment management tools usually have their own set of commands and advanced configuration which you have to
+learn. ProjectInit does not. You can just run the script you want and ProjectInit will guide you through your project's
+setup process. At some point, ProjectInit may add support for adding a config file, just to automate configuration as
+well, but using it will be optional.
+* It's a project setup tool, not environment setup tool. You can quickly set up a project to work on a library (composer
+package, npm package,...) with minimum (containerized) or no footprint (your existing local tech stack) on your system.
+* If you set up a project using ProjectInit, you don't have to manage it with ProjectInit. The result of running
+ProjectInit are default files for the technology stack you chose. It does not produce additional files, cache or
+configuration, and it does not add another abstraction layer to your projects. It simply automates what you would do
+manually.
+* Apart from setting up a full development environment using containers, you can use your already existing environment
+to quickly start working on a project. You like using your own properly configured *AMP stack? You like building your
+tools from source? No problem. ProjectInit supports and does not interfere with your existing setup.
+* ProjectInit does not depend on WSL on Windows and works in any terminal or emulator that supports Bash. You can run
+it on WSL, of course, but you can also use Mingw, Cygwin, Cmder, ConEmu, Git terminal,...
+* ProjectInit does not take up your system's resources once you finish setting up the project. ProjectInit does not set
+up or run servers or services on your system. Once it's done, it's done.
+* ProjectInit is a set of Bash scripts and that's it. There are no servers, services, repositories or CDNs that have to
+be up in order for ProjectInit to work. Even if development and maintenance of ProjectInit stops, you will still have
+the latest version of a working tool.
 
 == More documentation
 

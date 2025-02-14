@@ -1,99 +1,25 @@
 #!/bin/bash
 
 #######################################
-# Create a new Symfony 5 Web application.
+# Create a new Symfony application.
 # Globals:
 #   project_root_dir - root directory of your project
 # Arguments:
-#  None
+#  $1 - Symfony version. Example: 7.2
+#  $2 - Type of Symfony application. Possible values: 'full', 'api'
+#  $1 - Project creation method. Placeholder for adding support for Symfony CLI. Possible values: 'composer'
 #######################################
-create_new_symfony5_project_web_application_composer () {
+create_symfony_project () {
   echo ""
   cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 5 traditional web application..."
-  php composer.phar create-project symfony/website-skeleton temp
-  cp -a temp/. . && rm -rf temp/
-  echo "New Symfony 5 Web application setup completed."
-}
-
-#######################################
-# Create a new Symfony 5 Console or API application.
-# Globals:
-#   project_root_dir - root directory of your project
-# Arguments:
-#  None
-#######################################
-create_new_symfony5_project_api_composer () {
-  echo ""
-  cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 5 microservice, console or API application using Composer..."
-  php composer.phar create-project symfony/skeleton temp
-  cp -a temp/. . && rm -rf temp/
-  echo "New Symfony 5 microservice, console or API application setup completed."
-}
-
-#######################################
-# Create a new Symfony 6 Web Application.
-# Globals:
-#   project_root_dir - root directory of your project
-# Arguments:
-#  None
-#######################################
-create_new_symfony6_project_web_application_composer () {
-  echo ""
-  cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 6 traditional web application..."
-  php composer.phar create-project symfony/skeleton:"6.4.*" temp
-  cp -a temp/. . && rm -rf temp/
-  php composer.phar require webapp
-  echo "New Symfony 6 Web application setup completed."
-}
-
-#######################################
-# Create a new Symfony 6 Console or API application.
-# Globals:
-#   project_root_dir - root directory of your project
-# Arguments:
-#  None
-#######################################
-create_new_symfony6_project_api_composer () {
-  echo ""
-  cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 6 microservice, console or API application using Composer..."
-  php composer.phar create-project symfony/skeleton:"6.4.*" temp
-  cp -a temp/. . && rm -rf temp/
-  echo "New Symfony 6 microservice, console or API application setup completed."
-}
-
-#######################################
-# Create a new Symfony 7 Web Application.
-# Globals:
-#   project_root_dir - root directory of your project
-# Arguments:
-#  None
-#######################################
-create_new_symfony7_project_web_application_composer () {
-  echo ""
-  cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 7 traditional web application..."
-  php composer.phar create-project symfony/skeleton:"7.0.*@dev" temp
-  cp -a temp/. . && rm -rf temp/
-  php composer.phar require webapp
-  echo "New Symfony 7 Web application setup completed."
-}
-
-#######################################
-# Create a new Symfony 7 Console or API application.
-# Globals:
-#   project_root_dir - root directory of your project
-# Arguments:
-#  None
-#######################################
-create_new_symfony7_project_api_composer () {
-  echo ""
-  cd "${project_root_dir}" || exit 1;
-  echo "Setting up a new Symfony 7 microservice, console or API application using Composer..."
-  php composer.phar create-project symfony/skeleton:"7.0.*@dev" temp
-  cp -a temp/. . && rm -rf temp/
-  echo "New Symfony 7 microservice, console or API application setup completed."
+  echo "Setting up a new Symfony $1 $2 application using $3..."
+  case "$3" in
+    'composer')
+      php composer.phar create-project symfony/skeleton:"$1" temp
+      cp -a temp/. . && rm -rf temp/
+        if [ "$2" == 'full' ]; then
+          php composer.phar require webapp
+        fi
+      ;;
+  esac
 }
