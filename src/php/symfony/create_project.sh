@@ -15,7 +15,7 @@ create_symfony_project () {
   echo "Setting up a new Symfony $1 $2 application using $3..."
   case "$3" in
     'composer')
-      php composer.phar create-project symfony/skeleton:"^$1" temp
+      php composer.phar create-project symfony/skeleton:"$1" temp
       cp -a temp/. . && rm -rf temp/
         if [ "$2" == 'full' ]; then
           php composer.phar require webapp

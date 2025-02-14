@@ -39,7 +39,6 @@ create_php_project_base_directories () {
 php_new_or_existing_project () {
   echo ""
   cd "${project_root_dir}" || exit 1;
-  source ${tool_dir}/src/php/symfony/create_project.sh
   echo "Do you wish to:"
   local new_or_existing_project=("NEW - Create a new PHP project" "EXISTING - Continue working on an existing PHP project")
   select noep in "${new_or_existing_project[@]}"; do
@@ -64,28 +63,71 @@ choose_php_project_type () {
   echo ""
   cd "${project_root_dir}" || exit 1;
   echo "Choose the type of your project:"
-  local php_project_type=("Composer package" "Symfony 5 traditional web application" "Symfony 5 microservice, console or API application" "Symfony 6 traditional web application" "Symfony 6 microservice, console or API application"  "Symfony 7 traditional web application" "Symfony 7 microservice, console or API application")
+  local php_project_type=("Composer package" "Symfony")
   select ppt in "${php_project_type[@]}"; do
     case $ppt in
       "Composer package" )
         break;;
-      "Symfony 7 traditional web application" )
-        create_symfony_project "7.2" "full" "composer"
-        break;;
-      "Symfony 7 microservice, console or API application" )
-        create_symfony_project "7.2" "api" "composer"
-        break;;
-      "Symfony 6 traditional web application" )
-        create_symfony_project "6.4" "full" "composer"
-        break;;
-      "Symfony 6 microservice, console or API application" )
-        create_symfony_project "6.4" "api" "composer"
-        break;;
-      "Symfony 5 traditional web application" )
-        create_symfony_project "5.4" "full" "composer"
-        break;;
-      "Symfony 5 microservice, console or API application" )
-        create_symfony_project "5.4" "api" "composer"
+      "Symfony" )
+        local symfony_version
+        source ${tool_dir}/src/php/symfony/create_project.sh
+        echo "Select Symfony version. Note: the latest minor version will be used."
+        local sym_ver=("Symfony 5" "Symfony 6" "Symfony 7" "Custom")
+        select sv in "${sym_ver[@]}"; do
+          case $sv in
+            "Symfony 5" )
+              echo ""
+              echo "Symfony 5.4 will be used."
+              echo "  - Release date: November 2021."
+              echo "  - End of bug fixes: November 2024."
+              echo "  - End of security fixes: February 2029."
+              echo "  - Requires PHP 7.2.5 or higher."
+              echo ""
+              symfony_version="5.4.x"
+              break;;
+            "Symfony 6" )
+              echo ""
+              echo "Symfony 6.4 will be used."
+              echo "  - Release date: November 2023."
+              echo "  - End of bug fixes: November 2026."
+              echo "  - End of security fixes: February 2027."
+              echo "  - Requires PHP 8.1.0 or higher."
+              echo ""
+              symfony_version="6.4.x"
+              break;;
+            "Symfony 7" )
+              echo ""
+              echo "Symfony 7.2 will be used."
+              echo "  - Release date: November 2024."
+              echo "  - End of support: July 2025."
+              echo "  - Requires PHP 8.2.0 or higher."
+              echo ""
+              symfony_version="7.2.x"
+              break;;
+            "Custom" )
+              echo ""
+              echo "Manually enter your desired Symfony version (format: 7.1):"
+              read -r -e symfony_version
+              symfony_version="${symfony_version}.x"
+              break;;
+          esac
+        done
+
+        echo ""
+        echo "Choose application type:"
+        local app_type
+        local app_type_options=("Web application with frontend" "CLI or API application")
+        select ato in "${app_type_options[@]}"; do
+          case $ato in
+            "Web application with frontend" )
+              app_type="full"
+              break;;
+            "CLI or API application" )
+              app_type="api"
+              break;;
+          esac
+        done
+        create_symfony_project $symfony_version $app_type "composer"
         break;;
     esac
   done
