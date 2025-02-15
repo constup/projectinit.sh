@@ -7,16 +7,16 @@ select_phpunit_version() {
   select option in "${selection[@]}"; do
     case $option in
       "Symfony Test Pack" )
-        PROJECTINIT_DOCKER_PHPUNIT="symfony\/test-pack"
+        PROJECTINIT_DOCKER_UNIT_TESTING_FRAMEWORK="symfony\/test-pack"
         break;;
       "PHPUnit 9" )
-        PROJECTINIT_DOCKER_PHPUNIT="phpunit\/phpunit:\^9"
+        PROJECTINIT_DOCKER_UNIT_TESTING_FRAMEWORK="phpunit\/phpunit:\^9"
         break;;
       "PHPUnit 10" )
-        PROJECTINIT_DOCKER_PHPUNIT="phpunit\/phpunit:\^10"
+        PROJECTINIT_DOCKER_UNIT_TESTING_FRAMEWORK="phpunit\/phpunit:\^10"
         break;;
       "PHPUnit 11" )
-        PROJECTINIT_DOCKER_PHPUNIT="phpunit\/phpunit:\^11"
+        PROJECTINIT_DOCKER_UNIT_TESTING_FRAMEWORK="phpunit\/phpunit:\^11"
         break;;
     esac
   done

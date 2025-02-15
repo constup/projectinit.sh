@@ -7,7 +7,7 @@ docker_pick_php_symfony_version() {
   select option in "${selection[@]}"; do
     case $option in
       "7.1" )
-        PROJECTINIT_DOCKER_INPUT_SYMFONY_VERSION="7.1"
+        PROJECTINIT_DOCKER_INPUT_FRAMEWORK_VERSION="7.1"
         docker_pick_php_symfony_project_type
         # shellcheck source=./7.1/php_version.sh
         source "${tool_dir}/src/docker/php/symfony/7.1/php_version.sh"
@@ -21,7 +21,7 @@ docker_pick_php_symfony_version() {
         setup_project_templates
         break;;
       "7.2" )
-        PROJECTINIT_DOCKER_INPUT_SYMFONY_VERSION="7.2"
+        PROJECTINIT_DOCKER_INPUT_FRAMEWORK_VERSION="7.2"
         docker_pick_php_symfony_project_type
         # shellcheck source=./7.2/php_version.sh
         source "${tool_dir}/src/docker/php/symfony/7.2/php_version.sh"

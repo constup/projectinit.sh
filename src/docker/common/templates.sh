@@ -49,11 +49,11 @@ inject_installer_properties() {
   echo "host port..."
   perl -pi -e "s/~~~host port~~~/${PROJECTINIT_DOCKER_APP_HOST_PORT}/g" "${project_root_dir}"/compose.yaml
   echo "symfony version..."
-  perl -pi -e "s/~~~symfony version~~~/${PROJECTINIT_DOCKER_INPUT_SYMFONY_VERSION}/g" "${project_root_dir}"/start.sh
+  perl -pi -e "s/~~~framework version~~~/${PROJECTINIT_DOCKER_INPUT_FRAMEWORK_VERSION}/g" "${project_root_dir}"/start.sh
   echo "docker image name..."
   perl -pi -e "s/~~~image name~~~/projectinit\/${PROJECTINIT_DOCKER_PROJECT_SERVICE_NAME}:installer/g" "${project_root_dir}"/compose.yaml
   echo "unit testing..."
-  perl -pi -e "s/~~~unit testing~~~/ ${PROJECTINIT_DOCKER_PHPUNIT}/g" "${project_root_dir}"/start.sh
+  perl -pi -e "s/~~~unit testing~~~/ ${PROJECTINIT_DOCKER_UNIT_TESTING_FRAMEWORK}/g" "${project_root_dir}"/start.sh
   if [ -n "$PROJECTINIT_DOCKER_DATABASE_SERVICE_NAME" ]; then
     echo "orm..."
     perl -pi -e "s/#composer require symfony\/orm-pack/composer require symfony\/orm-pack/g" "${project_root_dir}/start.sh"
@@ -84,7 +84,7 @@ inject_project_service_properties() {
   echo "host port prod..."
   perl -pi -e "s/~~~host port~~~/${PROJECTINIT_DOCKER_APP_HOST_PORT}/g" "${project_root_dir}/compose.yaml"
   echo "symfony version..."
-  perl -pi -e "s/~~~symfony version~~~/${PROJECTINIT_DOCKER_INPUT_SYMFONY_VERSION}/g" "${project_root_dir}/start.sh"
+  perl -pi -e "s/~~~framework version~~~/${PROJECTINIT_DOCKER_INPUT_FRAMEWORK_VERSION}/g" "${project_root_dir}/start.sh"
   echo "docker image name dev..."
   perl -pi -e "s/~~~image name~~~/${PROJECTINIT_DOCKER_PROJECT_SERVICE_NAME}/g" "${project_root_dir}/compose_dev.yaml"
   echo "docker image name prod..."
