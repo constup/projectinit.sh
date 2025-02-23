@@ -8,6 +8,9 @@ print_project_configuration() {
   print_git_block
   print_container_block
   print_tech_stack_block
+  if [[ -v projectinit_database_type ]]; then
+    print_database_block
+  fi
   echo "Press Enter to continue..."
   read -r
 }
@@ -92,4 +95,19 @@ print_php_tech_stack() {
   else
     echo "| ProjectInit's .php-cs-fixer.dist.php will be used"
   fi
+}
+
+print_database_block() {
+  echo "|                                Database"
+  echo "|---------------------------------------------------------------------"
+  echo "| Database engine: ${projectinit_database_type}"
+  if [ ! "$projectinit_database_type" = "no database" ]; then
+    echo "| Version: ${projectinit_database_version}"
+    echo "| Database name: ${projectinit_database_name}"
+    echo "| Host port: ${projectinit_database_host_port}"
+    if [ "$projectinit_container_type" = "docker" ]; then
+      echo "| Docker service name: ${projectinit_database_service_name}"
+    fi
+  fi
+  echo "|---------------------------------------------------------------------"
 }

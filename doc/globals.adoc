@@ -125,3 +125,38 @@
 |`ask_symfony_app_type`
 |Full web application with frontend or API/CLI application.
 |===
+
+== Database
+
+|===
+|variable |type |description
+
+|`projectinit_database_type`
+|enum(`no database`, `pgsql`)
+|Database type string or no database.
+
+|`projectinit_database_version`
+|string value
+|Database engine version. Only numbered versions are allowed. Using `latest` is not allowed.
+
+|`projectinit_database_name`
+|string value
+|Database name
+
+|`projectinit_database_user`
+|string value
+|Database username
+
+|`projectinit_database_password`
+|string value
+|Database user password
+
+|`projectinit_database_service_name`
+|string value
+|Database container service name
+
+|`projectinit_database_host_port`
+|string value
+|Database container host port
+
+|===

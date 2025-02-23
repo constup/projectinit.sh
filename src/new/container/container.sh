@@ -2,7 +2,7 @@
 
 ask_to_use_container() {
   echo ""
-  echo "Would you like to use a container (Docker)?"
+  echo "Would you like to use a container (Docker, Podman,...)?"
   local options=("yes" "no")
   local option
   select option in "${options[@]}"; do

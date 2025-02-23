@@ -6,6 +6,7 @@ run_php_flow() {
       run_bare_metal_flow
       ;;
     "docker" )
+      run_docker_flow
       ;;
   esac
 }
@@ -42,4 +43,16 @@ run_bare_metal_flow() {
   source "${tool_dir}/src/new/language/php/tools/style_fixer/php_cs_fixer.sh"
   install_php_cs_fixer_bare_metal
   configure_php_cs_fixer
+}
+
+run_docker_flow() {
+  case $projectinit_php_project_type in
+    "composer" )
+      ;;
+    "symfony" )
+      # shellcheck source=./symfony/flow.sh
+      source "${tool_dir}/src/new/language/php/symfony/flow.sh"
+      run_symfony_flow_docker
+      ;;
+  esac
 }
