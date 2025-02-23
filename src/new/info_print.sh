@@ -40,6 +40,12 @@ print_container_block() {
     echo "| No container used."
   else
     echo "| Container type: ${projectinit_container_type}"
+    case "${projectinit_container_type}" in
+      "docker" )
+        echo "| Application Docker service: ${projectinit_app_service_name}"
+        echo "| Application host port: ${projectinit_app_host_port}"
+        ;;
+    esac
   fi
   echo "|---------------------------------------------------------------------"
 }

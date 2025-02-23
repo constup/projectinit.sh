@@ -9,6 +9,14 @@ run_ask_flow() {
   ask_language
 
   if [ ! "$projectinit_container_type" = "none" ]; then
+    case "${projectinit_container_type}" in
+      "docker" )
+        # shellcheck source=./container/docker/docker.sh
+        source "${tool_dir}/src/new/container/docker/docker.sh"
+        ask_base_service_properties
+        ;;
+    esac
+
     # shellcheck source=./database/database.sh
     source "${tool_dir}/src/new/database/database.sh"
     ask_database_engine
