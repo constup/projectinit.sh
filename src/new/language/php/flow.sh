@@ -13,7 +13,7 @@ run_php_flow() {
 run_bare_metal_flow() {
   if [ "${projectinit_use_global_composer}" -eq 0 ]; then
     # shellcheck source=./tools/composer.sh
-    source "${tool_dir}/src/new/language/php/composer.sh"
+    source "${tool_dir}/src/new/language/php/tools/composer.sh"
     download_latest_composer_phar
   fi
   case $projectinit_php_project_type in
