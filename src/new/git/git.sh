@@ -21,7 +21,7 @@ ask_gitignore_configuration() {
   local selection
   select selection in "${options[@]}"; do
     case $selection in
-      "Use the default .gitignore")
+      "Use default .gitignore")
         projectinit_use_projectinit_gitignore=0
         break
         ;;

@@ -97,12 +97,24 @@
 |`check_if_composer_is_initialized`
 |Flag to determine whether `comoser.json` is present.
 
+|===
+
+==== Tools
+
+|===
+|variable |type |origin |description
+
 |`projectinit_phpunit_version`
 |string value
 |depending on the type of the project (ex. composer, Symfony,...)
 |Version of PHPUnit to be installed. Each type of the project (ex. composer, Symfony,...) has its own set of PHPUnit installation options.
-|===
 
+|`projectinit_use_projectinit_phpcsfixer_dist`
+|0/1 flag
+|`ask_php_cs_fixer_config`
+|Flag whether to use ProjectInit's PHP CS Fixer configuration
+
+|===
 ==== Symfony
 
 |===

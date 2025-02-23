@@ -67,7 +67,6 @@ print_tech_stack_block() {
 }
 
 print_php_tech_stack() {
-  # Composer is set up inside containers, there is no need for composer on metal.
   if [ "${projectinit_container_type}" = "none" ]; then
     if [ "$projectinit_use_global_composer" -eq 0 ]; then
       echo "| Composer: local composer.phar"
@@ -90,4 +89,9 @@ print_php_tech_stack() {
   esac
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
   echo "| CS Fixer: PHP CS Fixer"
+  if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
+    echo "| Default .php-cs-fixer.dist.php will be used"
+  else
+    echo "| ProjectInit's .php-cs-fixer.dist.php will be used"
+  fi
 }
