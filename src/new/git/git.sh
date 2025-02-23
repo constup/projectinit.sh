@@ -45,32 +45,23 @@ configure_gitignore() {
   echo "  .gitignore configured..."
 }
 
-#######################################
-# Checks if project root directory is a git directory.
-# If
-#######################################
-check_git_directory() {
+ask_git_repo() {
   echo ""
-  echo "Checking if your project root directory is a Git repository..."
-  if [ ! -d "${project_root_dir}/.git/" ]; then
-    projectinit_is_git_repo=0
-    echo "  Your project's root directory is not a Git repository. Would you like to clone or create a new repository?"
-    local options=("clone" "create new")
-    local option
-    select option in "${options[@]}"; do
-      case $option in
-        "clone" )
-          echo "  Repository URL:"
-          read -r projectinit_repo_url
-          break;;
-        "create new" )
-          break;;
-      esac
-    done
-  else
-    projectinit_is_git_repo=1
-    echo "  Your project root directory already is a git directory."
-  fi
+  echo "Do you want to clone an existing repository or create a new one?"
+  local options=("create new" "clone existing")
+  local option
+  select option in "${options[@]}"; do
+    case $option in
+      "create new" )
+        projectinit_new_project=1
+        break;;
+      "clone existing" )
+        projectinit_new_project=0
+        echo "  Repository URL:"
+        read -r project_repo_url
+        break;;
+    esac
+  done
 }
 
 configure_git_repository() {

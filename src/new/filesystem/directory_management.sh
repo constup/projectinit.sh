@@ -32,7 +32,12 @@ check_project_root_directory () {
       echo "  Project root directory does not exist. It will be created."
       projectinit_create_project_root_directory=1
   else
-      echo "  Project root directory already exists."
+      if [ -z "$(ls -A "$project_root_dir")" ]; then
+        echo "  Project root directory already exists, but it must be empty."
+        exit 1
+      else
+        echo "  Project root directory already exists and is ready."
+      fi
       projectinit_create_project_root_directory=0
   fi
 }
