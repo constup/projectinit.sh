@@ -6,53 +6,46 @@
 
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`tool_dir`
 |string value
-|`ask_directories`
 |ProjectInit's root directory
 
 |`project_root_dir`
 |string value
-|`ask_directories`
 |project's root directory
 
 |`projectinit_create_project_root_directory`
 |0/1 flag
-|`check_project_root_directory`
 |flag for creating project's root directory
 |===
 
 == Git
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_git_user_name`
 |string value
-|`ask_git_user_configuration`
 |Git username for the project.
 
 |`projectinit_git_user_email`
 |string value
-|`ask_git_user_configuration`
 |Git user email for the project.
 
 |`projectinit_use_projectinit_gitignore`
 |0/1 flag
-|`ask_gitignore_configuration`
 |flag whether to use ProjectInit's `.gitignore`
 |===
 
 == Container
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_container_type`
 |enum (`none`, docker`)
-|`ask_to_use_container`
 |Container type enum.
 |===
 
@@ -84,21 +77,18 @@
 === PHP
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_use_global_composer`
 |0/1 flag
-|`ask_composer`
 |Flag for using global or local Composer.
 
 |`projectinit_php_project_type`
 |enum (`composer`, `symfony`)
-|`ask_project_type`
 |Project type.
 
 |`projectinit_is_composer_initialized`
 |0/1 flag
-|`check_if_composer_is_initialized`
 |Flag to determine whether `comoser.json` is present.
 
 |===
@@ -106,37 +96,32 @@
 ==== Tools
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_phpunit_version`
 |string value
-|depending on the type of the project (ex. composer, Symfony,...)
 |Version of PHPUnit to be installed. Each type of the project (ex. composer, Symfony,...) has its own set of PHPUnit installation options.
 
 |`projectinit_use_projectinit_phpcsfixer_dist`
 |0/1 flag
-|`ask_php_cs_fixer_config`
 |Flag whether to use ProjectInit's PHP CS Fixer configuration
 
 |`projectinit_use_projectinit_phpunit_dist`
 |0/1 flag
-|`ask_phpunit_config`
 |Flag whether to use ProjectInit's PHPUnit configuration
 
 |===
 ==== Symfony
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_symfony_version`
 |string value (example: `7.2.x`)
-|`ask_symfony_version`
 |Symfony version.
 
 |`projectinit_symfony_app_type`
 |enum (`full`, `api`)
-|`ask_symfony_app_type`
 |Full web application with frontend or API/CLI application.
 |===
 
