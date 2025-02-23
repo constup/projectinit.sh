@@ -14,17 +14,6 @@ print_project_configuration() {
 
 print_directory_block() {
   echo "| Directory: ${project_root_dir}                                      "
-  if [ "${projectinit_new_project}" -eq 1 ]; then
-    echo "| New project will be created in the directory."
-  else
-    echo "| An existing project will be set up in the directory."
-    if [[ -v projectinit_repo_url ]]; then
-      echo "| Repository to be cloned: ${projectinit_repo_url}"
-    else
-      echo "| No repository will be cloned."
-      echo "| You are using ProjectInit on an already cloned repository."
-    fi
-  fi
   echo "|---------------------------------------------------------------------"
 }
 

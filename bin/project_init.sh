@@ -18,7 +18,6 @@ check_project_root_directory
 # Git setup
 ask_git_user_configuration
 ask_gitignore_configuration
-ask_git_repo
 #---
 
 ask_to_use_container

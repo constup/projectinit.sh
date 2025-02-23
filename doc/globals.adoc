@@ -43,16 +43,6 @@
 |0/1 flag
 |`ask_gitignore_configuration`
 |flag whether to use ProjectInit's `.gitignore`
-
-|`projectinit_repo_url`
-|string value
-|`ask_git_repo`
-|Git repository URL. Exists only if repository is being cloned.
-
-|`projectinit_new_project`
-|0/1 flag
-|`ask_git_repo`
-|Flag to mark creation of a new project or cloning of an existing one.
 |===
 
 == Container
