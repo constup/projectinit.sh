@@ -89,4 +89,5 @@ print_php_tech_stack() {
       esac
   esac
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
+  echo "| CS Fixer: PHP CS Fixer"
 }
