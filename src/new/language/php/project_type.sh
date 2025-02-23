@@ -18,7 +18,7 @@ ask_project_type() {
         ask_symfony_app_type
         # shellcheck source=./symfony/phpunit.sh
         source "${tool_dir}/src/new/language/php/symfony/phpunit.sh"
-        ask_phpunit_version
+        ask_symfony_phpunit_version
         break;;
     esac
   done

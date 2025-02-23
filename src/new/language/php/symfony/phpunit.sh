@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ask_phpunit_version() {
+ask_symfony_phpunit_version() {
   echo ""
   echo "PHPUnit version. Note: the latest minor version will be used"
   local options=("8" "9" "10" "11" "12" "Symfony Test Pack" "Custom")
