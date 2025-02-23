@@ -18,6 +18,9 @@ run_bare_metal_flow() {
   fi
   case $projectinit_php_project_type in
     "composer" )
+      # shellcheck source=./composer_package/flow.sh
+      source "${tool_dir}/src/new/language/php/composer_package/flow.sh"
+      run_composer_package_flow_bare_metal
       ;;
     "symfony" )
       # shellcheck source=./symfony/flow.sh

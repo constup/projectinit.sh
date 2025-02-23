@@ -88,10 +88,14 @@ print_php_tech_stack() {
       esac
   esac
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
-  if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-    echo "| Default phpunit.xml.dist will be used"
+  if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
+    if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
+      echo "| Default phpunit.xml.dist will be used"
+    else
+      echo "| ProjectInit's phpunit.xml.dist will be used"
+    fi
   else
-    echo "| ProjectInit's phpunit.xml.dist will be used"
+      echo "| Symfony Test Pack was used. Configure phpunit.xml.dist manually"
   fi
   echo "| CS Fixer: PHP CS Fixer"
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then

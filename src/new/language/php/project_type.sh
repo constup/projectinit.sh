@@ -9,6 +9,9 @@ ask_project_type() {
     case $option in
       "Composer package" )
         projectinit_php_project_type="composer"
+        # shellcheck source=./composer_package/phpunit.sh
+        source "${tool_dir}/src/new/language/php/composer_package/phpunit.sh"
+        ask_composer_phpunit_version
         break;;
       "Symfony" )
         projectinit_php_project_type="symfony"
