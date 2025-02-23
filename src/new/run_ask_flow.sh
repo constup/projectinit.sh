@@ -20,5 +20,11 @@ run_ask_flow() {
     # shellcheck source=./database/database.sh
     source "${tool_dir}/src/new/database/database.sh"
     ask_database_engine
+
+    case "${projectinit_container_type}" in
+    "docker" )
+      calculate_app_service_dependencies
+      ;;
+    esac
   fi
 }

@@ -53,6 +53,10 @@
 |===
 |variable |type |description
 
+|`projectinit_docker_service_dependencies`
+|integer
+|The number of dependency services for your app service. If it's 0, dependencies block is removed from `compose.yaml`
+
 |`projectinit_app_service_name`
 |string value
 |Name of the Docker service which contains your application
