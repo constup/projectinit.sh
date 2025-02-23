@@ -1,8 +1,5 @@
 #!/bin/bash
 
-set -e
-source "${tool_dir}/src/new/language/php/composer.sh"
-
 run_php_flow() {
   case $projectinit_container_type in
     "none" )
@@ -15,6 +12,8 @@ run_php_flow() {
 
 run_bare_metal_flow() {
   if [ "${projectinit_use_global_composer}" -eq 0 ]; then
+    # shellcheck source=./tools/composer.sh
+    source "${tool_dir}/src/new/language/php/composer.sh"
     download_latest_composer_phar
   fi
   case $projectinit_php_project_type in

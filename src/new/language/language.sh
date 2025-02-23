@@ -10,8 +10,8 @@ ask_language() {
       "PHP" )
         projectinit_language="php"
         if [ "${projectinit_container_type}" = "none" ]; then
-          # shellcheck source=./php/composer.sh
-          source "${tool_dir}/src/new/language/php/composer.sh"
+          # shellcheck source=./php/tools/composer.sh
+          source "${tool_dir}/src/new/language/php/tools/composer.sh"
           ask_composer_location
         fi
         # shellcheck source=./php/project_type.sh
