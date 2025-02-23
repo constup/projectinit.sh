@@ -41,3 +41,22 @@ check_project_root_directory () {
       projectinit_create_project_root_directory=0
   fi
 }
+
+create_php_project_base_directories () {
+  echo ""
+  echo "Checking if ${project_root_dir}/src source directory exists..."
+  if [ ! -d "${project_root_dir}/src" ]; then
+    echo "${project_root_dir}/src/ does not exist. Creating src directory automatically..."
+    mkdir "${project_root_dir}/src"
+  else
+    echo "${project_root_dir}/src directory exists. Skipping..."
+  fi
+  echo ""
+  echo "Checking if ${project_root_dir}/tests source directory exists..."
+  if [ ! -d "${project_root_dir}/tests" ]; then
+    echo "${project_root_dir}/tests/ does not exist. Creating tests directory automatically..."
+    mkdir "${project_root_dir}/tests"
+  else
+    echo "${project_root_dir}/tests directory exists. Skipping..."
+  fi
+}

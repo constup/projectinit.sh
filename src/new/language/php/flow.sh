@@ -25,4 +25,7 @@ run_bare_metal_flow() {
       run_symfony_flow_bare_metal
       ;;
   esac
+  # shellcheck source=../../filesystem/directory_management.sh
+  source "${tool_dir}/src/new/filesystem/directory_management.sh"
+  create_php_project_base_directories
 }
