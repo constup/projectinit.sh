@@ -31,10 +31,12 @@ run_bare_metal_flow() {
   # shellcheck source=../../filesystem/directory_management.sh
   source "${tool_dir}/src/new/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=./tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/new/language/php/tools/style_fixer/php_cs_fixer.sh"
-  configure_php_cs_fixer
   # shellcheck source=./tools/unit_testing/phpunit.sh
   source "${tool_dir}/src/new/language/php/tools/unit_testing/phpunit.sh"
+  install_phpunit_bare_metal
   configure_phpunit
+  # shellcheck source=./tools/style_fixer/php_cs_fixer.sh
+  source "${tool_dir}/src/new/language/php/tools/style_fixer/php_cs_fixer.sh"
+  install_php_cs_fixer_bare_metal
+  configure_php_cs_fixer
 }
