@@ -3,19 +3,10 @@
 ask_symfony_phpunit_version() {
   echo ""
   echo "PHPUnit version. Note: the latest minor version will be used"
-  local options=("8" "9" "10" "11" "12" "Symfony Test Pack" "Custom")
+  local options=("9" "10" "11" "12" "Symfony Test Pack")
   local option
   select option in "${options[@]}"; do
     case $option in
-      "8" )
-        echo ""
-        echo "PHPUnit 8 will be used"
-        echo "  Release date: February 2019."
-        echo "  End of bugfix support: February 2023."
-        echo "  Requires PHP 7.2 or higher"
-        echo ""
-        projectinit_phpunit_version="phpunit/phpunit:^8"
-        break;;
       "9" )
         echo ""
         echo "PHPUnit 9 will be used"

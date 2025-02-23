@@ -114,6 +114,11 @@
 |`ask_php_cs_fixer_config`
 |Flag whether to use ProjectInit's PHP CS Fixer configuration
 
+|`projectinit_use_projectinit_phpunit_dist`
+|0/1 flag
+|`ask_phpunit_config`
+|Flag whether to use ProjectInit's PHPUnit configuration
+
 |===
 ==== Symfony
 

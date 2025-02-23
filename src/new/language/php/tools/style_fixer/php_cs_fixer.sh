@@ -27,7 +27,7 @@ install_php_cs_fixer_bare_metal() {
 
 configure_php_cs_fixer() {
   echo ""
-  echo "Configuring .php-cs-fixer.dist-php..."
+  echo "Configuring .php-cs-fixer.dist.php..."
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 1 ]; then
     cp -f "${tool_dir}/src/new/language/php/tools/style_fixer/generic_dist_files/php-cs-fixer-v3.dist.php" "${project_root_dir}/.php-cs-fixer.dist.php"
   fi

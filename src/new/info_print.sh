@@ -88,6 +88,11 @@ print_php_tech_stack() {
       esac
   esac
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
+  if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
+    echo "| Default phpunit.xml.dist will be used"
+  else
+    echo "| ProjectInit's phpunit.xml.dist will be used"
+  fi
   echo "| CS Fixer: PHP CS Fixer"
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
     echo "| Default .php-cs-fixer.dist.php will be used"
