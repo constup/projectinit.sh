@@ -17,3 +17,10 @@ cleanup_installer() {
   docker rmi "projectinit/${projectinit_app_service_name}:installer"
   echo "  Installer container cleaned up..."
 }
+
+remove_installer_files() {
+  echo ""
+  echo "Removing installer files..."
+  rm "${project_root_dir}/compose.yaml" "${project_root_dir}/Dockerfile" "${project_root_dir}/start.sh"
+  echo "  Installer files removed..."
+}

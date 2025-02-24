@@ -22,4 +22,5 @@ run_symfony_flow_docker() {
   source "${tool_dir}/src/new/language/php/symfony/container/docker/installer.sh"
   build_installer
   cleanup_installer
+  remove_installer_files
 }

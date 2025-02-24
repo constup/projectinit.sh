@@ -22,9 +22,9 @@ run_ask_flow() {
     ask_database_engine
 
     case "${projectinit_container_type}" in
-    "docker" )
-      calculate_app_service_dependencies
-      ;;
+      "docker" )
+        calculate_app_service_dependencies
+        ;;
     esac
   fi
 }
