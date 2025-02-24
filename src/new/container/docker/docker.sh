@@ -2,6 +2,8 @@
 
 ask_base_service_properties() {
   echo "Application Docker service properties:"
+  echo "  Language version:"
+  read -r -e projectinit_language_version
   echo "  Docker service name:"
   read -r -e projectinit_app_service_name
   echo "  Application host port:"

@@ -42,6 +42,8 @@ print_container_block() {
     echo "| Container type: ${projectinit_container_type}"
     case "${projectinit_container_type}" in
       "docker" )
+        echo "| Language or technology: ${projectinit_language}"
+        echo "| Version: ${projectinit_language_version}"
         echo "| Application Docker service: ${projectinit_app_service_name}"
         echo "| Application host port: ${projectinit_app_host_port}"
         ;;

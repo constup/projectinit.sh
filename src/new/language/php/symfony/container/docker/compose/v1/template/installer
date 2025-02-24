@@ -1,0 +1,12 @@
+services:
+    ~~~service name~~~:
+        container_name: ~~~container name~~~
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: ~~~image name~~~
+        restart: "no"
+        ports:
+            - "~~~host port~~~:8080"
+        volumes:
+            - ./:/usr/src/app
