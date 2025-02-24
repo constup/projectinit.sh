@@ -11,7 +11,9 @@ ask_pgsql_config() {
   echo "  Database user:"
   read -r -e projectinit_database_user
   echo "  User password:"
-  read -r -e projectinit_database_password
+  # shellcheck source=../general.sh
+  source "${tool_dir}/src/new/general.sh"
+  projectinit_database_password=$(read_password)
   echo "  Host port:"
   read -r -e projectinit_database_host_port
   if [ "$projectinit_container_type" = "docker" ]; then
