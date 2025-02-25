@@ -38,4 +38,4 @@ RUN git config --global --add safe.directory /usr/src/app && \
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "/usr/src/app/start.sh"]
+CMD ["sh", "/usr/src/app/start_dev.sh"]

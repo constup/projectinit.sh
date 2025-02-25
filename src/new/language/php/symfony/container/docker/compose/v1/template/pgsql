@@ -1,6 +1,6 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: "~~~database server version~~~"
+    image: postgres:~~~database server version~~~
     restart: always
     environment:
       POSTGRES_USER: "~~~database user name~~~"
