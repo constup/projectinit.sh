@@ -69,7 +69,7 @@ command. For more information and troubleshooting, refer to the PHP extension in
 Docker containers have the following globally available software:
 
 - Composer
-- Symfony CLI
+- Symfony CLI (on dev)
 - Git - required for installing private Composer packages from Git repositories
 - Zip/Unzip - required if you want to use zip PHP extension
 - wget - generally useful to have for various download operations. Curl should be included in PHP's default docker

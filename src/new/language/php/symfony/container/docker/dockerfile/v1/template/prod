@@ -7,14 +7,13 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 RUN mkdir /usr/src/temp_install && \
     apt-get update && \
-    curl -1sLf /usr/src/temp_install/setup.deb.sh 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && \
     apt-get install -y \
         git \
         zip \
         unzip \
         wget \
-        symfony-cli \
-        dumb-init && \
+        dumb-init \
+        && \
     chmod +x /usr/bin/composer && \
     chmod +x /usr/local/bin/install-php-extensions && \
     sync && \
@@ -24,7 +23,8 @@ RUN mkdir /usr/src/temp_install && \
         zip \
         #pdo_pgsql \
         #pdo_mysql \
-        gmp && \
+        gmp \
+        && \
     groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
     chown -R phpuser:phpgroup /usr/src/app
 

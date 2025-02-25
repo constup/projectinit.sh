@@ -53,4 +53,8 @@ run_symfony_flow_docker() {
   add_database_connection_to_env_dev
   cp -f "${tool_dir}/src/new/language/php/symfony/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
   build_dev
+
+  setup_prod_dockerfile
+  setup_prod_entrypoint
+  setup_prod_compose
 }

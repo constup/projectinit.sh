@@ -18,6 +18,6 @@ setup_dev_dockerfile() {
 }
 
 setup_prod_dockerfile() {
-  cp -f "${tool_dir}/src/new/language/php/symfony/container/docker/dockerfile/v1/template/dev" "${project_root_dir}/Dockerfile"
+  cp -f "${tool_dir}/src/new/language/php/symfony/container/docker/dockerfile/v1/template/prod" "${project_root_dir}/Dockerfile"
   perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${project_root_dir}/Dockerfile"
 }

@@ -14,7 +14,8 @@ RUN mkdir /usr/src/temp_install && \
         unzip \
         wget \
         symfony-cli \
-        dumb-init && \
+        dumb-init \
+        && \
     chmod +x /usr/bin/composer && \
     chmod +x /usr/local/bin/install-php-extensions && \
     sync && \
@@ -26,7 +27,8 @@ RUN mkdir /usr/src/temp_install && \
         #pdo_pgsql \
         #pdo_mysql \
         pcov \
-        xdebug && \
+        xdebug \
+        && \
     groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
     chown -R phpuser:phpgroup /usr/src/app
 
