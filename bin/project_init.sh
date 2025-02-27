@@ -34,3 +34,5 @@ configure_gitignore
 #---
 
 run_flow
+
+echo "ProjectInit completed setting up your project at: ${project_root_dir}"
