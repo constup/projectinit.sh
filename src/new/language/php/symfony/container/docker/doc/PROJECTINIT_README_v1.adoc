@@ -39,7 +39,7 @@ docker compose -f compose_dev.yaml up --build
 
 === Dev environment
 
-Local and dev environment are pretty much the same, so you are free to use `_dev_` Docker configuration files for your
+Local and dev environment are pretty much the same, so you are free to use `_dev` Docker configuration files for your
 dev environment.
 
 === Production environment

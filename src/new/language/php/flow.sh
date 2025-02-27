@@ -3,15 +3,15 @@
 run_php_flow() {
   case $projectinit_container_type in
     "none" )
-      run_bare_metal_flow
+      run_php_bare_metal_flow
       ;;
     "docker" )
-      run_docker_flow
+      run_php_docker_flow
       ;;
   esac
 }
 
-run_bare_metal_flow() {
+run_php_bare_metal_flow() {
   if [ "${projectinit_use_global_composer}" -eq 0 ]; then
     # shellcheck source=./tools/composer.sh
     source "${tool_dir}/src/new/language/php/tools/composer.sh"
@@ -45,9 +45,12 @@ run_bare_metal_flow() {
   configure_php_cs_fixer
 }
 
-run_docker_flow() {
+run_php_docker_flow() {
   case $projectinit_php_project_type in
     "composer" )
+      # shellcheck source=./composer_package/flow.sh
+      source "${tool_dir}/src/new/language/php/composer_package/flow.sh"
+      run_composer_package_flow_docker
       ;;
     "symfony" )
       # shellcheck source=./symfony/flow.sh

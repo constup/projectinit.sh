@@ -76,6 +76,9 @@ print_php_tech_stack() {
   fi
   echo "| Project type: ${projectinit_php_project_type}"
   case $projectinit_php_project_type in
+    "composer" )
+      echo "| Composer library name: ${projectinit_composer_library_name}"
+      ;;
     "symfony" )
       echo "| Symfony version: ${projectinit_symfony_version}"
       case $projectinit_symfony_app_type in

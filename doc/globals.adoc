@@ -117,6 +117,16 @@
 |`projectinit_use_projectinit_phpunit_dist`
 |0/1 flag
 |Flag whether to use ProjectInit's PHPUnit configuration
+|===
+
+==== Composer
+
+|===
+|variable |type |description
+
+|`projectinit_composer_library_name`
+|string value
+|Composer library name. Format: `<your_brand>/<your_livrary_name>`
 
 |===
 ==== Symfony

@@ -46,12 +46,12 @@ run_symfony_flow_docker() {
   # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
   source "${tool_dir}/src/new/language/php/tools/style_fixer/php_cs_fixer.sh"
   configure_php_cs_fixer
-  # shellcheck source=./container/docker/dev.sh
-  source "${tool_dir}/src/new/language/php/symfony/container/docker/dev.sh"
   # shellcheck source=./container/docker/configuration/dot_env.sh
   source "${tool_dir}/src/new/language/php/symfony/container/docker/configuration/dot_env.sh"
   add_database_connection_to_env_dev
   cp -f "${tool_dir}/src/new/language/php/symfony/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
+  # shellcheck source=./container/docker/dev.sh
+  source "${tool_dir}/src/new/language/php/symfony/container/docker/dev.sh"
   build_dev
 
   setup_prod_dockerfile

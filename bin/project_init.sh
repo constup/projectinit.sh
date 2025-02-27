@@ -5,7 +5,7 @@ source ../src/new/git/git.sh
 source ../src/new/filesystem/directory_management.sh
 source ../src/new/info_print.sh
 source ../src/new/language/flow.sh
-source ../src/new/run_ask_flow.sh
+source ../src/new/language/ask_flow.sh
 
 check_user_configuration
 

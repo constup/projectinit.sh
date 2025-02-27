@@ -21,14 +21,14 @@ RUN apt-get update && \
         intl \
         zip \
         gmp \
+        pcov \
+        xdebug \
         && \
     groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
     chown -R phpuser:phpgroup /usr/src/app
 
 USER phpuser
-RUN git config --global --add safe.directory /usr/src/app && \
-    cd /usr/src/app && \
-    composer install
+RUN git config --global --add safe.directory /usr/src/app
 
 EXPOSE 8080
 
