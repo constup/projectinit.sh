@@ -31,19 +31,18 @@ create_symfony_project () {
 ask_symfony_version() {
   echo ""
   echo "Select Symfony version. Note: the latest minor version will be used."
-  local options=("Symfony 5" "Symfony 6" "Symfony 7" "Custom")
+  local options=("Symfony 7" "Symfony 6" "Symfony 5" "Custom")
   local option
   select option in "${options[@]}"; do
     case $option in
-      "Symfony 5" )
+      "Symfony 7" )
         echo ""
-        echo "Symfony 5.4 will be used."
-        echo "  - Release date: November 2021."
-        echo "  - End of bug fixes: November 2024."
-        echo "  - End of security fixes: February 2029."
-        echo "  - Requires PHP 7.2.5 or higher."
+        echo "Symfony 7.2 will be used."
+        echo "  - Release date: November 2024."
+        echo "  - End of support: July 2025."
+        echo "  - Requires PHP 8.2.0 or higher."
         echo ""
-        projectinit_symfony_version="5.4.x"
+        projectinit_symfony_version="7.2.x"
         break;;
       "Symfony 6" )
         echo ""
@@ -55,14 +54,15 @@ ask_symfony_version() {
         echo ""
         projectinit_symfony_version="6.4.x"
         break;;
-      "Symfony 7" )
+      "Symfony 5" )
         echo ""
-        echo "Symfony 7.2 will be used."
-        echo "  - Release date: November 2024."
-        echo "  - End of support: July 2025."
-        echo "  - Requires PHP 8.2.0 or higher."
+        echo "Symfony 5.4 will be used."
+        echo "  - Release date: November 2021."
+        echo "  - End of bug fixes: November 2024."
+        echo "  - End of security fixes: February 2029."
+        echo "  - Requires PHP 7.2.5 or higher."
         echo ""
-        projectinit_symfony_version="7.2.x"
+        projectinit_symfony_version="5.4.x"
         break;;
       "Custom" )
         echo ""
