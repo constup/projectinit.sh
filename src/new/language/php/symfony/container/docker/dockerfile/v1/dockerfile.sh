@@ -20,4 +20,11 @@ setup_dev_dockerfile() {
 setup_prod_dockerfile() {
   cp -f "${tool_dir}/src/new/language/php/symfony/container/docker/dockerfile/v1/template/prod" "${project_root_dir}/Dockerfile"
   perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${project_root_dir}/Dockerfile"
+  case "$projectinit_database_type" in
+    "pgsql" )
+      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${project_root_dir}/Dockerfile"
+      ;;
+  esac
+  perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile"
+  perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile"
 }

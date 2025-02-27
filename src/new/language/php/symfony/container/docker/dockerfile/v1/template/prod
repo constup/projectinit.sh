@@ -20,6 +20,8 @@ RUN apt-get update && \
         apcu \
         intl \
         zip \
+        #pdo_pgsql \
+        #pdo_mysql \
         gmp \
         && \
     groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
