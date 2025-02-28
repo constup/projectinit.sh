@@ -72,6 +72,7 @@ compose.yaml
 /logs/
 ## npm
 npm-debug.log
+## pnpm
 pnpm-debug.log
 ## yarn
 yarn-debug.log
@@ -81,3 +82,7 @@ yarn-error.log
 ## Database
 /postgres_volume/
 /mysql_volume/
+
+# Package managers
+## pnpm
+.pnpm-store/
