@@ -26,6 +26,9 @@ ask_language() {
         break;;
       "Node" )
         projectinit_language="node"
+        # shellcheck source=./node/project_type.sh
+        source "${tool_dir}/src/new/language/node/project_type.sh"
+        ask_project_type
         break;;
     esac
   done

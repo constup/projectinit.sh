@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nest new ~~~nestjs project name~~~ --directory=. --skip-git~~~strict typescript~~~ --package-manager=~~~package manager~~~

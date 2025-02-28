@@ -22,8 +22,8 @@ run_symfony_flow_docker() {
   setup_installer_compose
   echo "  Installer container set up..."
 
-  # shellcheck source=./container/docker/installer.sh
-  source "${tool_dir}/src/new/language/php/symfony/container/docker/installer.sh"
+  # shellcheck source=../../../container/docker/installer.sh
+  source "${tool_dir}/src/new/container/docker/installer.sh"
   build_installer
   cleanup_installer
   remove_installer_files

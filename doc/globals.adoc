@@ -143,6 +143,40 @@
 |Full web application with frontend or API/CLI application.
 |===
 
+== Node
+
+|===
+|variable |type |description
+
+|`projectinit_node_project_type`
+|enum(`nestjs`)
+|Project type.
+
+|`projectinit_nodejs_package_manager`
+|enum(`npm`, `yarn`, `pnpm`)
+|Package manager. Applied if the project type supports it.
+
+|===
+
+=== NestJS
+
+|===
+|variable |type |description
+
+|`projectinit_nestjs_version`
+|string value
+|NestJS version. Format: `10.4`
+
+|`projectinit_typescript_strict_mode`
+|0/1 flag
+|Whether to use TypeScript in strict mode or not.
+
+|`projectinit_nestjs_project_name`
+|string value
+|NestJS project name.
+
+|===
+
 == Database
 
 |===

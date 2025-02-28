@@ -15,6 +15,9 @@ run_ask_flow() {
       run_php_ask_flow
       ;;
     "node" )
+      # shellcheck source=./node/ask_flow.sh
+      source "${tool_dir}/src/new/language/node/ask_flow.sh"
+      run_node_ask_flow
       ;;
   esac
 }
