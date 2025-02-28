@@ -3,7 +3,7 @@
 setup_installer_entrypoint() {
   cp -f "${tool_dir}/src/new/language/node/nestjs/container/docker/entrypoint/v1/template/installer" "${project_root_dir}/start.sh"
   perl -pi -e "s/~~~nestjs project name~~~/${projectinit_nestjs_project_name}/g" "${project_root_dir}/start.sh"
-  perl -pi -e "s/~~~package manager~~~/${projectinit_nodejs_package_manager}/g" "${project_root_dir}/start.sh"
+  perl -pi -e "s/~~~package manager~~~/${projectinit_node_package_manager}/g" "${project_root_dir}/start.sh"
   if [ "$projectinit_typescript_strict_mode" -eq 0 ]; then
     perl -pi -e "s/~~~strict typescript~~~/ --strict/g" "${project_root_dir}/start.sh"
   else

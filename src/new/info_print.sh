@@ -61,6 +61,7 @@ print_tech_stack_block() {
       print_php_tech_stack
       ;;
     "node" )
+      print_node_tech_stack
       ;;
   esac
   echo "|---------------------------------------------------------------------"
@@ -106,6 +107,16 @@ print_php_tech_stack() {
   else
     echo "| ProjectInit's .php-cs-fixer.dist.php will be used"
   fi
+}
+
+print_node_tech_stack() {
+  echo "| Project type: ${projectinit_node_project_type}"
+  echo "| Package manager: ${projectinit_node_package_manager}"
+  case $projectinit_node_project_type in
+    "nestjs" )
+      echo "| NestJS version: ${projectinit_nestjs_version}"
+      ;;
+  esac
 }
 
 print_database_block() {
