@@ -2,5 +2,6 @@ FROM node:~~~language version~~~-alpine
 
 COPY . .
 WORKDIR /usr/src/app
-RUN npm i -g @nestjs/cli@~~~nestjs version~~~ pnpm
+RUN apk add --no-cache jq && \
+    npm i -g @nestjs/cli@~~~nestjs version~~~ pnpm
 CMD ["sh", "/usr/src/app/start.sh"]

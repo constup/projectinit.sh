@@ -3,10 +3,12 @@ services:
         container_name: ~~~container name~~~
         build:
             context: ./
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile_dev
         image: ~~~image name~~~
         restart: "no"
         ports:
             - "~~~host port~~~:3000"
+        environment:
+            - APP_ENV=dev
         volumes:
             - ./:/usr/src/app

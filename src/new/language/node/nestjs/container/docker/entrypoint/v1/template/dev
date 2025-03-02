@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nest start --debug --watch

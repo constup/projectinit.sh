@@ -10,3 +10,7 @@ setup_installer_entrypoint() {
     perl -pi -e "s/~~~strict typescript~~~//g" "${project_root_dir}/start.sh"
   fi
 }
+
+setup_dev_entrypoint() {
+  cp -f "${tool_dir}/src/new/language/node/nestjs/container/docker/entrypoint/v1/template/dev" "${project_root_dir}/start_dev.sh"
+}

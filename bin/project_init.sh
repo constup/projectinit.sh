@@ -35,4 +35,9 @@ configure_gitignore
 
 run_flow
 
+echo ""
+echo "-------------------------------------------------"
 echo "ProjectInit completed setting up your project at: ${project_root_dir}"
+echo "Take a look at ${project_root_dir}/PROJECTINIT_README.adoc for more info and maintenance instructions."
+echo "-------------------------------------------------"
+echo ""

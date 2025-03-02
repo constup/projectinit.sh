@@ -152,7 +152,7 @@
 |enum(`nestjs`)
 |Project type.
 
-|`projectinit_nodejs_package_manager`
+|`projectinit_node_package_manager`
 |enum(`npm`, `yarn`, `pnpm`)
 |Package manager. Applied if the project type supports it.
 
