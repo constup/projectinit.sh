@@ -8,7 +8,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN mkdir /usr/src/bin && \
     apt-get update && \
     curl -1sLf /usr/src/bin/setup.deb.sh 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         git \
         zip \
         unzip \
