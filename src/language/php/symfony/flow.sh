@@ -7,6 +7,8 @@ run_symfony_flow_bare_metal() {
 }
 
 run_symfony_flow_docker() {
+  # shellcheck source=../../../container/docker/dockerignore/v1/dockerignore.sh
+  source "${tool_dir}/src/container/docker/dockerignore/v1/dockerignore.sh"
   # shellcheck source=../../../container/docker/docker.sh
   source "${tool_dir}/src/container/docker/docker.sh"
   calculate_app_service_dependencies
@@ -29,6 +31,7 @@ run_symfony_flow_docker() {
   remove_installer_files
 
   echo "Setting up dev container..."
+  setup_dockerignore
   setup_dev_dockerfile
   setup_dev_entrypoint
   setup_dev_compose

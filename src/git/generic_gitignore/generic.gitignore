@@ -26,9 +26,11 @@
 ## NodeJS
 /node_modules/
 
-# Production code
+# Local configuration
 ## Docker
 compose-local.yaml
+
+# Production code
 ## Symfony
 /public/bundles/
 ## NodeJS

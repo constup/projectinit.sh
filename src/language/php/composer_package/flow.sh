@@ -10,6 +10,8 @@ run_composer_package_flow_bare_metal() {
 }
 
 run_composer_package_flow_docker() {
+  # shellcheck source=../../../container/docker/dockerignore/v1/dockerignore.sh
+  source "${tool_dir}/src/container/docker/dockerignore/v1/dockerignore.sh"
   # shellcheck source=./container/docker/compose/v1/compose.sh
   source "${tool_dir}/src/language/php/composer_package/container/docker/compose/v1/compose.sh"
   # shellcheck source=./container/docker/dockerfile/v1/dockerfile.sh
@@ -34,6 +36,7 @@ run_composer_package_flow_docker() {
   source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
   configure_php_cs_fixer
 
+  setup_dockerignore
   setup_dev_compose
   setup_dev_dockerfile
   setup_dev_entrypoint
