@@ -16,6 +16,7 @@ RUN mkdir /usr/src/bin && \
         symfony-cli \
         dumb-init \
         && \
+    rm -rf /var/lib/apt/lists/* && \
     chmod +x /usr/bin/composer && \
     chmod +x /usr/local/bin/install-php-extensions && \
     sync && \

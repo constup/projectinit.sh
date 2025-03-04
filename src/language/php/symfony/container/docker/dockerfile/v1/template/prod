@@ -13,6 +13,7 @@ RUN apt-get update && \
         wget \
         dumb-init \
         && \
+    rm -rf /var/lib/apt/lists/* && \
     chmod +x /usr/bin/composer && \
     chmod +x /usr/local/bin/install-php-extensions && \
     sync && \
