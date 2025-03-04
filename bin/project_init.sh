@@ -1,11 +1,11 @@
 #!/bin/bash
 
 set -e
-source ../src/new/git/git.sh
-source ../src/new/filesystem/directory_management.sh
-source ../src/new/info_print.sh
-source ../src/new/language/flow.sh
-source ../src/new/language/ask_flow.sh
+source ../src/git/git.sh
+source ../src/filesystem/directory_management.sh
+source ../src/info_print.sh
+source ../src/language/flow.sh
+source ../src/language/ask_flow.sh
 
 check_user_configuration
 
