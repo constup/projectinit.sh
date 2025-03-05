@@ -94,14 +94,19 @@ Set up a project using your own already installed tech stack.
 
 Set up a project in a container.
 
+==== Base application types
+
 * PHP
-** Symfony
 ** Composer library
+** Symfony
 * Node
 ** NestJS
-* Databases
+
+==== Databases
+
 ** PostgreSQL
 ** MySQL
+** Percona
 
 == Comparison to other tools
 
