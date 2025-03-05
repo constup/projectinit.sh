@@ -19,16 +19,17 @@ setup_dev_compose() {
       perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose_dev.yaml"
       ;;
     "pgsql" )
-      perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/language/php/symfony/container/docker/compose/v1/template/pgsql" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${project_root_dir}/compose_dev.yaml"
+      # shellcheck source=../../../../../../../database/pgsql/v1/pqsql.sh
+      source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
+      setup_docker_compose_dev
+      ;;
+    "mysql" )
+      # shellcheck source=../../../../../../../database/mysql/v1/mysql.sh
+      source "${tool_dir}/src/database/mysql/v1/mysql.sh"
+      setup_docker_compose_dev
       ;;
   esac
   if [ ! "${projectinit_database_type}" = "no database" ]; then
-    perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${project_root_dir}/compose_dev.yaml"
-    perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${project_root_dir}/compose_dev.yaml"
-    perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${project_root_dir}/compose_dev.yaml"
-    perl -pi -e "s/~~~database user name~~~/${projectinit_database_user}/g" "${project_root_dir}/compose_dev.yaml"
-    perl -pi -e "s/~~~database password~~~/${projectinit_database_password}/g" "${project_root_dir}/compose_dev.yaml"
-    perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${project_root_dir}/compose_dev.yaml"
     perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/compose_dev.yaml"
   else
     perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose_dev.yaml"
@@ -50,16 +51,17 @@ setup_prod_compose() {
       perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose.yaml"
       ;;
     "pgsql" )
-      perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/language/php/symfony/container/docker/compose/v1/template/pgsql" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${project_root_dir}/compose.yaml"
+      # shellcheck source=../../../../../../../database/pgsql/v1/pqsql.sh
+      source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
+      setup_docker_compose_prod
+      ;;
+    "mysql" )
+      # shellcheck source=../../../../../../../database/mysql/v1/mysql.sh
+      source "${tool_dir}/src/database/mysql/v1/mysql.sh"
+      setup_docker_compose_prod
       ;;
   esac
   if [ ! "${projectinit_database_type}" = "no database" ]; then
-    perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${project_root_dir}/compose.yaml"
-    perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${project_root_dir}/compose.yaml"
-    perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${project_root_dir}/compose.yaml"
-    perl -pi -e "s/~~~database user name~~~/<<<YOUR DATABASE USERNAME OR SECRET GOES HERE>>>/g" "${project_root_dir}/compose.yaml"
-    perl -pi -e "s/~~~database password~~~/<<<YOUR DATABASE PASSWORD OR SECRET GOES HERE>>>/g" "${project_root_dir}/compose.yaml"
-    perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${project_root_dir}/compose.yaml"
     perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/compose.yaml"
   else
     perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose.yaml"

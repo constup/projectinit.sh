@@ -1,0 +1,13 @@
+~~~database service name~~~:
+    container_name: ~~~database container name~~~
+    image: mysql:~~~database server version~~~
+    restart: always
+    environment:
+      MYSQL_DATABASE: "~~~database name~~~"
+      MYSQL_USER: "~~~database user name~~~"
+      MYSQL_PASSWORD: "~~~database password~~~"
+      MYSQL_ROOT_PASSWORD: "~~~database root password~~~"
+    ports:
+      - '~~~database host port~~~:3306'
+    volumes:
+      - "./mysql_volume:/var/lib/mysql"

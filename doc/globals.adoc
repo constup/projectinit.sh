@@ -202,6 +202,10 @@
 |string value
 |Database user password
 
+|`projectinit_database_root_password`
+|string value
+|Database root password. Some engines might not use this.
+
 |`projectinit_database_service_name`
 |string value
 |Database container service name

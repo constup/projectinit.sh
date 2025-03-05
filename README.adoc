@@ -101,6 +101,7 @@ Set up a project in a container.
 ** NestJS
 * Databases
 ** PostgreSQL
+** MySQL
 
 == Comparison to other tools
 

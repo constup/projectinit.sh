@@ -12,6 +12,9 @@ setup_dev_dockerfile() {
     "pgsql" )
       perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${project_root_dir}/Dockerfile_dev"
       ;;
+    "mysql" )
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile_dev"
+      ;;
   esac
   perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile_dev"
   perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile_dev"
@@ -23,6 +26,9 @@ setup_prod_dockerfile() {
   case "$projectinit_database_type" in
     "pgsql" )
       perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${project_root_dir}/Dockerfile"
+      ;;
+    "mysql" )
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile"
       ;;
   esac
   perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile"
