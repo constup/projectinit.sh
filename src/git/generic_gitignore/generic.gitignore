@@ -83,3 +83,4 @@ yarn-error.log
 ## Database
 /postgres_volume/
 /mysql_volume/
+/percona_volume/

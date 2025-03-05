@@ -11,7 +11,7 @@ ask_mysql_config() {
   echo "  Database user:"
   read -r -e projectinit_database_user
   echo "  User password:"
-  # shellcheck source=../general.sh
+  # shellcheck source=../../general.sh
   source "${tool_dir}/src/general.sh"
   projectinit_database_password=$(read_password)
   echo "  Root password:"

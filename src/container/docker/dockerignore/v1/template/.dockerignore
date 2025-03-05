@@ -20,3 +20,8 @@ node_modules/
 
 # Git
 .git/
+
+# ProjectInit standard volumes
+postgres_volume/
+mysql_volume/
+percona_volume/

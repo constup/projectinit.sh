@@ -23,8 +23,8 @@ run_php_docker_ask_flow() {
       ;;
     "symfony" )
       ask_base_service_properties
-      # shellcheck source=../../database/database.sh
-      source "${tool_dir}/src/database/database.sh"
+      # shellcheck source=../../database/ask_database.sh
+      source "${tool_dir}/src/database/ask_database.sh"
       ask_database_engine
       ;;
   esac
