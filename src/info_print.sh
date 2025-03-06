@@ -125,6 +125,9 @@ print_database_block() {
   echo "| Database engine: ${projectinit_database_type}"
   if [ ! "$projectinit_database_type" = "no database" ]; then
     echo "| Version: ${projectinit_database_version}"
+    if [ ! -z "${projectinit_orm}" ]; then
+      echo "| ORM: ${projectinit_orm}"
+    fi
     echo "| Database name: ${projectinit_database_name}"
     echo "| Host port: ${projectinit_database_host_port}"
     if [ "$projectinit_container_type" = "docker" ]; then
