@@ -80,33 +80,10 @@ cd bin
 sh projectinit.sh
 ----
 
-== Supported project types
+== Supported project types (applications and libraries)
 
-=== Bare metal
-
-Set up a project using your own already installed tech stack.
-
-* PHP
-** Composer library
-** Symfony
-
-=== Containerized
-
-Set up a project in a container.
-
-==== Base application types
-
-* PHP
-** Composer library
-** Symfony
-* Node
-** NestJS
-
-==== Databases
-
-** PostgreSQL
-** MySQL
-** Percona
+- link:doc/applications_and_libraries/bare_metal.adoc[Bare metal]
+- link:doc/applications_and_libraries/docker.adoc[Docker]
 
 == Comparison to other tools
 
