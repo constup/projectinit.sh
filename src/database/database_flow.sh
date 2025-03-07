@@ -67,33 +67,39 @@ setup_database_docker_compose_prod() {
 }
 
 setup_database_dockerfile_dev() {
+  local target_file
+  target_file="${project_root_dir}/Dockerfile_dev"
+
   case "$projectinit_database_type" in
     "pgsql" )
-      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${project_root_dir}/Dockerfile_dev"
+      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${target_file}"
       ;;
     "mysql" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile_dev"
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
     "percona" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile_dev"
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
   esac
-  perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile_dev"
-  perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile_dev"
+  perl -i -ne 'print unless /#pdo_mysql/;' "${target_file}"
+  perl -i -ne 'print unless /#pdo_pgsql/;' "${target_file}"
 }
 
 setup_database_dockerfile_prod() {
+  local target_file
+  target_file="${project_root_dir}/Dockerfile"
+
   case "$projectinit_database_type" in
     "pgsql" )
-      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${project_root_dir}/Dockerfile"
+      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${target_file}"
       ;;
     "mysql" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile"
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
     "percona" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${project_root_dir}/Dockerfile"
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
   esac
-  perl -i -ne 'print unless /#pdo_mysql/;' "${project_root_dir}/Dockerfile"
-  perl -i -ne 'print unless /#pdo_pgsql/;' "${project_root_dir}/Dockerfile"
+  perl -i -ne 'print unless /#pdo_mysql/;' "${target_file}"
+  perl -i -ne 'print unless /#pdo_pgsql/;' "${target_file}"
 }
