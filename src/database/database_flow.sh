@@ -4,6 +4,7 @@ setup_database_docker_compose_dev() {
   case "$projectinit_database_type" in
     "no database" )
       perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose_dev.yaml"
+      perl -i -ne 'print unless /~~~database creation and migration~~~/;' "${project_root_dir}/start_dev.sh"
       ;;
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
@@ -24,12 +25,6 @@ setup_database_docker_compose_dev() {
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
     perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/compose_dev.yaml"
-  else
-    perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose_dev.yaml"
-    perl -i -ne 'print unless /~~~database creation and migration~~~/;' "${project_root_dir}/start_dev.sh"
-  fi
-  if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
-    perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose_dev.yaml"
   fi
 }
 
@@ -37,6 +32,7 @@ setup_database_docker_compose_prod() {
   case "$projectinit_database_type" in
     "no database" )
       perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose.yaml"
+      perl -i -ne 'print unless /~~~database creation and migration~~~/;' "${project_root_dir}/start.sh"
       ;;
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
@@ -57,12 +53,6 @@ setup_database_docker_compose_prod() {
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
     perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/compose.yaml"
-  else
-    perl -i -ne 'print unless /~~~database service~~~/;' "${project_root_dir}/compose.yaml"
-    perl -i -ne 'print unless /~~~database creation and migration~~~/;' "${project_root_dir}/start.sh"
-  fi
-  if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
-    perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose.yaml"
   fi
 }
 

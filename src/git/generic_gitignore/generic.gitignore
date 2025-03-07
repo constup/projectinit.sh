@@ -52,6 +52,8 @@ compose-local.yaml
 ## Symfony
 /config/secrets/dev/dev.decrypt.private.php
 /config/secrets/prod/prod.decrypt.private.php
+## Docker compose
+compose_secrets/
 
 # .env files
 ## Universal
@@ -81,6 +83,4 @@ yarn-error.log
 
 # Docker volumes
 ## Database
-/postgres_volume/
-/mysql_volume/
-/percona_volume/
+/database_volume/

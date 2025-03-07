@@ -5,9 +5,12 @@
     environment:
       MYSQL_DATABASE: "~~~database name~~~"
       MYSQL_USER: "~~~database user name~~~"
-      MYSQL_PASSWORD: "~~~database password~~~"
-      MYSQL_ROOT_PASSWORD: "~~~database root password~~~"
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
     ports:
       - '~~~database host port~~~:3306'
     volumes:
-      - "./mysql_volume:/var/lib/mysql"
+      - ./database_volume:/var/lib/mysql
+    secrets:
+      - mysql_password
+      - mysql_root_password

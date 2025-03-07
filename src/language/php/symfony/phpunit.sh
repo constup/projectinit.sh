@@ -63,7 +63,7 @@ ask_symfony_phpunit_version() {
       "yes" )
         break;;
       "no" )
-        ask_phpunit_version
+        ask_symfony_phpunit_version
         break;;
     esac
   done

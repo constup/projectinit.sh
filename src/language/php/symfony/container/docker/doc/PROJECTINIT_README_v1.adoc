@@ -53,6 +53,7 @@ Production files:
 * link:compose.yaml[compose.yaml] - Production Docker Compose. Note that, depending on your CI/CD setup, you may or may
 not need this file. For example, if your production environment uses some sort of orchestration (ex. Kubernetes), you
 may only need the Dockerfile.
+* link:start.sh[start.sh] - Production app container entrypoint.
 
 == Installing additional PHP extensions
 
@@ -63,6 +64,29 @@ To see the list of available PHP extensions, visit https://github.com/mlocati/do
 
 To install additional PHP extensions, add them to a desired `Dockerfile` as a parameter of `install-php-extensions`
 command. For more information and troubleshooting, refer to the PHP extension installer's documentation.
+
+== .gitignore
+
+If you are not using ProjectInit's `.gitignore` file, you'll need to add some entries in your own `.gitignore`:
+
+* `compose_secrets` - a folder containing secrets used in Docker compose. Official documentation: https://docs.docker.com/compose/how-tos/use-secrets/
+* `database_volume` - database volume mount
+* `.env.dev` - development .env file
+
+If you are using ProjectInit's `.gitignore`, everything is already configured for you.
+
+== .dockerignore
+
+If you are not using ProjectInit's `.dockerignore` file, you'll need to add some entries in your own `.dockerignore`:
+
+* `compose_secrets` - a folder containing secrets used in Docker compose. Official documentation: https://docs.docker.com/compose/how-tos/use-secrets/
+* `database_volume` - database volume mount
+
+== Docker compose secrets
+
+Docker Compose secrets are used to store sensitive information, like database passwords. The secrets are stored on the
+host inside link:./compose_secrets[`./compose_secrets`] directory. For more information about secrets in Docker Compose
+and how to use them, see: https://docs.docker.com/compose/how-tos/use-secrets/.
 
 == Globally available container software
 

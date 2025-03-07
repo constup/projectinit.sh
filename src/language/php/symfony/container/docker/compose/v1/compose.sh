@@ -18,6 +18,14 @@ setup_dev_compose() {
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_docker_compose_dev
+
+  perl -i -ne 'print unless /~~~compose secrets~~~/;' "${project_root_dir}/compose_dev.yaml"
+  if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
+    perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose_dev.yaml"
+  fi
+  if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
+    perl -i -ne 'print unless /secrets:/;' "${project_root_dir}/compose_dev.yaml"
+  fi
 }
 
 setup_prod_compose() {
@@ -30,4 +38,12 @@ setup_prod_compose() {
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_docker_compose_prod
+
+  perl -i -ne 'print unless /~~~compose secrets~~~/;' "${project_root_dir}/compose.yaml"
+  if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
+    perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose.yaml"
+  fi
+  if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
+    perl -i -ne 'print unless /secrets:/;' "${project_root_dir}/compose.yaml"
+  fi
 }
