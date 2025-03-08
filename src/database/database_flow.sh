@@ -21,6 +21,11 @@ setup_database_docker_compose_dev() {
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_docker_compose_dev
       ;;
+    "mariadb" )
+      # shellcheck source=../database/mariadb/v1/mariadb.sh
+      source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
+      setup_docker_compose_dev
+      ;;
   esac
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
@@ -49,6 +54,11 @@ setup_database_docker_compose_prod() {
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_docker_compose_prod
       ;;
+    "mariadb" )
+      # shellcheck source=../database/mariadb/v1/mariadb.sh
+      source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
+      setup_docker_compose_prod
+      ;;
   esac
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
@@ -70,6 +80,9 @@ setup_database_dockerfile_dev() {
     "percona" )
       perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
+    "mariadb" )
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      ;;
   esac
   perl -i -ne 'print unless /#pdo_mysql/;' "${target_file}"
   perl -i -ne 'print unless /#pdo_pgsql/;' "${target_file}"
@@ -87,6 +100,9 @@ setup_database_dockerfile_prod() {
       perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
     "percona" )
+      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      ;;
+    "mariadb" )
       perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
       ;;
   esac

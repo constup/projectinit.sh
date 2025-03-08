@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ask_percona_config() {
+ask_mariadb_config() {
   echo ""
-  echo "Percona configuration:"
-  echo "Available database versions: https://hub.docker.com/_/percona"
+  echo "MariaDB configuration:"
+  echo "Available database versions: https://hub.docker.com/_/mariadb"
   echo "  Database engine version (only numbered versions are allowed, 'latest' is not):"
   read -r -e projectinit_database_version
   echo "  Database name:"

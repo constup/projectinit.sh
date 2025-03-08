@@ -1,0 +1,18 @@
+~~~database service name~~~:
+    container_name: ~~~database container name~~~
+    image: mariadb:~~~database server version~~~
+    restart: always
+    environment:
+      MARIADB_DATABASE_FILE: /run/secrets/mariadb_database
+      MARIADB_USER_FILE: /run/secrets/mariadb_user
+      MARIADB_PASSWORD_FILE: /run/secrets/mariadb_password
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
+    ports:
+      - '~~~database host port~~~:3306'
+    volumes:
+      - ./database_volume:/var/lib/mysql
+    secrets:
+      - mariadb_database
+      - mariadb_user
+      - mariadb_password
+      - mariadb_root_password

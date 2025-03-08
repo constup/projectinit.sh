@@ -3,7 +3,7 @@
 ask_database_engine() {
   echo ""
   echo "Database engine:"
-  local options=("no database" "PostgreSQL" "MySQL" "Percona")
+  local options=("no database" "PostgreSQL" "MySQL" "Percona" "MariaDB")
   local option
   select option in "${options[@]}"; do
     case $option in
@@ -27,6 +27,12 @@ ask_database_engine() {
         # shellcheck source=./percona/ask_percona.sh
         source "${tool_dir}/src/database/percona/ask_percona.sh"
         ask_percona_config
+        break;;
+      "MariaDB" )
+        projectinit_database_type="mariadb"
+        # shellcheck source=./mariadb/ask_mariadb.sh
+        source "${tool_dir}/src/database/mariadb/ask_mariadb.sh"
+        ask_mariadb_config
         break;;
     esac
   done
