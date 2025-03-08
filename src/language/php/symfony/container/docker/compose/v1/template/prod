@@ -1,5 +1,6 @@
 services:
   ~~~database service~~~
+  ~~~tools~~~
   ~~~service name~~~:
     container_name: ~~~container name~~~
     depends_on:

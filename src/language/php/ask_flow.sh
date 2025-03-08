@@ -29,6 +29,10 @@ run_php_docker_ask_flow() {
       if [ "${projectinit_database_type}" != "no database" ]; then
         projectinit_orm="Doctrine"
       fi
+
+      # shellcheck source=../../tools/ask_tools.sh
+      source "${tool_dir}/src/tools/ask_tools.sh"
+      ask_tools
       ;;
   esac
 }

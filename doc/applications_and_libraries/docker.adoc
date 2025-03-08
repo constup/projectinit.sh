@@ -8,8 +8,9 @@
 ** Unit testing: PHPUnit
 ** Linters and code style fixers: PHPCSFixer
 * Symfony
-** Application types: Webb application with frontend, CLI/API application
+** Application types: Web application with frontend, CLI/API application
 ** Database engines: PostgreSQL, MySQL, Percona, MariaDB
+** Caching: Memcached
 ** ORM: Doctrine (Symfony bundled)
 ** Unit testing: PHPUnit
 ** Linters and code style fixers: PHPCSFixer
