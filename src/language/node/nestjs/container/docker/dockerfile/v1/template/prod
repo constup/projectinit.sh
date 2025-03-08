@@ -1,0 +1,16 @@
+FROM node:~~~language version~~~-alpine AS build_step
+RUN npm i -g @nestjs/cli@~~~nestjs version~~~~~~install pnpm~~~
+USER node
+WORKDIR /usr/src/app
+COPY --chown=node:node . .
+RUN ~~~package manager~~~ install~~~install options~~~ && \
+    nest build
+
+FROM node:~~~language version~~~-alpine
+RUN apk add --no-cache dumb-init
+USER node
+WORKDIR /usr/src/app
+COPY --chown=node:node --from=build_step /usr/src/app ./
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "/usr/src/app/start.sh"]
+EXPOSE 3000
