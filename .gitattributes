@@ -1,0 +1,4 @@
+* text=lf
+*.sh text
+*.png binary
+*.jpg binary
