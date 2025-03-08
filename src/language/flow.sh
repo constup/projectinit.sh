@@ -2,6 +2,7 @@
 
 run_flow() {
   projectinit_compose_has_secrets=0
+  projectinit_use_memcached=0
   case $projectinit_language in
     "php" )
       # shellcheck source=./php/flow.sh
