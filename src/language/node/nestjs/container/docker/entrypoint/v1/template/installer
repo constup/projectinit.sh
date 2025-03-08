@@ -1,0 +1,7 @@
+#!/bin/bash
+
+nest new ~~~nestjs project name~~~ --directory=. --skip-git~~~strict typescript~~~ --package-manager=~~~package manager~~~
+if [ "$(jq '.pnpm.onlyBuiltDependencies' /usr/src/app/package.json)" = "null" ]; then
+  jq '. + { "pnpm": { "onlyBuiltDependencies": [ "@nestjs/core", "@swc/core" ] }}' /usr/src/app/package.json > /usr/src/app/temp.json \
+    && mv /usr/src/app/temp.json /usr/src/app/package.json
+fi

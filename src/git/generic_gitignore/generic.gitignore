@@ -26,9 +26,11 @@
 ## NodeJS
 /node_modules/
 
-# Production code
+# Local configuration
 ## Docker
-compose.yaml
+compose-local.yaml
+
+# Production code
 ## Symfony
 /public/bundles/
 ## NodeJS
@@ -50,6 +52,8 @@ compose.yaml
 ## Symfony
 /config/secrets/dev/dev.decrypt.private.php
 /config/secrets/prod/prod.decrypt.private.php
+## Docker compose
+compose_secrets/
 
 # .env files
 ## Universal
@@ -79,5 +83,4 @@ yarn-error.log
 
 # Docker volumes
 ## Database
-/postgres_volume/
-/mysql_volume/
+/database_volume/

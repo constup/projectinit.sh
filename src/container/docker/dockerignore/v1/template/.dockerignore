@@ -1,0 +1,28 @@
+# IDE
+## JetBrains
+.idea/
+## VSCode
+.vscode/
+## Atom
+.project/
+## Sublime
+*.sublime-workspace
+## AWS Cloud9
+.c9/
+## Visual Studio
+.vs/
+
+# 3rd party packages
+## PHP/Composer
+vendor/
+## NodeJS
+node_modules/
+
+# Git
+.git/
+
+# ProjectInit standard volumes
+database_volume/
+
+# Docker Compose secrets
+compose_secrets/

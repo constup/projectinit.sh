@@ -1,0 +1,15 @@
+services:
+    ~~~service name~~~:
+        container_name: ~~~container name~~~
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: ~~~image name~~~
+        restart: "always"
+        ports:
+            - "~~~host port~~~:3000"
+        environment:
+            - APP_ENV=prod
+            - NODE_ENV=production
+        volumes:
+            - ./:/usr/src/app

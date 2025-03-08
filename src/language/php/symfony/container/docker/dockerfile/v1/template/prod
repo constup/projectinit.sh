@@ -1,0 +1,39 @@
+FROM php:~~~language version~~~
+
+WORKDIR /usr/src/app
+COPY . .
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        zip \
+        unzip \
+        wget \
+        dumb-init \
+        && \
+    rm -rf /var/lib/apt/lists/* && \
+    chmod +x /usr/bin/composer && \
+    chmod +x /usr/local/bin/install-php-extensions && \
+    sync && \
+    install-php-extensions \
+        apcu \
+        intl \
+        zip \
+        #pdo_pgsql \
+        #pdo_mysql \
+        gmp \
+        && \
+    groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
+    chown -R phpuser:phpgroup /usr/src/app
+
+USER phpuser
+RUN git config --global --add safe.directory /usr/src/app && \
+    cd /usr/src/app && \
+    composer install
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "/usr/src/app/start.sh"]

@@ -1,0 +1,222 @@
+= Globals
+:toc:
+:toclevels: 5
+
+== ProjectInit
+
+
+|===
+|variable |type |description
+
+|`tool_dir`
+|string value
+|ProjectInit's root directory
+
+|`project_root_dir`
+|string value
+|project's root directory
+
+|`projectinit_create_project_root_directory`
+|0/1 flag
+|flag for creating project's root directory
+|===
+
+== Git
+
+|===
+|variable |type |description
+
+|`projectinit_git_user_name`
+|string value
+|Git username for the project.
+
+|`projectinit_git_user_email`
+|string value
+|Git user email for the project.
+
+|`projectinit_use_projectinit_gitignore`
+|0/1 flag
+|flag whether to use ProjectInit's `.gitignore`
+|===
+
+== Container
+
+|===
+|variable |type |description
+
+|`projectinit_container_type`
+|enum (`none`, docker`)
+|Container type enum.
+
+|===
+
+=== Docker
+|===
+|variable |type |description
+
+|`projectinit_docker_service_dependencies`
+|integer
+|The number of dependency services for your app service. If it's 0, dependencies block is removed from `compose.yaml`
+
+|`projectinit_language_version`
+|string
+|Version of the base language or technology (PHP, Node,...)
+
+|`projectinit_app_service_name`
+|string value
+|Name of the Docker service which contains your application
+
+|`projectinit_app_host_port`
+|integer
+|Application host port
+
+|`projectinit_compose_has_secrets`
+|0/1 flag
+|Flag to show if Docker compose file has secrets.
+
+|===
+
+== Language or technology
+
+|===
+|variable |type |origin |description
+
+|`projectinit_language`
+|enum (`php`, `node`)
+|`ask_language`
+|Language or technology enum.
+|===
+
+=== PHP
+
+|===
+|variable |type |description
+
+|`projectinit_use_global_composer`
+|0/1 flag
+|Flag for using global or local Composer.
+
+|`projectinit_php_project_type`
+|enum (`composer`, `symfony`)
+|Project type.
+
+|`projectinit_is_composer_initialized`
+|0/1 flag
+|Flag to determine whether `comoser.json` is present.
+
+|===
+
+==== Tools
+
+|===
+|variable |type |description
+
+|`projectinit_phpunit_version`
+|string value
+|Version of PHPUnit to be installed. Each type of the project (ex. composer, Symfony,...) has its own set of PHPUnit installation options.
+
+|`projectinit_use_projectinit_phpcsfixer_dist`
+|0/1 flag
+|Flag whether to use ProjectInit's PHP CS Fixer configuration
+
+|`projectinit_use_projectinit_phpunit_dist`
+|0/1 flag
+|Flag whether to use ProjectInit's PHPUnit configuration
+|===
+
+==== Composer
+
+|===
+|variable |type |description
+
+|`projectinit_composer_library_name`
+|string value
+|Composer library name. Format: `<your_brand>/<your_livrary_name>`
+
+|===
+==== Symfony
+
+|===
+|variable |type |description
+
+|`projectinit_symfony_version`
+|string value (example: `7.2.x`)
+|Symfony version.
+
+|`projectinit_symfony_app_type`
+|enum (`full`, `api`)
+|Full web application with frontend or API/CLI application.
+|===
+
+== Node
+
+|===
+|variable |type |description
+
+|`projectinit_node_project_type`
+|enum(`nestjs`)
+|Project type.
+
+|`projectinit_node_package_manager`
+|enum(`npm`, `yarn`, `pnpm`)
+|Package manager. Applied if the project type supports it.
+
+|===
+
+=== NestJS
+
+|===
+|variable |type |description
+
+|`projectinit_nestjs_version`
+|string value
+|NestJS version. Format: `10.4`
+
+|`projectinit_typescript_strict_mode`
+|0/1 flag
+|Whether to use TypeScript in strict mode or not.
+
+|`projectinit_nestjs_project_name`
+|string value
+|NestJS project name.
+
+|===
+
+== Database
+
+|===
+|variable |type |description
+
+|`projectinit_database_type`
+|enum(`no database`, `pgsql`)
+|Database type string or no database.
+
+|`projectinit_database_version`
+|string value
+|Database engine version. Only numbered versions are allowed. Using `latest` is not allowed.
+
+|`projectinit_database_name`
+|string value
+|Database name
+
+|`projectinit_database_user`
+|string value
+|Database username
+
+|`projectinit_database_password`
+|string value
+|Database user password
+
+|`projectinit_database_root_password`
+|string value
+|Database root password. Some engines might not use this.
+
+|`projectinit_database_service_name`
+|string value
+|Database container service name
+
+|`projectinit_database_host_port`
+|string value
+|Database container host port
+
+|===

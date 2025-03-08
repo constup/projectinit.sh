@@ -1,0 +1,18 @@
+= Applications and libraries - Bare metal
+:toc:
+:toclevels: 5
+
+== PHP
+
+* Composer library
+** Unit testing: PHPUnit
+** Linters and code style fixers: PHPCSFixer
+* Symfony
+** Application types: Webb application with frontend, CLI/API application
+** Unit testing: PHPUnit
+** Linters and code style fixers: PHPCSFixer
+
+== Node
+
+* NestJS
+** Unit testing: Jest (NestJS bundled)

@@ -15,18 +15,17 @@ made to just automate creating libraries, projects and environments the same way
 Set up a containerized or local (bare metal) environment for developing applications or libraries in just a couple of
 guided prompts.
 
-Supports multiple programming languages and frameworks. Whether it's a npm package, composer library, NestJS or Symfony
-application, ProjectInit got it covered.
+Supports multiple programming languages and frameworks.
 
 == Key features
 
-* Written in POSIX compliant Bash. Available on Linux, Windows and MacOS.
-* Create new or continue working on the existing projects, whether it's a full application or a library
+* Written in POSIX compliant Bash. Available on Linux, Windows and MacOS
+* Create a new project, whether it's a full application or a library
 * Set up a project using locally installed tools (languages, package managers,...) or containers (Docker)
-* Containerized projects with zero dependencies (except for Docker or Podman).
+* Containerized projects with zero dependencies on your locally installed tech stack
 * Support for multiple languages, frameworks and types of libraries
 * No additional abstraction layer. Projects created with ProjectInit are raw, just like you've set up them yourself
-manually
+manually. Manage and update your project just like any other.
 * No bloatware
 
 == Prerequisites
@@ -44,7 +43,7 @@ the programming language that you want to work on
 ** Other dependencies might be required. ProjectInit will check these dependencies and let you know if anything is
 missing.
 * When running ProjectInit to create *containerized projects*:
-** Docker.
+** Container software (Docker).
 ** No other dependencies required.
 
 == Installation
@@ -73,37 +72,18 @@ sh configure.sh
 
 == How to use
 
-All tools (scripts) are located in ProjectInit's `bin` folder, separated into directories based on a language or
-technology they are covering. Just open your bash terminal, `cd` into the desired `bin` subdirectory and run.
-
-Example:
+Go to ProjectInit's `bin` directory and simply run it:
 
 [source,shell]
 ----
-cd bin/php
-sh init_generic.sh
+cd bin
+sh projectinit.sh
 ----
 
-== Supported project types
+== Supported project types (applications and libraries)
 
-=== Bare metal
-
-Set up a project using your own already installed tech stack.
-
-* PHP
-** Composer library
-** Symfony application (web and cli/API)
-* NodeJS
-** NestJS application
-
-=== Containerized
-
-Set up a project in a container.
-
-* PHP
-** Symfony application (supported versions: 7.1, 7.2)
-* Databases
-** PostgreSQL
+- link:doc/applications_and_libraries/bare_metal.adoc[Bare metal]
+- link:doc/applications_and_libraries/docker.adoc[Docker]
 
 == Comparison to other tools
 
@@ -134,10 +114,6 @@ up or run servers or services on your system. Once it's done, it's done.
 * ProjectInit is a set of Bash scripts and that's it. There are no servers, services, repositories or CDNs that have to
 be up in order for ProjectInit to work. Even if development and maintenance of ProjectInit stops, you will still have
 the latest version of a working tool.
-
-== More documentation
-
-* link:doc/TOOL_INTEGRATIONS.adoc[Integrations with editors and IDEs]
 
 == Supporting development
 

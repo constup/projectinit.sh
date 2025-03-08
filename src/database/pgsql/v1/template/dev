@@ -1,0 +1,16 @@
+~~~database service name~~~:
+    container_name: ~~~database container name~~~
+    image: postgres:~~~database server version~~~
+    restart: always
+    environment:
+      POSTGRES_DB_FILE: /run/secrets/postgres_db
+      POSTGRES_USER_FILE: /run/secrets/postgres_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    ports:
+      - "~~~database host port~~~:5432"
+    volumes:
+      - ./database_volume:/var/lib/database/data
+    secrets:
+      - postgres_db
+      - postgres_user
+      - postgres_password
