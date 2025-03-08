@@ -3,8 +3,8 @@
     image: percona:~~~database server version~~~
     restart: always
     environment:
-      MYSQL_DATABASE: "~~~database name~~~"
-      MYSQL_USER: "~~~database user name~~~"
+      MYSQL_DATABASE_FILE: /run/secrets/mysql_database
+      MYSQL_USER: /run/secrets/mysql_user
       MYSQL_PASSWORD_FILE: /run/secrets/mysql_password
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
     ports:
@@ -12,5 +12,7 @@
     volumes:
       - ./database_volume:/var/lib/mysql
     secrets:
+      - mysql_database
+      - mysql_user
       - mysql_password
       - mysql_root_password
