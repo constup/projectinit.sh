@@ -45,6 +45,34 @@ configure_gitignore() {
   echo "  .gitignore configured..."
 }
 
+ask_gitattributes_configuration() {
+  echo ""
+  echo "Do you want to use the default .gitattributes (if there is any) or ProjectInit.sh .gitattributes file?"
+  local options=("Use the default .gitattributes" "Use ProjectInit.sh .gitattributes")
+  local selection
+  select selection in "${options[@]}"; do
+    case $selection in
+      "Use default .gitattributes")
+        projectinit_use_projectinit_gitattributes=0
+        break
+        ;;
+      "Use ProjectInit.sh .gitattributes")
+        projectinit_use_projectinit_gitattributes=1
+        break
+        ;;
+    esac
+  done
+}
+
+configure_gitattributes() {
+  echo ""
+  echo "Configuring .gitattributes..."
+  if [ "$projectinit_use_projectinit_gitattributes" -eq 1 ]; then
+    cp -f "${tool_dir}/src/git/generic_gitattributes/generic.gitattributes" "${project_root_dir}/.gitattributes"
+  fi
+  echo "  .gitattributes configured..."
+}
+
 configure_git_repository() {
   echo "Configuring git repository..."
   cd "${project_root_dir}" && git init
