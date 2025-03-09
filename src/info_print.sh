@@ -11,12 +11,14 @@ print_project_configuration() {
   if [[ -v projectinit_database_type ]]; then
     print_database_block
   fi
+  print_tools_block
   echo "Press Enter to continue..."
   read -r
 }
 
 print_directory_block() {
-  echo "| Directory: ${project_root_dir}                                      "
+  echo "| Directory: ${project_root_dir}"
+  echo "| Project name: ${projectinit_project_name}"
   echo "|---------------------------------------------------------------------"
 }
 
@@ -132,6 +134,23 @@ print_database_block() {
     echo "| Host port: ${projectinit_database_host_port}"
     if [ "$projectinit_container_type" = "docker" ]; then
       echo "| Docker service name: ${projectinit_database_service_name}"
+    fi
+  fi
+  echo "|---------------------------------------------------------------------"
+}
+
+print_tools_block() {
+  echo "|                                Tools"
+  echo "|---------------------------------------------------------------------"
+  if [ "${projectinit_tools_count}" = 0 ]; then
+    echo "| No additional tools are configured."
+  else
+    if [ "${projectinit_use_memcached}" = 1 ]; then
+      echo "| Memcached"
+      echo "|------------------------------"
+      echo "| Memcached version: ${projectinit_memcached_version}"
+      echo "| Memcached host port: ${projectinit_memcached_host_port}"
+      echo "|------------------------------"
     fi
   fi
   echo "|---------------------------------------------------------------------"

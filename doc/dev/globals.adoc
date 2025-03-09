@@ -23,6 +23,11 @@
 |`projectinit_project_name`
 |string value
 |Project name. Used throughout the project configuration for various purposes (example: Docker Compose service names)
+
+|`projectinit_tools_count`
+|integer
+|The number of additional tools configured for the project (example: memcached, redis,...)
+
 |===
 
 == Git
