@@ -19,6 +19,12 @@ setup_dev_compose() {
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_docker_compose_dev
 
+  if [ "${projectinit_use_memcached}" -eq 1 ]; then
+    # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
+    source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+    setup_memcached_docker_compose_dev
+  fi
+
   perl -i -ne 'print unless /~~~compose secrets~~~/;' "${project_root_dir}/compose_dev.yaml"
   if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
     perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose_dev.yaml"
@@ -26,6 +32,7 @@ setup_dev_compose() {
   if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
     perl -i -ne 'print unless /secrets:/;' "${project_root_dir}/compose_dev.yaml"
   fi
+  perl -i -ne 'print unless /~~~tools~~~/;' "${project_root_dir}/compose_dev.yaml"
 }
 
 setup_prod_compose() {
@@ -39,6 +46,12 @@ setup_prod_compose() {
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_docker_compose_prod
 
+  if [ "${projectinit_use_memcached}" -eq 1 ]; then
+    # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
+    source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+    setup_memcached_docker_compose_prod
+  fi
+
   perl -i -ne 'print unless /~~~compose secrets~~~/;' "${project_root_dir}/compose.yaml"
   if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
     perl -i -ne 'print unless /depends_on:/;' "${project_root_dir}/compose.yaml"
@@ -46,4 +59,5 @@ setup_prod_compose() {
   if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
     perl -i -ne 'print unless /secrets:/;' "${project_root_dir}/compose.yaml"
   fi
+  perl -i -ne 'print unless /~~~tools~~~/;' "${project_root_dir}/compose.yaml"
 }

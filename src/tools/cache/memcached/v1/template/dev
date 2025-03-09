@@ -1,0 +1,11 @@
+~~~memcached service name~~~:
+    image: memcached:~~~memcached version~~~
+    container_name: ~~~memcached service name~~~
+    command:
+        - --conn-limit=1024
+        - --memory-limit=64
+        - --threads=4
+    ports:
+        - "~~~memcached host port~~~:11211"
+    restart: always
+~~~tools~~~

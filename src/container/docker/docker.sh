@@ -22,4 +22,7 @@ calculate_app_service_dependencies() {
   if [ ! "${projectinit_database_type}" = "no database" ]; then
     projectinit_docker_service_dependencies=$((projectinit_docker_service_dependencies + 1))
   fi
+  if [ "${projectinit_use_memcached}" -eq 1 ]; then
+    projectinit_docker_service_dependencies=$((projectinit_docker_service_dependencies + 1))
+  fi
 }

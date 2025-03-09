@@ -12,6 +12,12 @@ setup_dev_dockerfile() {
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_dockerfile_dev
+
+  # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
+  source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+  setup_memcached_dockerfile_dev
+
+  perl -i -ne 'print unless /~~~php extension~~~/;' "${project_root_dir}/Dockerfile_dev"
 }
 
 setup_prod_dockerfile() {
@@ -21,4 +27,10 @@ setup_prod_dockerfile() {
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_dockerfile_prod
+
+  # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
+  source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+  setup_memcached_dockerfile_prod
+
+  perl -i -ne 'print unless /~~~php extension~~~/;' "${project_root_dir}/Dockerfile"
 }

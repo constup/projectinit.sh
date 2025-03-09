@@ -72,20 +72,18 @@ setup_database_dockerfile_dev() {
 
   case "$projectinit_database_type" in
     "pgsql" )
-      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_pgsql \\\\/g" "${target_file}"
       ;;
     "mysql" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
     "percona" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
     "mariadb" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
   esac
-  perl -i -ne 'print unless /#pdo_mysql/;' "${target_file}"
-  perl -i -ne 'print unless /#pdo_pgsql/;' "${target_file}"
 }
 
 setup_database_dockerfile_prod() {
@@ -94,18 +92,16 @@ setup_database_dockerfile_prod() {
 
   case "$projectinit_database_type" in
     "pgsql" )
-      perl -pi -e "s/#pdo_pgsql/pdo_pgsql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_pgsql \\\\/g" "${target_file}"
       ;;
     "mysql" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
     "percona" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
     "mariadb" )
-      perl -pi -e "s/#pdo_mysql/pdo_mysql/g" "${target_file}"
+      perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        pdo_mysql \\\\/g" "${target_file}"
       ;;
   esac
-  perl -i -ne 'print unless /#pdo_mysql/;' "${target_file}"
-  perl -i -ne 'print unless /#pdo_pgsql/;' "${target_file}"
 }

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 run_flow() {
-  projectinit_compose_has_secrets=0
   case $projectinit_language in
     "php" )
       # shellcheck source=./php/flow.sh

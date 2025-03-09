@@ -2,7 +2,7 @@
 
 print_project_configuration() {
   echo ""
-  echo "Your project will be set up with the following options:"
+  echo "Project identity card:"
   echo "┌---------------------------------------------------------------------"
   print_directory_block
   print_git_block

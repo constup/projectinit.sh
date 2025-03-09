@@ -220,3 +220,28 @@
 |Database container host port
 
 |===
+
+== Caching
+
+=== Memcached
+
+|===
+|variable |type |description
+
+|`projectinit_use_memcached`
+|0/1 flag
+|Whether Memcached is used in the project or not.
+
+|`projectinit_memcached_service_name`
+|string value
+|Memcached service name in Docker compose
+
+|`projectinit_memcached_version`
+|string value
+|Memcached Docker image version
+
+|`projectinit_memcached_host_port`
+|integer
+|Memcached host port used in Docker Compose
+
+|===

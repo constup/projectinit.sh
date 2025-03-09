@@ -17,6 +17,7 @@ check_project_root_directory
 # Git setup
 ask_git_user_configuration
 ask_gitignore_configuration
+ask_gitattributes_configuration
 #---
 
 run_ask_flow
@@ -31,6 +32,7 @@ create_directories
 configure_git_repository
 configure_git_user
 configure_gitignore
+configure_gitattributes
 #---
 
 run_flow
