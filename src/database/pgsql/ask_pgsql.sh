@@ -16,8 +16,4 @@ ask_pgsql_config() {
   projectinit_database_password=$(read_password)
   echo "  Host port:"
   read -r -e projectinit_database_host_port
-  if [ "$projectinit_container_type" = "docker" ]; then
-    echo "  Docker service name:"
-    read -r -e projectinit_database_service_name
-  fi
 }

@@ -12,6 +12,10 @@ check_user_configuration
 # Directory setup
 ask_directories
 check_project_root_directory
+echo ""
+echo "Project name (in lower_snake_case_format):"
+echo "NOTE: This project name will be used as a base for creating several configuration options for your project, including names of Docker Compose services."
+read -r -e projectinit_project_name
 #---
 
 # Git setup
@@ -21,7 +25,7 @@ ask_gitattributes_configuration
 #---
 
 run_ask_flow
-
+init_globals_before_starting_flow
 print_project_configuration
 
 # Directory setup

@@ -16,7 +16,6 @@ ask_project_type() {
         source "${tool_dir}/src/language/node/nestjs/nestjs.sh"
         ask_nestjs_version
         ask_typescript_strict_mode
-        ask_nestjs_project_name
         break;;
     esac
   done

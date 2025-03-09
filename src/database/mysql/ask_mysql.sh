@@ -18,8 +18,4 @@ ask_mysql_config() {
   projectinit_database_root_password=$(read_password)
   echo "  Host port:"
   read -r -e projectinit_database_host_port
-  if [ "$projectinit_container_type" = "docker" ]; then
-    echo "  Docker service name:"
-    read -r -e projectinit_database_service_name
-  fi
 }
