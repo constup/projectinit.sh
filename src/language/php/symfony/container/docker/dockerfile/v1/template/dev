@@ -25,8 +25,7 @@ RUN mkdir /usr/src/bin && \
         intl \
         zip \
         gmp \
-        #pdo_pgsql \
-        #pdo_mysql \
+        ~~~php extension~~~
         pcov \
         xdebug \
         && \

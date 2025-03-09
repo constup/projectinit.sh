@@ -22,3 +22,20 @@ setup_memcached_docker_compose_prod() {
   perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_memcached_service_name}/" "${target_file}"
 }
 
+setup_memcached_dockerfile_dev() {
+  if [ "${projectinit_use_memcached}" -eq 1 ]; then
+    local target_file
+    target_file="${project_root_dir}/Dockerfile_dev"
+
+    perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        memcached \\\\/g" "${target_file}"
+  fi
+}
+
+setup_memcached_dockerfile_prod() {
+  if [ "${projectinit_use_memcached}" -eq 1 ]; then
+    local target_file
+    target_file="${project_root_dir}/Dockerfile"
+
+    perl -pi -e "s/(.*~~~php extension~~~.*)/\1\n        memcached \\\\/g" "${target_file}"
+  fi
+}
