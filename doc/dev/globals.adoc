@@ -28,6 +28,11 @@
 |integer
 |The number of additional tools configured for the project (example: memcached, redis,...)
 
+|`projectinit_generate_id_card_text`
+|0/1 flag
+|Flag to determine whether to generate the text version of the Project ID card (`projectinit_id_card.txt`) in project's
+root directory.
+
 |===
 
 == Git
