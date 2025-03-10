@@ -12,8 +12,4 @@ ask_memcached_config() {
     projectinit_memcached_host_port=11211
     echo "  Using default port 11211..."
   fi
-  if [ "$projectinit_container_type" = "docker" ]; then
-    echo "Memcached Docker Compose service name:"
-    read -r -e projectinit_memcached_service_name
-  fi
 }

@@ -3,14 +3,14 @@
 ask_phpunit_config() {
   echo ""
   echo "Do you want to use default PHPUnit configuration (if there is any) or ProjectInit's PHPUnit configuration?"
-  local options=("Use default phpunit.xml.dist" "Use ProjectInit's phpunit.xml.dist")
+  local options=("Use default phpunit.dist.xml" "Use ProjectInit's phpunit.dist.xml")
   local option
   select option in "${options[@]}"; do
     case $option in
-      "Use default phpunit.xml.dist" )
+      "Use default phpunit.dist.xml" )
         projectinit_use_projectinit_phpunit_dist=0
         break;;
-      "Use ProjectInit's phpunit.xml.dist" )
+      "Use ProjectInit's phpunit.dist.xml" )
         projectinit_use_projectinit_phpunit_dist=1
         break;;
     esac
@@ -27,22 +27,22 @@ install_phpunit_bare_metal() {
 
 configure_phpunit() {
   echo ""
-  echo "Configuring phpunit.xml.dist..."
+  echo "Configuring phpunit.dist.xml..."
   if [ "$projectinit_use_projectinit_phpunit_dist" -eq 1 ]; then
     case $projectinit_phpunit_version in
       "phpunit/phpunit:^9" )
-        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v9.xml.dist" "${project_root_dir}/phpunit.xml.dist"
+        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v9.xml.dist" "${project_root_dir}/phpunit.dist.xml"
         ;;
       "phpunit/phpunit:^10" )
-        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v10.xml.dist" "${project_root_dir}/phpunit.xml.dist"
+        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v10.xml.dist" "${project_root_dir}/phpunit.dist.xml"
         ;;
       "phpunit/phpunit:^11" )
-        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v11.xml.dist" "${project_root_dir}/phpunit.xml.dist"
+        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v11.xml.dist" "${project_root_dir}/phpunit.dist.xml"
         ;;
       "phpunit/phpunit:^12" )
-        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v12.xml.dist" "${project_root_dir}/phpunit.xml.dist"
+        cp -f "${tool_dir}/src/language/php/tools/unit_testing/phpunit/v12.xml.dist" "${project_root_dir}/phpunit.dist.xml"
         ;;
     esac
   fi
-  echo "  phpunit.xml.dist configured"
+  echo "  phpunit.dist.xml configured"
 }

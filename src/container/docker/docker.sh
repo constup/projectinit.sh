@@ -11,8 +11,6 @@ ask_base_service_properties() {
       ;;
   esac
   read -r -e projectinit_language_version
-  echo "  Docker service name:"
-  read -r -e projectinit_app_service_name
   echo "  Application host port:"
   read -r -e projectinit_app_host_port
 }

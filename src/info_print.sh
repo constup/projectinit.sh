@@ -11,12 +11,12 @@ print_project_configuration() {
   if [[ -v projectinit_database_type ]]; then
     print_database_block
   fi
-  echo "Press Enter to continue..."
-  read -r
+  print_tools_block
 }
 
 print_directory_block() {
-  echo "| Directory: ${project_root_dir}                                      "
+  echo "| Directory: ${project_root_dir}"
+  echo "| Project name: ${projectinit_project_name}"
   echo "|---------------------------------------------------------------------"
 }
 
@@ -94,12 +94,12 @@ print_php_tech_stack() {
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
   if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
     if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-      echo "| Default phpunit.xml.dist will be used"
+      echo "| Default phpunit.dist.xml will be used"
     else
-      echo "| ProjectInit's phpunit.xml.dist will be used"
+      echo "| ProjectInit's phpunit.dist.xml will be used"
     fi
   else
-      echo "| Symfony Test Pack was used. Configure phpunit.xml.dist manually"
+      echo "| Symfony Test Pack was used. Configure phpunit.dist.xml manually"
   fi
   echo "| CS Fixer: PHP CS Fixer"
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
@@ -122,6 +122,9 @@ print_node_tech_stack() {
 print_database_block() {
   echo "|                                Database"
   echo "|---------------------------------------------------------------------"
+  if [ "$projectinit_container_type" = "docker" ]; then
+    echo "| Docker service: ${projectinit_database_service_name}"
+  fi
   echo "| Database engine: ${projectinit_database_type}"
   if [ ! "$projectinit_database_type" = "no database" ]; then
     echo "| Version: ${projectinit_database_version}"
@@ -130,9 +133,48 @@ print_database_block() {
     fi
     echo "| Database name: ${projectinit_database_name}"
     echo "| Host port: ${projectinit_database_host_port}"
-    if [ "$projectinit_container_type" = "docker" ]; then
-      echo "| Docker service name: ${projectinit_database_service_name}"
+  fi
+  echo "|---------------------------------------------------------------------"
+}
+
+print_tools_block() {
+  echo "|                                Tools"
+  echo "|---------------------------------------------------------------------"
+  if [ "${projectinit_tools_count}" = 0 ]; then
+    echo "| No additional tools are configured."
+  else
+    if [ "${projectinit_use_memcached}" = 1 ]; then
+      echo "| Memcached"
+      echo "|------------------------------"
+      if [ "${projectinit_container_type}" = "docker" ]; then
+        echo "| Docker service: ${projectinit_memcached_service_name}"
+      fi
+      echo "| Memcached version: ${projectinit_memcached_version}"
+      echo "| Memcached host port: ${projectinit_memcached_host_port}"
+      echo "|------------------------------"
     fi
   fi
   echo "|---------------------------------------------------------------------"
+}
+
+ask_generate_project_id_card_text() {
+  echo "Do you want to save this Project ID card as a text file inside your project?"
+  local options=("yes" "no")
+  local option
+  select option in "${options[@]}"; do
+    case $option in
+      "yes" )
+        projectinit_generate_id_card_text=1
+        break;;
+      "no" )
+        projectinit_generate_id_card_text=0
+        nreak;;
+    esac
+  done
+}
+
+generate_project_id_card_text() {
+  if [ "${projectinit_generate_id_card_text}" = 1 ]; then
+    print_project_configuration >> "${project_root_dir}/projectinit_id_card.txt"
+  fi
 }

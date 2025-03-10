@@ -26,4 +26,5 @@ run_ask_flow() {
 init_globals() {
   projectinit_compose_has_secrets=0
   projectinit_use_memcached=0
+  projectinit_tools_count=0
 }

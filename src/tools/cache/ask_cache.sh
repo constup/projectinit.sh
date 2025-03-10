@@ -8,6 +8,9 @@ ask_cache() {
   select option in "${options[@]}"; do
     case $option in
       "memcached" )
+        if [ "${projectinit_use_memcached}" = 0 ]; then
+          projectinit_tools_count=$((projectinit_tools_count + 1))
+        fi
         projectinit_use_memcached=1
         # shellcheck source=./memcached/ask_memcached.sh
         source "${tool_dir}/src/tools/cache/memcached/ask_memcached.sh"

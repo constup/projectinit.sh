@@ -38,9 +38,3 @@ ask_typescript_strict_mode() {
     esac
   done
 }
-
-ask_nestjs_project_name() {
-  echo ""
-  echo "NestJS project name:"
-  read -r projectinit_nestjs_project_name
-}
