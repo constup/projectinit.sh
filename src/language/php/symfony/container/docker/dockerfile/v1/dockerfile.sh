@@ -1,8 +1,17 @@
 #!/bin/bash
 
 setup_installer_dockerfile() {
-  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/installer" "${project_root_dir}/Dockerfile"
-  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${project_root_dir}/Dockerfile"
+  local target_file
+  target_file="${project_root_dir}/Dockerfile"
+
+  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/installer" "${target_file}"
+  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${target_file}"
+  perl -pi -e "s/~~~framework version~~~/${projectinit_symfony_version}/g" "${target_file}"
+  if [ "$projectinit_symfony_app_type" = "full" ]; then
+    perl -pi -e "s/~~~web app~~~/--webapp/g" "${target_file}"
+  else
+    perl -pi -e "s/~~~web app~~~//g" "${target_file}"
+  fi
 }
 
 setup_dev_dockerfile() {
