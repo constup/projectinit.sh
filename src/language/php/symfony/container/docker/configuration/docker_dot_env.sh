@@ -1,6 +1,6 @@
 #!/bin/bash
 
-add_user_and_group_ids_to_installer() {
+add_user_and_group_ids() {
   if [ ! -f "${project_root_dir}/.env.docker" ]; then
     touch "${project_root_dir}/.env.docker"
   fi

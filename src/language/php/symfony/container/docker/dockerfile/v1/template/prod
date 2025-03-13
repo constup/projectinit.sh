@@ -14,9 +14,7 @@ RUN apt-get update && \
         dumb-init \
         && \
     rm -rf /var/lib/apt/lists/* && \
-    chmod +x /usr/bin/composer && \
-    chmod +x /usr/local/bin/install-php-extensions && \
-    sync && \
+RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions \
         apcu \
         intl \
@@ -24,15 +22,14 @@ RUN apt-get update && \
         ~~~php extension~~~
         gmp \
         && \
-    groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
+    chmod +x /usr/bin/composer
+RUN groupadd phpgroup && \
+    useradd phpuser -g phpgroup --no-log-init
+RUN composer install && \
     chown -R phpuser:phpgroup /usr/src/app
 
-USER phpuser
-RUN git config --global --add safe.directory /usr/src/app && \
-    cd /usr/src/app && \
-    composer install
+USER phpuser:phpgroup
 
 EXPOSE 8080
-
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sh", "/usr/src/app/start.sh"]

@@ -24,7 +24,7 @@ run_symfony_flow_docker() {
   setup_installer_dockerfile
   setup_installer_entrypoint
   setup_installer_compose
-  add_user_and_group_ids_to_installer
+  add_user_and_group_ids
   echo "  Installer container set up..."
 
   # shellcheck source=../../../container/docker/installer.sh

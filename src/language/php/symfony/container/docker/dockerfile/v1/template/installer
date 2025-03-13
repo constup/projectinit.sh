@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
 RUN curl -1sLf /usr/bin/setup.deb.sh 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
