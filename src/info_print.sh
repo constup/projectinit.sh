@@ -75,8 +75,8 @@ print_php_tech_stack() {
       echo "| Composer: globally installed composer"
     fi
   fi
-  echo "| Project type: ${projectinit_php_project_type}"
-  case $projectinit_php_project_type in
+  echo "| Project type: ${projectinit_project_type}"
+  case $projectinit_project_type in
     "composer" )
       echo "| Composer library name: ${projectinit_composer_library_name}"
       ;;
@@ -110,9 +110,9 @@ print_php_tech_stack() {
 }
 
 print_node_tech_stack() {
-  echo "| Project type: ${projectinit_node_project_type}"
+  echo "| Project type: ${projectinit_project_type}"
   echo "| Package manager: ${projectinit_node_package_manager}"
-  case $projectinit_node_project_type in
+  case $projectinit_project_type in
     "nestjs" )
       echo "| NestJS version: ${projectinit_nestjs_version}"
       ;;

@@ -11,7 +11,7 @@ run_node_flow() {
 }
 
 run_node_docker_flow() {
-  case $projectinit_node_project_type in
+  case $projectinit_project_type in
     "nestjs" )
       # shellcheck source=./nestjs/flow.sh
       source "${tool_dir}/src/language/node/nestjs/flow.sh"

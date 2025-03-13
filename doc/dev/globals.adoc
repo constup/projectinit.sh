@@ -91,15 +91,18 @@ contains your application
 
 |===
 
-== Language or technology
+== Project
 
 |===
-|variable |type |origin |description
+|variable |type |description
 
 |`projectinit_language`
 |enum (`php`, `node`)
-|`ask_language`
 |Language or technology enum.
+
+|`projectinit_project_type`
+|enum (`composer`, `symfony`, `nestjs`)
+|Project type.
 |===
 
 === PHP
@@ -110,10 +113,6 @@ contains your application
 |`projectinit_use_global_composer`
 |0/1 flag
 |Flag for using global or local Composer.
-
-|`projectinit_php_project_type`
-|enum (`composer`, `symfony`)
-|Project type.
 
 |`projectinit_is_composer_initialized`
 |0/1 flag
@@ -167,10 +166,6 @@ contains your application
 
 |===
 |variable |type |description
-
-|`projectinit_node_project_type`
-|enum(`nestjs`)
-|Project type.
 
 |`projectinit_node_package_manager`
 |enum(`npm`, `yarn`, `pnpm`)

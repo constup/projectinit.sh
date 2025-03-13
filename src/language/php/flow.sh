@@ -17,7 +17,7 @@ run_php_bare_metal_flow() {
     source "${tool_dir}/src/language/php/tools/composer.sh"
     download_latest_composer_phar
   fi
-  case $projectinit_php_project_type in
+  case $projectinit_project_type in
     "composer" )
       # shellcheck source=./composer_package/flow.sh
       source "${tool_dir}/src/language/php/composer_package/flow.sh"
@@ -46,7 +46,7 @@ run_php_bare_metal_flow() {
 }
 
 run_php_docker_flow() {
-  case $projectinit_php_project_type in
+  case $projectinit_project_type in
     "composer" )
       # shellcheck source=./composer_package/flow.sh
       source "${tool_dir}/src/language/php/composer_package/flow.sh"
