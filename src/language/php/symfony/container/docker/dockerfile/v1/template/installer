@@ -31,8 +31,8 @@ RUN mkdir /usr/src/symfony_temp_install && \
     cd /usr/src/symfony_temp_install && \
     symfony new . --version="~~~framework version~~~" --no-git ~~~web app~~~ && \
     composer config --json extra.symfony.docker false && \
-    chown -R phpuser:phpgroup /usr/src/symfony_temp_install && \
-    chown -R phpuser:phpgroup /usr/src/app
+    chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/symfony_temp_install && \
+    chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/app
 
 USER ${PROJECTINIT_UID}:${PROJECTINIT_GID}
 
