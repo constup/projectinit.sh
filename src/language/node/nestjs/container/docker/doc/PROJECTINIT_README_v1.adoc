@@ -22,7 +22,7 @@ environment, simply run:
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml up
+docker compose -f compose_dev.yaml --env-file .env.docker up
 ----
 
 [NOTE]
@@ -32,7 +32,7 @@ inactive containers and/or images, you will have to build the containers again b
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml up --build
+docker compose -f compose_dev.yaml --env-file .env.docker up --build
 ----
 ====
 
