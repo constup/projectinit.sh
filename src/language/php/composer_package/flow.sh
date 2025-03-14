@@ -35,8 +35,8 @@ run_composer_package_flow_docker() {
   # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
   source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
   configure_php_cs_fixer
-  # shellcheck source=./container/docker/configuration/docker_dot_env.sh
-  source "${tool_dir}/src/language/php/composer_package/container/docker/configuration/docker_dot_env.sh"
+  # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
+  source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
   add_user_and_group_ids
 
   setup_dockerignore

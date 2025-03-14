@@ -1,7 +1,19 @@
 FROM node:~~~language version~~~-alpine
 
+ARG PROJECTINIT_UID
+ARG PROJECTINIT_GID
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
 COPY . .
 WORKDIR /usr/src/app
-RUN apk add --no-cache jq && \
-    npm i -g @nestjs/cli@~~~nestjs version~~~ pnpm
+
+RUN deluser --remove-home node && \
+    (addgroup -S node -g ${PROJECTINIT_GID} || addgroup -S node) && \
+    (adduser -S -G node -u ${PROJECTINIT_UID} node || adduser -S -G node -u node)
+RUN apk add --no-cache jq
+RUN npm i -g @nestjs/cli@~~~nestjs version~~~ pnpm
+RUN chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/app
+
+USER node:node
+
 CMD ["sh", "/usr/src/app/start.sh"]

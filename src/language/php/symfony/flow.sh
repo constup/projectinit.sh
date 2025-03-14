@@ -18,8 +18,8 @@ run_symfony_flow_docker() {
   source "${tool_dir}/src/language/php/symfony/container/docker/entrypoint/v1/entrypoint.sh"
   # shellcheck source=./container/docker/compose/v1/compose.sh
   source "${tool_dir}/src/language/php/symfony/container/docker/compose/v1/compose.sh"
-  # shellcheck source=../../../language/php/symfony/container/docker/configuration/docker_dot_env.sh
-  source "${tool_dir}/src/language/php/symfony/container/docker/configuration/docker_dot_env.sh"
+  # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
+  source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
   echo "Setting up installer container..."
   setup_installer_dockerfile
   setup_installer_entrypoint
