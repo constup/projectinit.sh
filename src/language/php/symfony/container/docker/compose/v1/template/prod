@@ -11,7 +11,5 @@ services:
     restart: "always"
     ports:
       - "~~~host port~~~:8080"
-    volumes:
-      - ./:/usr/src/app
 secrets:
   ~~~compose secrets~~~

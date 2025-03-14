@@ -62,6 +62,8 @@ compose_secrets/
 ## Symfony
 .env.local.php
 .env.*.local
+## Docker
+.env.docker
 
 # Temporary files and runtime
 ## Symfony

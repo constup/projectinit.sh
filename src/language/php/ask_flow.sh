@@ -14,7 +14,7 @@ run_php_docker_ask_flow() {
   # shellcheck source=../../container/docker/docker.sh
   source "${tool_dir}/src/container/docker/docker.sh"
 
-  case "${projectinit_php_project_type}" in
+  case "${projectinit_project_type}" in
     "composer" )
       # shellcheck source=./composer_package/composer.sh
       source "${tool_dir}/src/language/php/composer_package/composer.sh"

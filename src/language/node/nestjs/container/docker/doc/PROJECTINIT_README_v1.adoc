@@ -17,24 +17,28 @@ The project is completely dockerized and supports the following environments:
 === Local development environment
 
 Local development environment is set up using Docker Compose. It means that all the required services (like database)
-are set up in their own containers and connected in Docker Compose file, ready to be used. To run the local development
-environment, simply run:
+are set up in their own containers and connected in Docker Compose file, ready to be used.
+
+==== Setting up a project
+
+Setting up a new project does not require any additional manual configuration.
+
+Transferring a project to another computer (ex. team members), requires a couple of steps:
+
+* clone your project's repository
+* create `.env.docker` file in your project's root directory and add the following values:
+** `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+** `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+* check if your project uses Docker Compose secrets (in link:compose_dev.yaml[`compose_dev.yaml`]), create and fill the
+required secrets files
+
+==== Running the project on local
+To run the local development environment, simply run:
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml up
+docker compose -f compose_dev.yaml --env-file .env.docker up
 ----
-
-[NOTE]
-====
-ProjectInit.sh automatically builds containers when setting up the project. However, if you have removed or cleaned up
-inactive containers and/or images, you will have to build the containers again before running them:
-
-[source,shell]
-----
-docker compose -f compose_dev.yaml up --build
-----
-====
 
 === Dev environment
 
@@ -53,6 +57,35 @@ Production files:
 not need this file. For example, if your production environment uses some sort of orchestration (ex. Kubernetes), you
 may only need the Dockerfile.
 * link:start.sh[start.sh] - Production Docker container entrypoint script
+
+== Users and file ownership
+
+link:https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/[Environment variable interpolation]
+is used to pass host's user and group ID to the container, in order to set up a user inside the container. This enables
+you to edit the source files on your host, like you would normally do when working on a project.
+
+ProjectInit adds user and group IDs to link:.env.docker[`.env.docker`] file during project creation. It also adds the
+`.env.docker` file to `.gitignore`, because these IDs can be different on other computers that are cloning your
+project's repository.
+
+The environment variables are:
+
+* `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+* `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+
+You don't have to do anything on the computer where you've created the project with ProjectInit, but you do need to have
+these environment variables set up on other computers where your project is running. You can do that in two ways:
+
+* Adding the `.env.docker` file with these environment variables;
+* Adding the environment variables directly into your host OS;
+
+[IMPORTANT]
+====
+These environment variables are not required in production environment. Production environment uses the default `node`
+user inside the container. Since the source code is not mounted on the host (volume), the user in the container does not
+have to match the user on the host.
+====
+
 
 == Globally available container software
 

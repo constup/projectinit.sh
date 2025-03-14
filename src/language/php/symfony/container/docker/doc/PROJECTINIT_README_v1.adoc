@@ -18,24 +18,28 @@ The project is completely dockerized and supports the following environments:
 === Local development environment
 
 Local development environment is set up using Docker Compose. It means that all the required services (like database)
-are set up in their own containers and connected in Docker Compose file, ready to be used. To run the local development
-environment, simply run:
+are set up in their own containers and connected in Docker Compose file, ready to be used.
+
+==== Setting up a project
+
+Setting up a new project does not require any additional manual configuration.
+
+Transferring a project to another computer (ex. team members), requires a couple of steps:
+
+* clone your project's repository
+* create `.env.docker` file in your project's root directory and add the following values:
+** `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+** `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+* check if your project uses Docker Compose secrets (in link:compose_dev.yaml[`compose_dev.yaml`]), create and fill the
+required secrets files
+
+==== Running the project on local
+To run the local development environment, simply run:
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml up
+docker compose -f compose_dev.yaml --env-file .env.docker up
 ----
-
-[NOTE]
-====
-ProjectInit.sh automatically builds containers when setting up the project. However, if you have removed or cleaned up
-inactive containers and/or images, you will have to build the containers again before running them:
-
-[source,shell]
-----
-docker compose -f compose_dev.yaml up --build
-----
-====
 
 === Dev environment
 
@@ -72,6 +76,7 @@ If you are not using ProjectInit's `.gitignore` file, you'll need to add some en
 * `compose_secrets` - a folder containing secrets used in Docker compose. Official documentation: https://docs.docker.com/compose/how-tos/use-secrets/
 * `database_volume` - database volume mount
 * `.env.dev` - development .env file
+* `.env.docker` - Docker environment variables
 
 If you are using ProjectInit's `.gitignore`, everything is already configured for you.
 
@@ -82,11 +87,41 @@ If you are not using ProjectInit's `.dockerignore` file, you'll need to add some
 * `compose_secrets` - a folder containing secrets used in Docker compose. Official documentation: https://docs.docker.com/compose/how-tos/use-secrets/
 * `database_volume` - database volume mount
 
+If you are using ProjectInit's `.dockerignore`, everything is already configured for you.
+
 == Docker compose secrets
 
 Docker Compose secrets are used to store sensitive information, like database passwords. The secrets are stored on the
 host inside link:./compose_secrets[`./compose_secrets`] directory. For more information about secrets in Docker Compose
 and how to use them, see: https://docs.docker.com/compose/how-tos/use-secrets/.
+
+== Users and file ownership
+
+link:https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/[Environment variable interpolation]
+is used to pass host's user and group ID to the container, in order to set up a user inside the container. This enables
+you to edit the source files on your host, like you would normally do when working on a project.
+
+ProjectInit adds user and group IDs to link:.env.docker[`.env.docker`] file during project creation. It also adds the
+`.env.docker` file to `.gitignore`, because these IDs can be different on other computers that are cloning your
+project's repository (or servers where you deploy the app).
+
+The environment variables are:
+
+* `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+* `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+
+You don't have to do anything on the computer where you've created the project with ProjectInit, but you do need to have
+these environment variables set up on other computers where your project is running. You can do that in two ways:
+
+* Adding the `.env.docker` file with these environment variables;
+* Adding the environment variables directly into your host OS;
+
+[IMPORTANT]
+====
+These environment variables are not required in production environment. Production environment is already set up to use
+`phpuser:phpgroup` user inside the container. Since the source code is not mounted on the host (volume), the user in the
+container does not have to match the user on the host.
+====
 
 == Globally available container software
 

@@ -13,6 +13,9 @@ run_nestjs_flow_docker() {
   setup_installer_dockerfile
   setup_installer_entrypoint
   setup_installer_compose
+  # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
+  source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
+  add_user_and_group_ids
   echo "  Installer container set up..."
 
   # shellcheck source=../../../container/docker/installer.sh

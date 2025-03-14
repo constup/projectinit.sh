@@ -20,8 +20,8 @@ run_composer_package_flow_docker() {
   source "${tool_dir}/src/language/php/composer_package/container/docker/entrypoint/v1/entrypoint.sh"
   # shellcheck source=./container/docker/configuration/index/v1/index.sh
   source "${tool_dir}/src/language/php/composer_package/container/docker/configuration/index/v1/index.sh"
-  # shellcheck source=./container/docker/dev.sh
-  source "${tool_dir}/src/language/php/composer_package/container/docker/dev.sh"
+  # shellcheck source=../../../container/docker/dev.sh
+  source "${tool_dir}/src/container/docker/dev.sh"
 
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
@@ -35,6 +35,9 @@ run_composer_package_flow_docker() {
   # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
   source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
   configure_php_cs_fixer
+  # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
+  source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
+  add_user_and_group_ids
 
   setup_dockerignore
   setup_dev_compose

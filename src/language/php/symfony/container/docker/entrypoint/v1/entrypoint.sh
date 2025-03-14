@@ -3,16 +3,11 @@
 setup_installer_entrypoint() {
   cp -f "${tool_dir}/src/language/php/symfony/container/docker/entrypoint/v1/template/installer" "${project_root_dir}/start.sh"
   perl -pi -e "s/~~~framework version~~~/${projectinit_symfony_version}/g" "${project_root_dir}/start.sh"
-  if [ "$projectinit_symfony_app_type" = "full" ]; then
-    perl -pi -e "s/~~~web app~~~/--webapp/g" "${project_root_dir}/start.sh"
-  else
-    perl -pi -e "s/~~~web app~~~//g" "${project_root_dir}/start.sh"
-  fi
   local phpunit_string
   phpunit_string=$(perl -e 'print quotemeta($ARGV[0])' "$projectinit_phpunit_version")
   perl -pi -e "s/~~~unit testing~~~/ ${phpunit_string}/g" "${project_root_dir}/start.sh"
   if [ ! "$projectinit_database_type" = "no database" ]; then
-    perl -pi -e "s/#composer require symfony\/orm-pack/composer require symfony\/orm-pack/g" "${project_root_dir}/start.sh"
+    perl -pi -e "s/#composer require --no-cache symfony\/orm-pack/composer require --no-cache symfony\/orm-pack/g" "${project_root_dir}/start.sh"
   fi
 }
 

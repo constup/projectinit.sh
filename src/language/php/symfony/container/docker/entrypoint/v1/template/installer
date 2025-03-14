@@ -1,14 +1,13 @@
 #!/bin/bash
 
 cd /usr/src/symfony_temp_install || exit 1
-symfony new . --version="~~~framework version~~~" --no-git ~~~web app~~~|| exit 1
-composer config --json extra.symfony.docker false
-#composer require symfony/orm-pack
-composer require --dev friendsofphp/php-cs-fixer
-composer require --dev~~~unit testing~~~
-composer require --dev fakerphp/faker
-composer require --dev symfony/maker-bundle
-composer require --dev rector/rector
+#composer require --no-cache symfony/orm-pack
+composer require --dev --no-cache friendsofphp/php-cs-fixer
+composer require --dev --no-cache~~~unit testing~~~
+composer require --dev --no-cache fakerphp/faker
+composer require --dev --no-cache symfony/maker-bundle
+#composer require --dev --no-cache rector/rector
+cd /usr/src/app || exit 1
 cp -a /usr/src/symfony_temp_install/* /usr/src/app/ || exit 1
 cp -a /usr/src/symfony_temp_install/.[!.]* /usr/src/app/ || exit 1
 echo "ProjectInit.sh installed Symfony ~~~framework version~~~ successfully. Creating the environment..."

@@ -8,7 +8,7 @@ ask_project_type() {
   select option in "${options[@]}"; do
     case $option in
       "NestJS" )
-        projectinit_node_project_type="nestjs"
+        projectinit_project_type="nestjs"
         # shellcheck source=./node.sh
         source "${tool_dir}/src/language/node/node.sh"
         ask_package_manager

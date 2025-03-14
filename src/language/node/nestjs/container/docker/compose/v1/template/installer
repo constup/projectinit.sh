@@ -2,6 +2,9 @@ services:
     ~~~service name~~~:
         container_name: ~~~container name~~~
         build:
+            args:
+              PROJECTINIT_UID: ${PROJECTINIT_UID}
+              PROJECTINIT_GID: ${PROJECTINIT_GID}
             context: ./
             dockerfile: Dockerfile
         image: ~~~image name~~~

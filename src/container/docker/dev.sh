@@ -4,6 +4,6 @@ build_dev() {
   echo ""
   echo "Building Dev container..."
   cd "${project_root_dir}" || exit 1
-  docker compose -f compose_dev.yaml build
+  docker compose -f compose_dev.yaml --env-file .env.docker build
   echo "  Dev container built..."
 }
