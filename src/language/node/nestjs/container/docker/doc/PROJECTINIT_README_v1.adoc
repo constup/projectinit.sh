@@ -54,6 +54,35 @@ not need this file. For example, if your production environment uses some sort o
 may only need the Dockerfile.
 * link:start.sh[start.sh] - Production Docker container entrypoint script
 
+== Users and file ownership
+
+link:https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/[Environment variable interpolation]
+is used to pass host's user and group ID to the container, in order to set up a user inside the container. This enables
+you to edit the source files on your host, like you would normally do when working on a project.
+
+ProjectInit adds user and group IDs to link:.env.docker[`.env.docker`] file during project creation. It also adds the
+`.env.docker` file to `.gitignore`, because these IDs can be different on other computers that are cloning your
+project's repository.
+
+The environment variables are:
+
+* `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+* `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+
+You don't have to do anything on the computer where you've created the project with ProjectInit, but you do need to have
+these environment variables set up on other computers where your project is running. You can do that in two ways:
+
+* Adding the `.env.docker` file with these environment variables;
+* Adding the environment variables directly into your host OS;
+
+[IMPORTANT]
+====
+These environment variables are not required in production environment. Production environment uses the default `node`
+user inside the container. Since the source code is not mounted on the host (volume), the user in the container does not
+have to match the user on the host.
+====
+
+
 == Globally available container software
 
 Docker containers have the following globally available software:

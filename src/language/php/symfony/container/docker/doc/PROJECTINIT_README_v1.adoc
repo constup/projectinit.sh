@@ -112,6 +112,13 @@ these environment variables set up on other computers where your project is runn
 * Adding the `.env.docker` file with these environment variables;
 * Adding the environment variables directly into your host OS;
 
+[IMPORTANT]
+====
+These environment variables are not required in production environment. Production environment is already set up to use
+`phpuser:phpgroup` user inside the container. Since the source code is not mounted on the host (volume), the user in the
+container does not have to match the user on the host.
+====
+
 == Globally available container software
 
 Docker containers have the following globally available software:
