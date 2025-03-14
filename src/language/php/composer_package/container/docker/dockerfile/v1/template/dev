@@ -1,5 +1,7 @@
 FROM php:~~~language version~~~
 
+ARG PROJECTINIT_UID
+ARG PROJECTINIT_GID
 WORKDIR /usr/src/app
 COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -13,10 +15,8 @@ RUN apt-get update && \
         wget \
         dumb-init \
         && \
-    rm -rf /var/lib/apt/lists/* && \
-    chmod +x /usr/bin/composer && \
-    chmod +x /usr/local/bin/install-php-extensions && \
-    sync && \
+    rm -rf /var/lib/apt/lists/*
+RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions \
         apcu \
         intl \
@@ -25,13 +25,14 @@ RUN apt-get update && \
         pcov \
         xdebug \
         && \
-    groupadd -r phpgroup && useradd --no-log-init -r -g phpgroup phpuser -m && \
-    chown -R phpuser:phpgroup /usr/src/app
+    chmod +x /usr/bin/composer
+RUN (groupadd phpgroup -g ${PROJECTINIT_GID} || groupadd phpgroup || true) && \
+    useradd phpuser --uid ${PROJECTINIT_UID} -g ${PROJECTINIT_GID} -s '/bin/bash' --no-log-init
+RUN (composer install || true) && \
+    chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/app
 
-USER phpuser
-RUN git config --global --add safe.directory /usr/src/app
+USER ${PROJECTINIT_UID}:${PROJECTINIT_GID}
 
 EXPOSE 8080
-
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sh", "/usr/src/app/start.sh"]

@@ -26,9 +26,9 @@ print_git_block() {
   echo "| User name: ${projectinit_git_user_name}"
   echo "| User email: ${projectinit_git_user_email}"
   if [ "${projectinit_use_projectinit_gitignore}" -eq 1 ]; then
-    echo "| ProjectInit's .gitignore will be used."
+    echo "| ProjectInit's .gitignore is used."
   else
-    echo "| Your project's default .gitignore will be used."
+    echo "| Your project's default .gitignore is used."
   fi
   echo "|---------------------------------------------------------------------"
 }
@@ -94,18 +94,18 @@ print_php_tech_stack() {
   echo "| PHPUnit version: ${projectinit_phpunit_version}"
   if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
     if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-      echo "| Default phpunit.dist.xml will be used"
+      echo "| Default phpunit.dist.xml is used"
     else
-      echo "| ProjectInit's phpunit.dist.xml will be used"
+      echo "| ProjectInit's phpunit.dist.xml is used"
     fi
   else
       echo "| Symfony Test Pack was used. Configure phpunit.dist.xml manually"
   fi
   echo "| CS Fixer: PHP CS Fixer"
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
-    echo "| Default .php-cs-fixer.dist.php will be used"
+    echo "| Default .php-cs-fixer.dist.php is used"
   else
-    echo "| ProjectInit's .php-cs-fixer.dist.php will be used"
+    echo "| ProjectInit's .php-cs-fixer.dist.php is used"
   fi
 }
 
