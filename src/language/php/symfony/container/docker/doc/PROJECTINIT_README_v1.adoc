@@ -18,24 +18,28 @@ The project is completely dockerized and supports the following environments:
 === Local development environment
 
 Local development environment is set up using Docker Compose. It means that all the required services (like database)
-are set up in their own containers and connected in Docker Compose file, ready to be used. To run the local development
-environment, simply run:
+are set up in their own containers and connected in Docker Compose file, ready to be used.
+
+==== Setting up a project
+
+Setting up a new project does not require any additional manual configuration.
+
+Transferring a project to another computer (ex. team members), requires a couple of steps:
+
+* clone your project's repository
+* create `.env.docker` file in your project's root directory and add the following values:
+** `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
+** `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
+* check if your project uses Docker Compose secrets (in link:compose_dev.yaml[`compose_dev.yaml`]), create and fill the
+required secrets files
+
+==== Running the project on local
+To run the local development environment, simply run:
 
 [source,shell]
 ----
 docker compose -f compose_dev.yaml --env-file .env.docker up
 ----
-
-[NOTE]
-====
-ProjectInit.sh automatically builds containers when setting up the project. However, if you have removed or cleaned up
-inactive containers and/or images, you will have to build the containers again before running them:
-
-[source,shell]
-----
-docker compose -f compose_dev.yaml --env-file .env.docker up --build
-----
-====
 
 === Dev environment
 
