@@ -9,6 +9,12 @@ link:https://ko-fi.com/E1E3VQUK2[image:https://ko-fi.com/img/githubbutton_sm.svg
 
 == Description
 
+[IMPORTANT]
+====
+*This is a pre-release alpha development version of the application. The architecture of the application, features and
+development conventions are subject to a change without prior notice. Some features might not be working correctly.*
+====
+
 Interactive Bash tool for kickstarting software projects. No additional software or abstraction layers. ProjectInit is
 made to just automate creating libraries, projects and environments the same way you would do manually.
 
