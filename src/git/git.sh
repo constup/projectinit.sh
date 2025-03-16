@@ -17,7 +17,8 @@ check_user_configuration() {
 ask_gitignore_configuration() {
   echo ""
   echo "Do you want to use the default .gitignore (if there is any) or ProjectInit.sh .gitignore file?"
-  local options=("Use the default .gitignore" "Use ProjectInit.sh .gitignore")
+  echo "NOTE: Recommended entries which ProjectIit uses (like Docker Compose secrets) will be added regardless of the chosen option."
+  local options=("Use default .gitignore" "Use ProjectInit.sh .gitignore")
   local selection
   select selection in "${options[@]}"; do
     case $selection in
@@ -33,14 +34,22 @@ ask_gitignore_configuration() {
   done
 }
 
-#######################################
-# Replaces already existing .gitignore with ProjectInit's .gitignore if the flag is set.
-#######################################
 configure_gitignore() {
+  local target_file
+  target_file="${project_root_dir}/.gitignore"
   echo ""
   echo "Configuring .gitignore..."
   if [ "$projectinit_use_projectinit_gitignore" -eq 1 ]; then
-    cp -f "${tool_dir}/src/git/generic_gitignore/generic.gitignore" "${project_root_dir}/.gitignore"
+    cp -f "${tool_dir}/src/git/generic_gitignore/generic.gitignore" "${target_file}"
+  else
+    if [ ! -f "${project_root_dir}/.gitignore" ]; then
+      touch "${project_root_dir}/.gitignore"
+    fi
+    echo "# ProjectInit.sh" >> "${target_file}"
+    echo ".env.docker" >> "${target_file}"
+    echo "compose_secrets/" >> "${target_file}"
+    echo "database_volume/" >> "${target_file}"
+    echo "codeCoverage/" >> "${target_file}"
   fi
   echo "  .gitignore configured..."
 }
@@ -48,7 +57,7 @@ configure_gitignore() {
 ask_gitattributes_configuration() {
   echo ""
   echo "Do you want to use the default .gitattributes (if there is any) or ProjectInit.sh .gitattributes file?"
-  local options=("Use the default .gitattributes" "Use ProjectInit.sh .gitattributes")
+  local options=("Use default .gitattributes" "Use ProjectInit.sh .gitattributes")
   local selection
   select selection in "${options[@]}"; do
     case $selection in

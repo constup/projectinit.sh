@@ -26,9 +26,6 @@ run_composer_package_flow_docker() {
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../../../git/git.sh
-  source "${tool_dir}/src/git/git.sh"
-  configure_gitignore
   # shellcheck source=../tools/unit_testing/phpunit.sh
   source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
   configure_phpunit
@@ -44,6 +41,9 @@ run_composer_package_flow_docker() {
   setup_dev_dockerfile
   setup_dev_entrypoint
   setup_dev_index
+  # shellcheck source=../../../git/git.sh
+  source "${tool_dir}/src/git/git.sh"
+  configure_gitignore
   cp -f "${tool_dir}/src/language/php/composer_package/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
   build_dev
 }
