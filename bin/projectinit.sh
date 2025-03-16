@@ -36,7 +36,6 @@ create_directories
 # Git setup
 configure_git_repository
 configure_git_user
-configure_gitignore
 configure_gitattributes
 #---
 

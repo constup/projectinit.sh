@@ -43,9 +43,6 @@ run_symfony_flow_docker() {
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../../../git/git.sh
-  source "${tool_dir}/src/git/git.sh"
-  configure_gitignore
   # shellcheck source=../tools/unit_testing/phpunit.sh
   source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
   configure_phpunit
@@ -60,6 +57,9 @@ run_symfony_flow_docker() {
   source "${tool_dir}/src/container/docker/dev.sh"
   build_dev
 
+  # shellcheck source=../../../git/git.sh
+  source "${tool_dir}/src/git/git.sh"
+  configure_gitignore
   setup_prod_dockerfile
   setup_prod_entrypoint
   setup_prod_compose

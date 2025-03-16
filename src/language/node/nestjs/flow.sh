@@ -31,14 +31,13 @@ run_nestjs_flow_docker() {
   setup_dev_compose
   echo "  Dev container set up..."
 
-  # shellcheck source=../../../git/git.sh
-  source "${tool_dir}/src/git/git.sh"
-  configure_gitignore
-
   # shellcheck source=../../../container/docker/dev.sh
   source "${tool_dir}/src/container/docker/dev.sh"
   build_dev
 
+  # shellcheck source=../../../git/git.sh
+  source "${tool_dir}/src/git/git.sh"
+  configure_gitignore
   setup_prod_dockerfile
   setup_prod_entrypoint
   setup_prod_compose

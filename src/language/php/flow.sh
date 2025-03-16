@@ -29,9 +29,6 @@ run_php_bare_metal_flow() {
       run_symfony_flow_bare_metal
       ;;
   esac
-  # shellcheck source=../../git/git.sh
-  source "${tool_dir}/src/git/git.sh"
-  configure_gitignore
   # shellcheck source=../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
@@ -43,6 +40,9 @@ run_php_bare_metal_flow() {
   source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
   install_php_cs_fixer_bare_metal
   configure_php_cs_fixer
+  # shellcheck source=../../git/git.sh
+  source "${tool_dir}/src/git/git.sh"
+  configure_gitignore
 }
 
 run_php_docker_flow() {
