@@ -15,8 +15,11 @@ setup_installer_dockerfile() {
 }
 
 setup_dev_dockerfile() {
-  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/dev" "${project_root_dir}/Dockerfile_dev"
-  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${project_root_dir}/Dockerfile_dev"
+  local target_file
+  target_file="${project_root_dir}/Dockerfile"
+
+  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/dev" "${target_file}"
+  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${target_file}"
 
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
@@ -26,12 +29,18 @@ setup_dev_dockerfile() {
   source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
   setup_memcached_dockerfile_dev
 
-  perl -i -ne 'print unless /~~~php extension~~~/;' "${project_root_dir}/Dockerfile_dev"
+  perl -i -ne 'print unless /~~~php extension~~~/;' "${target_file}"
 }
 
 setup_prod_dockerfile() {
-  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/prod" "${project_root_dir}/Dockerfile"
-  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${project_root_dir}/Dockerfile"
+  local target_file
+  target_file="${project_root_dir}/projectinit_docker/prod/Dockerfile"
+  if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then
+    mkdir -p "${project_root_dir}/projectinit_docker/prod"
+  fi
+
+  cp -f "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/template/prod" "${target_file}"
+  perl -pi -e "s/~~~language version~~~/${projectinit_language_version}/g" "${target_file}"
 
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
@@ -41,5 +50,5 @@ setup_prod_dockerfile() {
   source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
   setup_memcached_dockerfile_prod
 
-  perl -i -ne 'print unless /~~~php extension~~~/;' "${project_root_dir}/Dockerfile"
+  perl -i -ne 'print unless /~~~php extension~~~/;' "${target_file}"
 }

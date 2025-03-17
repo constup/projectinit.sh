@@ -6,7 +6,7 @@ services:
               PROJECTINIT_UID: ${PROJECTINIT_UID}
               PROJECTINIT_GID: ${PROJECTINIT_GID}
             context: ./
-            dockerfile: Dockerfile_dev
+            dockerfile: Dockerfile
         image: ~~~image name~~~
         restart: "no"
         ports:
