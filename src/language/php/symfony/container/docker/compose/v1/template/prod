@@ -11,5 +11,7 @@ services:
     restart: "always"
     ports:
       - "~~~host port~~~:8080"
+    volumes:
+      - ./projectinit_docker/php/zz_prod_php.ini:/usr/local/etc/php/conf.d/zz_prod_php.ini
 secrets:
   ~~~compose secrets~~~
