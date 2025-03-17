@@ -2,7 +2,7 @@
 
 setup_docker_compose_dev() {
   local target_file
-  target_file="${project_root_dir}/compose_dev.yaml"
+  target_file="${project_root_dir}/compose.yaml"
 
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/percona/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
@@ -26,7 +26,10 @@ setup_docker_compose_dev() {
 
 setup_docker_compose_prod() {
   local target_file
-  target_file="${project_root_dir}/compose.yaml"
+  target_file="${project_root_dir}/projectinit_docker/prod/compose.yaml"
+  if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then
+    mkdir "${project_root_dir}/projectinit_docker/prod"
+  fi
 
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/percona/v1/template/prod" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"

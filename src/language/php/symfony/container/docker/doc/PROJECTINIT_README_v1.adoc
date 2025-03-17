@@ -30,7 +30,7 @@ Transferring a project to another computer (ex. team members), requires a couple
 * create `.env.docker` file in your project's root directory and add the following values:
 ** `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
 ** `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
-* check if your project uses Docker Compose secrets (in link:compose_dev.yaml[`compose_dev.yaml`]), create and fill the
+* check if your project uses Docker Compose secrets (in link:compose.yaml[`compose.yaml`]), create and fill the
 required secrets files
 
 ==== Running the project on local
@@ -38,7 +38,7 @@ To run the local development environment, simply run:
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml --env-file .env.docker up
+docker compose --env-file .env.docker up
 ----
 
 === Dev environment
