@@ -27,6 +27,8 @@ setup_database_docker_compose_dev() {
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
       setup_docker_compose_dev
+      setup_my_cnf_dev
+      setup_dev_entrypoint
       ;;
   esac
 
@@ -62,6 +64,8 @@ setup_database_docker_compose_prod() {
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
       setup_docker_compose_prod
+      setup_my_cnf_prod
+      setup_prod_entrypoint
       ;;
   esac
 

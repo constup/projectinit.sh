@@ -11,6 +11,9 @@
       - '~~~database host port~~~:3306'
     volumes:
       - ./database_volume:/var/lib/mysql
+      - ./projectinit_docker/prod/mariadb/etc/mysql/conf.d/:/etc/mysql/conf.d/
+      - ./projectinit_docker/prod/mariadb/entrypoint.sh:/entrypoint.sh
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
     secrets:
       - mariadb_database
       - mariadb_user

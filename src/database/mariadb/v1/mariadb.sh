@@ -39,3 +39,37 @@ setup_docker_compose_prod() {
 
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/mariadb/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
+
+setup_my_cnf_dev() {
+  if [ ! -d "${project_root_dir}/projectinit_docker/dev/mariadb/etc/mysql/conf.d" ]; then
+    mkdir -p "${project_root_dir}/projectinit_docker/dev/mariadb/etc/mysql/conf.d"
+  fi
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/my_cnf/dev_my.cnf" "${project_root_dir}/projectinit_docker/dev/mariadb/etc/mysql/conf.d/my.cnf"
+  chmod 644 "${project_root_dir}/projectinit_docker/dev/mariadb/etc/mysql/conf.d/my.cnf"
+}
+
+setup_my_cnf_prod() {
+  if [ ! -d "${project_root_dir}/projectinit_docker/prod/mariadb/etc/mysql/conf.d" ]; then
+    mkdir -p "${project_root_dir}/projectinit_docker/prod/mariadb/etc/mysql/conf.d"
+  fi
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/my_cnf/prod_my.cnf" "${project_root_dir}/projectinit_docker/prod/mariadb/etc/mysql/conf.d/my.cnf"
+  chmod 644 "${project_root_dir}/projectinit_docker/prod/mariadb/etc/mysql/conf.d/my.cnf"
+}
+
+setup_dev_entrypoint() {
+  if [ ! -d "${project_root_dir}/projectinit_docker/dev/mariadb" ]; then
+    mkdir -p "${project_root_dir}/projectinit_docker/dev/mariadb"
+  fi
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/entrypoint/dev.sh" "${project_root_dir}/projectinit_docker/dev/mariadb/entrypoint.sh"
+}
+
+setup_prod_entrypoint() {
+  if [ ! -d "${project_root_dir}/projectinit_docker/prod/mariadb" ]; then
+    mkdir -p "${project_root_dir}/projectinit_docker/prod/mariadb"
+  fi
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/entrypoint/prod.sh" "${project_root_dir}/projectinit_docker/prod/mariadb/entrypoint.sh"
+}
