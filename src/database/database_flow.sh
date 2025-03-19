@@ -15,6 +15,8 @@ setup_database_docker_compose_dev() {
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
       setup_docker_compose_dev
+      setup_my_cnf_dev
+      setup_dev_entrypoint
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
@@ -48,6 +50,8 @@ setup_database_docker_compose_prod() {
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
       setup_docker_compose_prod
+      setup_my_cnf_prod
+      setup_prod_entrypoint
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
