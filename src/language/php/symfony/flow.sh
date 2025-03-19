@@ -55,8 +55,8 @@ run_symfony_flow_docker() {
   cp -f "${tool_dir}/src/language/php/symfony/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
   # shellcheck source=../../../container/docker/dev.sh
   source "${tool_dir}/src/container/docker/dev.sh"
-  # shellcheck source=../tools/php_ini/php_ini.sh
-  source "${tool_dir}/src/language/php/tools/php_ini/php_ini.sh"
+  # shellcheck source=../tools/php_ini/v1/php_ini.sh
+  source "${tool_dir}/src/language/php/tools/php_ini/v1/php_ini.sh"
   configure_php_ini_docker_dev
   build_dev
 
