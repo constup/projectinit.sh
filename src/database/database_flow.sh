@@ -22,6 +22,8 @@ setup_database_docker_compose_dev() {
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_docker_compose_dev
+      setup_my_cnf_dev
+      setup_dev_entrypoint
       ;;
     "mariadb" )
       # shellcheck source=../database/mariadb/v1/mariadb.sh
@@ -59,6 +61,8 @@ setup_database_docker_compose_prod() {
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_docker_compose_prod
+      setup_my_cnf_prod
+      setup_prod_entrypoint
       ;;
     "mariadb" )
       # shellcheck source=../database/mariadb/v1/mariadb.sh
