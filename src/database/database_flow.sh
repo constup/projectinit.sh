@@ -9,14 +9,14 @@ setup_database_docker_compose_dev() {
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
-      setup_docker_compose_dev
+      setup_pgsql_docker_compose_dev
       ;;
     "mysql" )
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
-      setup_docker_compose_dev
-      setup_my_cnf_dev
-      setup_dev_entrypoint
+      setup_mysql_docker_compose_dev
+      setup_mysql_my_cnf_dev
+      setup_mysql_dev_entrypoint
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
@@ -29,9 +29,9 @@ setup_database_docker_compose_dev() {
     "mariadb" )
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
-      setup_docker_compose_dev
-      setup_my_cnf_dev
-      setup_dev_entrypoint
+      setup_mariadb_docker_compose_dev
+      setup_mariadb_my_cnf_dev
+      setup_mariadb_dev_entrypoint
       ;;
   esac
 
@@ -49,14 +49,14 @@ setup_database_docker_compose_prod() {
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
-      setup_docker_compose_prod
+      setup_pgsql_docker_compose_prod
       ;;
     "mysql" )
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
-      setup_docker_compose_prod
-      setup_my_cnf_prod
-      setup_prod_entrypoint
+      setup_mysql_docker_compose_prod
+      setup_mysql_my_cnf_prod
+      setup_mysql_prod_entrypoint
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
@@ -69,9 +69,9 @@ setup_database_docker_compose_prod() {
     "mariadb" )
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
-      setup_docker_compose_prod
-      setup_my_cnf_prod
-      setup_prod_entrypoint
+      setup_mariadb_docker_compose_prod
+      setup_mariadb_my_cnf_prod
+      setup_mariadb_prod_entrypoint
       ;;
   esac
 

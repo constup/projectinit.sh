@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setup_docker_compose_dev() {
+setup_pgsql_docker_compose_dev() {
   local target_file
   target_file="${project_root_dir}/compose.yaml"
   
@@ -22,7 +22,7 @@ setup_docker_compose_dev() {
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/pgsql/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
-setup_docker_compose_prod() {
+setup_pgsql_docker_compose_prod() {
   local target_file
   target_file="${project_root_dir}/projectinit_docker/prod/compose.yaml"
   if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setup_docker_compose_dev() {
+setup_mysql_docker_compose_dev() {
   local target_file
   target_file="${project_root_dir}/compose.yaml"
     
@@ -24,7 +24,7 @@ setup_docker_compose_dev() {
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/mysql/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
-setup_docker_compose_prod() {
+setup_mysql_docker_compose_prod() {
   local target_file
   target_file="${project_root_dir}/projectinit_docker/prod/compose.yaml"
   if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then
@@ -40,7 +40,7 @@ setup_docker_compose_prod() {
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/mysql/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
-setup_my_cnf_dev() {
+setup_mysql_my_cnf_dev() {
   if [ ! -d "${project_root_dir}/projectinit_docker/dev/mysql/etc/mysql/conf.d" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/dev/mysql/etc/mysql/conf.d"
   fi
@@ -49,7 +49,7 @@ setup_my_cnf_dev() {
   chmod 644 "${project_root_dir}/projectinit_docker/dev/mysql/etc/mysql/conf.d/my.cnf"
 }
 
-setup_my_cnf_prod() {
+setup_mysql_my_cnf_prod() {
   if [ ! -d "${project_root_dir}/projectinit_docker/prod/mysql/etc/mysql/conf.d" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/prod/mysql/etc/mysql/conf.d"
   fi
@@ -58,7 +58,7 @@ setup_my_cnf_prod() {
   chmod 644 "${project_root_dir}/projectinit_docker/prod/mysql/etc/mysql/conf.d/my.cnf"
 }
 
-setup_dev_entrypoint() {
+setup_mysql_dev_entrypoint() {
   if [ ! -d "${project_root_dir}/projectinit_docker/dev/mysql" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/dev/mysql"
   fi
@@ -66,7 +66,7 @@ setup_dev_entrypoint() {
   cp -f "${tool_dir}/src/database/mysql/v1/template/entrypoint/dev.sh" "${project_root_dir}/projectinit_docker/dev/mysql/entrypoint.sh"
 }
 
-setup_prod_entrypoint() {
+setup_mysql_prod_entrypoint() {
   if [ ! -d "${project_root_dir}/projectinit_docker/prod/mysql" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/prod/mysql"
   fi
