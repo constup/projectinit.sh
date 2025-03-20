@@ -1,13 +1,12 @@
 #!/bin/bash
 
-setup_docker_compose_dev() {
+setup_percona_docker_compose_dev() {
   local target_file
   target_file="${project_root_dir}/compose.yaml"
 
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/percona/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
-  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
 
   projectinit_compose_has_secrets=1
@@ -24,7 +23,7 @@ setup_docker_compose_dev() {
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/percona/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
-setup_docker_compose_prod() {
+setup_percona_docker_compose_prod() {
   local target_file
   target_file="${project_root_dir}/projectinit_docker/prod/compose.yaml"
   if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then
@@ -34,13 +33,28 @@ setup_docker_compose_prod() {
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/percona/v1/template/prod" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
-  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
 
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/percona/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
-setup_my_cnf_dev() {
+setup_percona_dev_dockerfile() {
+  local target_file
+  target_file="${project_root_dir}/projectinit_docker/dev/percona/Dockerfile"
+
+  cp -f "${tool_dir}/src/database/percona/v1/template/dockerfile/dev" "${target_file}"
+  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
+}
+
+setup_percona_prod_dockerfile() {
+  local target_file
+  target_file="${project_root_dir}/projectinit_docker/prod/percona/Dockerfile"
+
+  cp -f "${tool_dir}/src/database/percona/v1/template/dockerfile/prod" "${target_file}"
+  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
+}
+
+setup_percona_my_cnf_dev() {
   if [ ! -d "${project_root_dir}/projectinit_docker/dev/percona/etc/my.cnf.d" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/dev/percona/etc/my.cnf.d"
   fi
@@ -49,7 +63,7 @@ setup_my_cnf_dev() {
   chmod 644 "${project_root_dir}/projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf"
 }
 
-setup_my_cnf_prod() {
+setup_percona_my_cnf_prod() {
   if [ ! -d "${project_root_dir}/projectinit_docker/prod/percona/etc/my.cnf.d" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/prod/percona/etc/my.cnf.d"
   fi
@@ -58,7 +72,7 @@ setup_my_cnf_prod() {
   chmod 644 "${project_root_dir}/projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf"
 }
 
-setup_dev_entrypoint() {
+setup_percona_dev_entrypoint() {
   if [ ! -d "${project_root_dir}/projectinit_docker/dev/percona" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/dev/percona"
   fi
@@ -66,7 +80,7 @@ setup_dev_entrypoint() {
   cp -f "${tool_dir}/src/database/percona/v1/template/entrypoint/dev.sh" "${project_root_dir}/projectinit_docker/dev/percona/entrypoint.sh"
 }
 
-setup_prod_entrypoint() {
+setup_percona_prod_entrypoint() {
   if [ ! -d "${project_root_dir}/projectinit_docker/prod/percona" ]; then
     mkdir -p "${project_root_dir}/projectinit_docker/prod/percona"
   fi

@@ -1,6 +1,8 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: percona:~~~database server version~~~
+    build:
+      context: ./
+      dockerfile: ./projectinit_docker/prod/percona/Dockerfile
     restart: always
     environment:
       MYSQL_DATABASE_FILE: /run/secrets/mysql_database
@@ -12,9 +14,6 @@
       - "~~~database host port~~~:3306"
     volumes:
       - ./database_volume:/var/lib/mysql
-      - ./projectinit_docker/prod/percona/etc/my.cnf.d/:/etc/my.cnf.d/
-      - ./projectinit_docker/prod/percona/entrypoint.sh:/entrypoint.sh
-    entrypoint: ["/bin/bash", "/entrypoint.sh"]
     secrets:
       - mysql_database
       - mysql_user
