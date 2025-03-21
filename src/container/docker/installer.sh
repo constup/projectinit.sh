@@ -4,8 +4,8 @@ build_installer() {
   echo ""
   echo "Building Installer container..."
   cd "${project_root_dir}" || exit 1;
-  docker compose --env-file "${project_root_dir}/.env.docker" build --no-cache
-  docker compose --env-file "${project_root_dir}/.env.docker" up
+  docker compose build --no-cache
+  docker compose up
   echo "  Installer container built..."
 }
 
