@@ -6,6 +6,7 @@ services:
             dockerfile: Dockerfile
         image: ~~~image name~~~
         restart: "always"
+        env_file: ./projectinit_docker/.env.docker
         ports:
             - "~~~host port~~~:3000"
         environment:
