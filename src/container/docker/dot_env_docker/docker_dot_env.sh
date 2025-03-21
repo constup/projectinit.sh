@@ -11,6 +11,6 @@ add_user_and_group_ids() {
   local group_id
   user_id=$(id -u)
   group_id=$(id -g)
-  echo "PROJECTINIT_UID=${user_id}" >> "${project_root_dir}/.env.docker"
-  echo "PROJECTINIT_GID=${group_id}" >> "${project_root_dir}/.env.docker"
+  echo "PROJECTINIT_UID=${user_id}" >> "${project_root_dir}/projectinit_docker/.env.docker"
+  echo "PROJECTINIT_GID=${group_id}" >> "${project_root_dir}/projectinit_docker/.env.docker"
 }
