@@ -89,6 +89,10 @@ contains your application
 |0/1 flag
 |Flag to show if Docker compose file has secrets.
 
+|`projectinit_compose_has_root_volumes`
+|0/1 flag
+|Flag to show if Docker compose file has root volumes.
+
 |===
 
 == Project

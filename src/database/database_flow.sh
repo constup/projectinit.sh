@@ -19,6 +19,7 @@ setup_database_docker_compose_dev() {
       setup_mysql_dev_entrypoint
       ;;
     "percona" )
+      projectinit_compose_has_root_volumes=1
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_percona_docker_compose_dev

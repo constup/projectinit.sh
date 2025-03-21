@@ -13,5 +13,6 @@ services:
       - "~~~host port~~~:8080"
     volumes:
       - ./projectinit_docker/prod/php/usr/local/etc/php/conf.d/zz_php.ini:/usr/local/etc/php/conf.d/zz_php.ini
+~~~root volumes~~~
 secrets:
   ~~~compose secrets~~~
