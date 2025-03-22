@@ -14,6 +14,10 @@
       - "~~~database host port~~~:3306"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 --silent
+      timeout: 10s
+      start_period: 1m
     secrets:
       - mysql_database
       - mysql_user
