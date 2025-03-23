@@ -6,6 +6,7 @@ source ../src/filesystem/directory_management.sh
 source ../src/info_print.sh
 source ../src/language/flow.sh
 source ../src/language/ask_flow.sh
+source ../src/tools/documentation/documentation.sh
 
 check_user_configuration
 
@@ -40,6 +41,7 @@ configure_gitattributes
 #---
 
 run_flow
+setup_documentation
 generate_project_id_card_text
 
 echo ""

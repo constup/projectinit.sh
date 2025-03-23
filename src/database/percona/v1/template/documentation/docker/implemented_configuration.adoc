@@ -1,0 +1,77 @@
+== Implemented configuration
+
+The following configuration has been implemented by ProjectInit:
+
+* Database credentials as Docker compose secrets.
+* Docker volume is used for persisting data on the host.
+* Healthcheck is implemented in Docker Compose.
+* Custom `my.cnf` MySQL configuration file and directory are prepared.
+* Default authentication is set to non-deprecated `caching_sha2_password` method for both MySQL daemon and client.
+* Percona telemetry is disabled.
+
+=== Configuration files
+
+* Database credentials (Docker Compose secrets):
+** link:../compose_secrets/mysql_database.txt[`compose_secrets/mysql_database.txt`]
+** link:../compose_secrets/mysql_password.txt[`compose_secrets/mysql_password.txt`]
+** link:../compose_secrets/mysql_root_password.txt[`compose_secrets/mysql_root_password.txt`]
+** link:../compose_secrets/mysql_user.txt[`compose_secrets/mysql_user.txt`]
+* Dockerfile:
+** link:../projectinit_docker/dev/percona/Dockerfile[`projectinit_docker/dev/percona/Dockerfile`]
+** link:../projectinit_docker/prod/percona/Dockerfile[`projectinit_docker/prod/percona/Dockerfile`]
+* Entry point:
+** link:../projectinit_docker/dev/percona/entrypoint.sh[`projectinit_docker/dev/percona/entrypoint.sh`]
+** link:../projectinit_docker/prod/percona/entrypoint.sh[`projectinit_docker/prod/percona/entrypoint.sh`]
+* Custom MySQL configuration directory:
+** link:../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`]
+** link:../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]
+* Custom MySQL configuration file:
+** link:../projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf`]
+** link:../projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf`]
+
+=== Database credentials
+
+Database credentials are stored as Docker Compose secrets. The secrets are available in
+link:../compose_secrets[`compose_secrets`] directory of your project.
+
+Resources:
+
+* link:https://docs.docker.com/compose/how-tos/use-secrets/[How to use secrets in Docker Compose]
+
+=== Persisting data on the host
+
+Docker volume is used for persisting data on the host. This is the default method recommended in the documentation of
+the official Docker image. Volume file and directory permissions are managed by Docker. You are free to mount a local
+directory instead (bind mount), however, you will need to set up the directory, its owner (user), permissions and other
+security mechanisms yourself.
+
+Resources:
+
+* link:https://docs.docker.com/engine/storage/volumes/[Docker Volumes]
+* link:https://docs.docker.com/engine/storage/bind-mounts/[Docker bind mounts]
+
+=== Healthcheck
+
+Basic healthcheck mechanism has been implemented in Docker Compose. It makes sure that the Percona MySQL container is
+up before allowing your application to run.
+
+Resources:
+
+* link:https://docs.docker.com/reference/compose-file/services/#healthcheck[Healthcheck Docker service property]
+
+=== Custom MySQL configuration
+
+Custom MySQL configuration directory is implemented and ready in
+link:../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`] and
+link:../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]. `*.cnf` files in
+this directory will be added to the container when you build it.
+
+You can also use already added `my.cnf` file.
+
+==== Default authentication methods
+
+Default authentication methods for MySQL daemon and the Client are set to `caching_sha2_password` in the above-mentioned
+`my.cnf` custom configuration file.
+
+By default, Percona sets deprecated `sha256_password` and `mysql_native_password` as authentication methods for the
+daemon and the client, which ends up filling logs with deprecation warnings.
