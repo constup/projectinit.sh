@@ -12,27 +12,27 @@ The following configuration has been implemented by ProjectInit:
 === Configuration files
 
 * Database credentials (Docker Compose secrets):
-** link:../compose_secrets/mysql_database.txt[`compose_secrets/mysql_database.txt`]
-** link:../compose_secrets/mysql_password.txt[`compose_secrets/mysql_password.txt`]
-** link:../compose_secrets/mysql_root_password.txt[`compose_secrets/mysql_root_password.txt`]
-** link:../compose_secrets/mysql_user.txt[`compose_secrets/mysql_user.txt`]
+** link:../../compose_secrets/mysql_database.txt[`compose_secrets/mysql_database.txt`]
+** link:../../compose_secrets/mysql_password.txt[`compose_secrets/mysql_password.txt`]
+** link:../../compose_secrets/mysql_root_password.txt[`compose_secrets/mysql_root_password.txt`]
+** link:../../compose_secrets/mysql_user.txt[`compose_secrets/mysql_user.txt`]
 * Dockerfile:
-** link:../projectinit_docker/dev/percona/Dockerfile[`projectinit_docker/dev/percona/Dockerfile`]
-** link:../projectinit_docker/prod/percona/Dockerfile[`projectinit_docker/prod/percona/Dockerfile`]
+** link:../../projectinit_docker/dev/percona/Dockerfile[`projectinit_docker/dev/percona/Dockerfile`]
+** link:../../projectinit_docker/prod/percona/Dockerfile[`projectinit_docker/prod/percona/Dockerfile`]
 * Entry point:
-** link:../projectinit_docker/dev/percona/entrypoint.sh[`projectinit_docker/dev/percona/entrypoint.sh`]
-** link:../projectinit_docker/prod/percona/entrypoint.sh[`projectinit_docker/prod/percona/entrypoint.sh`]
+** link:../../projectinit_docker/dev/percona/entrypoint.sh[`projectinit_docker/dev/percona/entrypoint.sh`]
+** link:../../projectinit_docker/prod/percona/entrypoint.sh[`projectinit_docker/prod/percona/entrypoint.sh`]
 * Custom MySQL configuration directory:
-** link:../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`]
-** link:../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]
+** link:../../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`]
+** link:../../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]
 * Custom MySQL configuration file:
-** link:../projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf`]
-** link:../projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf`]
+** link:../../projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf`]
+** link:../../projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf`]
 
 === Database credentials
 
 Database credentials are stored as Docker Compose secrets. The secrets are available in
-link:../compose_secrets[`compose_secrets`] directory of your project.
+link:../../compose_secrets[`compose_secrets`] directory of your project.
 
 Resources:
 
@@ -62,8 +62,8 @@ Resources:
 === Custom MySQL configuration
 
 Custom MySQL configuration directory is implemented and ready in
-link:../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`] and
-link:../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]. `*.cnf` files in
+link:../../projectinit_docker/dev/percona/etc/my.cnf.d/[`projectinit_docker/dev/percona/etc/my.cnf.d/`] and
+link:../../projectinit_docker/prod/percona/etc/my.cnf.d/[`projectinit_docker/prod/percona/etc/my.cnf.d/`]. `*.cnf` files in
 this directory will be added to the container when you build it.
 
 You can also use already added `my.cnf` file.
