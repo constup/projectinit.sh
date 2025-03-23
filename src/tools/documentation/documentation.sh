@@ -18,5 +18,13 @@ setup_database_documentation() {
           ;;
       esac
       ;;
+    "mysql" )
+      cp -f "${tool_dir}/src/database/mysql/v1/template/documentation/index.adoc" "${project_root_dir}/doc/projectinit/mysql.adoc"
+      case $projectinit_container_type in
+        "docker" )
+          perl -pi -e "s/~~~implemented configuration~~~/$(<"${tool_dir}/src/database/mysql/v1/template/documentation/docker/implemented_configuration.adoc" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${project_root_dir}/doc/projectinit/mysql.adoc"
+          ;;
+      esac
+      ;;
   esac
 }

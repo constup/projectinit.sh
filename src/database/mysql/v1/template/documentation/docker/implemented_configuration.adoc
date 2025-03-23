@@ -1,0 +1,67 @@
+== Implemented configuration
+
+The following configuration has been implemented by ProjectInit:
+
+* Database credentials as Docker compose secrets.
+* Docker volume is used for persisting data on the host.
+* Healthcheck is implemented in Docker Compose.
+* Custom `my.cnf` MySQL configuration file and directory are prepared.
+
+=== Configuration files
+
+* Database credentials (Docker Compose secrets):
+** link:../../compose_secrets/mysql_database.txt[`compose_secrets/mysql_database.txt`]
+** link:../../compose_secrets/mysql_password.txt[`compose_secrets/mysql_password.txt`]
+** link:../../compose_secrets/mysql_root_password.txt[`compose_secrets/mysql_root_password.txt`]
+** link:../../compose_secrets/mysql_user.txt[`compose_secrets/mysql_user.txt`]
+* Dockerfile:
+** link:../../projectinit_docker/dev/mysql/Dockerfile[`projectinit_docker/dev/mysql/Dockerfile`]
+** link:../../projectinit_docker/prod/mysql/Dockerfile[`projectinit_docker/prod/mysql/Dockerfile`]
+* Entry point:
+** link:../../projectinit_docker/dev/mysql/entrypoint.sh[`projectinit_docker/dev/mysql/entrypoint.sh`]
+** link:../../projectinit_docker/prod/mysql/entrypoint.sh[`projectinit_docker/prod/mysql/entrypoint.sh`]
+* Custom MySQL configuration directory:
+** link:../../projectinit_docker/dev/mysql/etc/mysql/conf.d/[`projectinit_docker/dev/mysql/etc/mysql/conf.d/`]
+** link:../../projectinit_docker/prod/mysql/etc/mysql/conf.d/[`projectinit_docker/prod/mysql/etc/mysql/conf.d/`]
+* Custom MySQL configuration file:
+** link:../../projectinit_docker/dev/mysql/etc/mysql/conf.d/my.cnf[`projectinit_docker/dev/mysql/etc/mysql/conf.d/my.cnf`]
+** link:../../projectinit_docker/prod/mysql/etc/mysql/conf.d/my.cnf[`projectinit_docker/prod/mysql/etc/mysql/conf.d/my.cnf`]
+
+=== Database credentials
+
+Database credentials are stored as Docker Compose secrets. The secrets are available in
+link:../../compose_secrets[`compose_secrets`] directory of your project.
+
+Resources:
+
+* link:https://docs.docker.com/compose/how-tos/use-secrets/[How to use secrets in Docker Compose]
+
+=== Persisting data on the host
+
+Docker volume is used for persisting data on the host. This is the default method recommended in the documentation of
+the official Docker image. Volume file and directory permissions are managed by Docker. You are free to mount a local
+directory instead (bind mount), however, you will need to set up the directory, its owner (user), permissions and other
+security mechanisms yourself.
+
+Resources:
+
+* link:https://docs.docker.com/engine/storage/volumes/[Docker Volumes]
+* link:https://docs.docker.com/engine/storage/bind-mounts/[Docker bind mounts]
+
+=== Healthcheck
+
+Basic healthcheck mechanism has been implemented in Docker Compose. It makes sure that the MySQL container is up before
+allowing your application to run.
+
+Resources:
+
+* link:https://docs.docker.com/reference/compose-file/services/#healthcheck[Healthcheck Docker service property]
+
+=== Custom MySQL configuration
+
+Custom MySQL configuration directory is implemented and ready in
+link:../../projectinit_docker/dev/mysql/etc/mysql/conf.d/[`projectinit_docker/dev/mysql/etc/mysql/conf.d/`] and
+link:../../projectinit_docker/prod/mysql/etc/mysql/conf.d/[`projectinit_docker/prod/mysql/etc/mysql/conf.d/`]. `*.cnf` files in
+this directory will be added to the container when you build it.
+
+You can also use already added `my.cnf` file.
