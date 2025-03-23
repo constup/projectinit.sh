@@ -1,6 +1,8 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: mysql:~~~database server version~~~
+    build:
+      context: ./
+      dockerfile: ./projectinit_docker/dev/mysql/Dockerfile
     restart: always
     environment:
       MYSQL_DATABASE_FILE: /run/secrets/mysql_database
@@ -10,9 +12,11 @@
     ports:
       - '~~~database host port~~~:3306'
     volumes:
-      - ./database_volume:/var/lib/mysql
-      - ./projectinit_docker/dev/mysql/etc/mysql/conf.d/:/etc/mysql/conf.d/
-      - ./projectinit_docker/dev/mysql/entrypoint.sh:/entrypoint.sh
+      - ~~~database service name~~~_volume:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 --silent
+      timeout: 10s
+      start_period: 1m
     entrypoint: ["/bin/bash", "/entrypoint.sh"]
     secrets:
       - mysql_database

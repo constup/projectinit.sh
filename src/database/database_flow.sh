@@ -12,11 +12,13 @@ setup_database_docker_compose_dev() {
       setup_pgsql_docker_compose_dev
       ;;
     "mysql" )
+      projectinit_compose_has_root_volumes=1
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
       setup_mysql_docker_compose_dev
       setup_mysql_my_cnf_dev
       setup_mysql_dev_entrypoint
+      setup_mysql_dev_dockerfile
       ;;
     "percona" )
       projectinit_compose_has_root_volumes=1
@@ -58,6 +60,7 @@ setup_database_docker_compose_prod() {
       setup_mysql_docker_compose_prod
       setup_mysql_my_cnf_prod
       setup_mysql_prod_entrypoint
+      setup_mysql_prod_dockerfile
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
