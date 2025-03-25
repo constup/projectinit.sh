@@ -3,11 +3,11 @@
 ask_composer_phpunit_version() {
   echo ""
   echo "PHPUnit version. Note: the latest minor version will be used"
-  local options=("12" "11" "10" "9")
+  local options=("PHPUnit 12" "PHPUnit 11" "PHPUnit 10" "PHPUnit 9")
   local option
   select option in "${options[@]}"; do
     case $option in
-      "12")
+      "PHPUnit 12")
         echo ""
         echo "PHPUnit 12 will be used"
         echo "  Release date: February 2025."
@@ -16,7 +16,7 @@ ask_composer_phpunit_version() {
         echo ""
         projectinit_phpunit_version="phpunit/phpunit:^12"
         break;;
-      "11" )
+      "PHPUnit 11" )
         echo ""
         echo "PHPUnit 11 will be used"
         echo "  Release date: February 2024."
@@ -25,7 +25,7 @@ ask_composer_phpunit_version() {
         echo ""
         projectinit_phpunit_version="phpunit/phpunit:^11"
         break;;
-      "10" )
+      "PHPUnit 10" )
         echo ""
         echo "PHPUnit 10 will be used"
         echo "  Release date: February 2023."
@@ -34,7 +34,7 @@ ask_composer_phpunit_version() {
         echo ""
         projectinit_phpunit_version="phpunit/phpunit:^10"
         break;;
-      "9" )
+      "PHPUnit 9" )
         echo ""
         echo "PHPUnit 9 will be used"
         echo "  Release date: February 2020."
