@@ -44,7 +44,9 @@ run_composer_package_flow_docker() {
   # shellcheck source=../../../git/git.sh
   source "${tool_dir}/src/git/git.sh"
   configure_gitignore
-  cp -f "${tool_dir}/src/language/php/composer_package/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
+  # shellcheck source=./container/docker/doc/documentation.sh
+  source "${tool_dir}/src/language/php/composer_package/container/docker/doc/documentation.sh"
+  setup_composer_documentation
   # shellcheck source=../tools/php_ini/v1/php_ini.sh
   source "${tool_dir}/src/language/php/tools/php_ini/v1/php_ini.sh"
   configure_php_ini_docker_dev

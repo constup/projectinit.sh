@@ -52,7 +52,9 @@ run_symfony_flow_docker() {
   # shellcheck source=./container/docker/configuration/dot_env.sh
   source "${tool_dir}/src/language/php/symfony/container/docker/configuration/dot_env.sh"
   add_database_connection_to_env_dev
-  cp -f "${tool_dir}/src/language/php/symfony/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
+  # shellcheck source=./container/docker/doc/documentation.sh
+  source "${tool_dir}/src/language/php/symfony/container/docker/doc/documentation.sh"
+  setup_symfony_documentation
   # shellcheck source=../../../container/docker/dev.sh
   source "${tool_dir}/src/container/docker/dev.sh"
   # shellcheck source=../tools/php_ini/v1/php_ini.sh
