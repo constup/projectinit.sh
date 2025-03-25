@@ -15,7 +15,7 @@
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 --silent
+      test: mysqladmin ping --default-auth=caching_sha2_password -h 127.0.0.1 -u \$(cat \$MYSQL_USER_FILE) -p\$(cat \$MYSQL_PASSWORD_FILE) --silent
       timeout: 10s
       start_period: 1m
     entrypoint: ["/bin/bash", "/entrypoint.sh"]
