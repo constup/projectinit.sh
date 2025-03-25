@@ -5,7 +5,7 @@ services:
             context: ./
             dockerfile: Dockerfile
         image: ~~~image name~~~
-        restart: "always"
+        restart: "unless-stopped"
         ports:
             - "~~~host port~~~:3000"
         environment:
