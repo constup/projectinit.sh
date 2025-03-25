@@ -47,7 +47,7 @@ generate_project_id_card_text
 echo ""
 echo "-------------------------------------------------"
 echo "ProjectInit completed setting up your project at: ${project_root_dir}"
-echo "Take a look at ${project_root_dir}/PROJECTINIT_README.adoc for more info and maintenance instructions."
+echo "Take a look at ${project_root_dir}/doc/projectinit/index.adoc for more info and maintenance instructions."
 if [ "${projectinit_generate_id_card_text}" = 1 ]; then
   echo "Text version of the Project ID card is available at ${project_root_dir}/projectinit_id_card.txt"
 fi
