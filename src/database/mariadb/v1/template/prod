@@ -10,7 +10,8 @@
       MARIADB_PASSWORD_FILE: /run/secrets/mariadb_password
       MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
     ports:
-      - '~~~database host port~~~:3306'
+      - "~~~database host port~~~:3306"
+      - "~~~x plugin host port~~~:33060"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
     healthcheck:

@@ -12,6 +12,7 @@
       PERCONA_TELEMETRY_DISABLE: 1
     ports:
       - "~~~database host port~~~:3306"
+      - "~~~x plugin host port~~~:33060"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
     healthcheck:

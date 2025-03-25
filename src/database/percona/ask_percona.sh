@@ -16,6 +16,8 @@ ask_percona_config() {
   projectinit_database_password=$(read_password)
   echo "  Root password:"
   projectinit_database_root_password=$(read_password)
-  echo "  Host port:"
+  echo "  Host port for Percona MySQL server (container port is 3306):"
   read -r -e projectinit_database_host_port
+  echo "  Host port for X plugin (container port is 33060)"
+  read -r -e projectinit_database_x_plugin_host_port
 }
