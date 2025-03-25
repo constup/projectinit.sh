@@ -7,10 +7,9 @@ setup_mariadb_docker_compose_dev() {
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/mariadb/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
-  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
+  perl -pi -e "s/~~~root volumes~~~/~~~root volumes~~~\n  ${projectinit_database_service_name}_volume:/g" "${target_file}"
 
-  projectinit_compose_has_secrets=1
   mkdir -p "${project_root_dir}/compose_secrets"
   touch "${project_root_dir}/compose_secrets/mariadb_password.txt"
   echo "${projectinit_database_password}" >> "${project_root_dir}/compose_secrets/mariadb_password.txt"
@@ -34,10 +33,26 @@ setup_mariadb_docker_compose_prod() {
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/mariadb/v1/template/prod" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
-  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
+  perl -pi -e "s/~~~root volumes~~~/~~~root volumes~~~\n  ${projectinit_database_service_name}_volume:/g" "${target_file}"
 
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/mariadb/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+}
+
+setup_mariadb_dev_dockerfile() {
+  local target_file
+  target_file="${project_root_dir}/projectinit_docker/dev/mariadb/Dockerfile"
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/dockerfile/dev" "${target_file}"
+  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
+}
+
+setup_mariadb_prod_dockerfile() {
+  local target_file
+  target_file="${project_root_dir}/projectinit_docker/prod/mariadb/Dockerfile"
+
+  cp -f "${tool_dir}/src/database/mariadb/v1/template/dockerfile/prod" "${target_file}"
+  perl -pi -e "s/~~~database server version~~~/${projectinit_database_version}/g" "${target_file}"
 }
 
 setup_mariadb_my_cnf_dev() {

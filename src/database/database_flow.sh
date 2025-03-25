@@ -13,6 +13,7 @@ setup_database_docker_compose_dev() {
       ;;
     "mysql" )
       projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
       setup_mysql_docker_compose_dev
@@ -22,6 +23,7 @@ setup_database_docker_compose_dev() {
       ;;
     "percona" )
       projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
       setup_percona_docker_compose_dev
@@ -30,11 +32,14 @@ setup_database_docker_compose_dev() {
       setup_percona_dev_dockerfile
       ;;
     "mariadb" )
+      projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
       setup_mariadb_docker_compose_dev
       setup_mariadb_my_cnf_dev
       setup_mariadb_dev_entrypoint
+      setup_mariadb_dev_dockerfile
       ;;
   esac
 
@@ -76,6 +81,7 @@ setup_database_docker_compose_prod() {
       setup_mariadb_docker_compose_prod
       setup_mariadb_my_cnf_prod
       setup_mariadb_prod_entrypoint
+      setup_mariadb_prod_dockerfile
       ;;
   esac
 

@@ -1,0 +1,26 @@
+= MariaDB
+:toc:
+:toclevels: 5
+
+== Introduction
+
+|===
+|Description|Link
+
+|Homepage
+|https://mariadb.org
+
+|Docker Official image (used here)
+|https://hub.docker.com/_/mariadb
+
+|MariaDB Official image
+|https://hub.docker.com/r/mariadb/server
+|===
+
+[IMPORTANT]
+====
+MariaDB server has been set up with *minimum configuration only*, so you can start working. It's up to you how you'd like
+to configure it for development and production.
+====
+
+~~~implemented configuration~~~
