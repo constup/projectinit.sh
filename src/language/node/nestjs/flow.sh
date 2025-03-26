@@ -41,5 +41,7 @@ run_nestjs_flow_docker() {
   setup_prod_dockerfile
   setup_prod_entrypoint
   setup_prod_compose
-  cp -f "${tool_dir}/src/language/node/nestjs/container/docker/doc/PROJECTINIT_README_v1.adoc" "${project_root_dir}/PROJECTINIT_README.adoc"
+  # shellcheck source=./container/docker/doc/documentation.sh
+  source "${tool_dir}/src/language/node/nestjs/container/docker/doc/documentation.sh"
+  setup_nestjs_documentation
 }

@@ -9,27 +9,42 @@ setup_database_docker_compose_dev() {
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
-      setup_docker_compose_dev
+      setup_pgsql_docker_compose_dev
       ;;
     "mysql" )
+      projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
-      setup_docker_compose_dev
+      setup_mysql_docker_compose_dev
+      setup_mysql_my_cnf_dev
+      setup_mysql_dev_entrypoint
+      setup_mysql_dev_dockerfile
       ;;
     "percona" )
+      projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
-      setup_docker_compose_dev
+      setup_percona_docker_compose_dev
+      setup_percona_my_cnf_dev
+      setup_percona_dev_entrypoint
+      setup_percona_dev_dockerfile
       ;;
     "mariadb" )
+      projectinit_compose_has_root_volumes=1
+      projectinit_compose_has_secrets=1
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
-      setup_docker_compose_dev
+      setup_mariadb_docker_compose_dev
+      setup_mariadb_my_cnf_dev
+      setup_mariadb_dev_entrypoint
+      setup_mariadb_dev_dockerfile
       ;;
   esac
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
-    perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/compose.yaml"
+    perl -pi -e "s/(.*depends_on:.*)/\1\n      ${projectinit_database_service_name}:\n        condition: service_healthy/" "${project_root_dir}/compose.yaml"
   fi
 }
 
@@ -42,22 +57,31 @@ setup_database_docker_compose_prod() {
     "pgsql" )
       # shellcheck source=../database/pgsql/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/v1/pqsql.sh"
-      setup_docker_compose_prod
+      setup_pgsql_docker_compose_prod
       ;;
     "mysql" )
       # shellcheck source=../database/mysql/v1/mysql.sh
       source "${tool_dir}/src/database/mysql/v1/mysql.sh"
-      setup_docker_compose_prod
+      setup_mysql_docker_compose_prod
+      setup_mysql_my_cnf_prod
+      setup_mysql_prod_entrypoint
+      setup_mysql_prod_dockerfile
       ;;
     "percona" )
       # shellcheck source=../database/percona/v1/percona.sh
       source "${tool_dir}/src/database/percona/v1/percona.sh"
-      setup_docker_compose_prod
+      setup_percona_docker_compose_prod
+      setup_percona_my_cnf_prod
+      setup_percona_prod_entrypoint
+      setup_percona_prod_dockerfile
       ;;
     "mariadb" )
       # shellcheck source=../database/mariadb/v1/mariadb.sh
       source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
-      setup_docker_compose_prod
+      setup_mariadb_docker_compose_prod
+      setup_mariadb_my_cnf_prod
+      setup_mariadb_prod_entrypoint
+      setup_mariadb_prod_dockerfile
       ;;
   esac
 

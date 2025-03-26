@@ -1,0 +1,5 @@
+# Custom Percona configuration
+[mysqld]
+default-authentication-plugin = caching_sha2_password
+[client]
+default-auth = caching_sha2_password

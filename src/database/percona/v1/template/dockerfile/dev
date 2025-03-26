@@ -1,0 +1,6 @@
+FROM percona:~~~database server version~~~
+
+COPY --chown=mysql:mysql --chmod=644 ./projectinit_docker/dev/percona/etc/my.cnf.d/*.cnf /etc/my.cnf.d/
+COPY --chown=mysql:mysql ./projectinit_docker/dev/percona/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

@@ -8,10 +8,11 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: ~~~image name~~~
-    restart: "always"
+    restart: "unless-stopped"
     ports:
       - "~~~host port~~~:8080"
     volumes:
-      - ./projectinit_docker/php/zz_prod_php.ini:/usr/local/etc/php/conf.d/zz_prod_php.ini
+      - ./projectinit_docker/prod/php/usr/local/etc/php/conf.d/zz_php.ini:/usr/local/etc/php/conf.d/zz_php.ini
+~~~root volumes~~~
 secrets:
   ~~~compose secrets~~~

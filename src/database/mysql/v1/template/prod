@@ -1,6 +1,8 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: mysql:~~~database server version~~~
+    build:
+      context: ./
+      dockerfile: ./projectinit_docker/dev/mysql/Dockerfile
     restart: always
     environment:
       MYSQL_DATABASE_FILE: /run/secrets/mysql_database
@@ -8,9 +10,15 @@
       MYSQL_PASSWORD_FILE: /run/secrets/mysql_password
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
     ports:
-      - '~~~database host port~~~:3306'
+      - "~~~database host port~~~:3306"
+      - "~~~x plugin host port~~~:33060"
     volumes:
-      - ./database_volume:/var/lib/mysql
+      - ~~~database service name~~~_volume:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping --default-auth=caching_sha2_password -h 127.0.0.1 -u \$(cat \$MYSQL_USER_FILE) -p\$(cat \$MYSQL_PASSWORD_FILE) --silent
+      timeout: 10s
+      start_period: 1m
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
     secrets:
       - mysql_database
       - mysql_user

@@ -29,7 +29,7 @@ Transferring a project to another computer (ex. team members), requires a couple
 * create `.env.docker` file in your project's root directory and add the following values:
 ** `PROJECTINIT_UID` - user ID. Can be obtained by running `id -u` on the host machine.
 ** `PROJECTINIT_GID` - group ID. Can be obtained by running `id -g` on the host machine.
-* check if your project uses Docker Compose secrets (in link:compose_dev.yaml[`compose_dev.yaml`]), create and fill the
+* check if your project uses Docker Compose secrets (in link:../../compose.yaml[`compose.yaml`]), create and fill the
 required secrets files
 
 ==== Running the project on local
@@ -37,13 +37,13 @@ To run the local development environment, simply run:
 
 [source,shell]
 ----
-docker compose -f compose_dev.yaml --env-file .env.docker up
+docker compose --env-file .env.docker up
 ----
 
 === Dev environment
 
-Local and dev environment are pretty much the same, so you are free to use `_dev` Docker configuration files for your
-dev environment.
+Local and dev environment are pretty much the same, so you are free to use dev Docker configuration files for your dev
+environment.
 
 === Production environment
 
@@ -52,11 +52,11 @@ need for that. Instead, you are free to modify and use them as you see fit.
 
 Production files:
 
-* link:Dockerfile[Dockerfile] - Production Dockerfile for your application
-* link:compose.yaml[compose.yaml] - Production Docker Compose. Note that, depending on your CI/CD setup, you may or may
+* link:../../projectinit_docker/prod/Dockerfile[Dockerfile] - Production Dockerfile for your application
+* link:../../projectinit_docker/prod/compose.yaml[compose.yaml] - Production Docker Compose. Note that, depending on your CI/CD setup, you may or may
 not need this file. For example, if your production environment uses some sort of orchestration (ex. Kubernetes), you
 may only need the Dockerfile.
-* link:start.sh[start.sh] - Production Docker container entrypoint script
+* link:../../projectinit_docker/prod/start.sh[start.sh] - Production Docker container entrypoint script
 
 == Users and file ownership
 
@@ -64,7 +64,7 @@ link:https://docs.docker.com/compose/how-tos/environment-variables/variable-inte
 is used to pass host's user and group ID to the container, in order to set up a user inside the container. This enables
 you to edit the source files on your host, like you would normally do when working on a project.
 
-ProjectInit adds user and group IDs to link:.env.docker[`.env.docker`] file during project creation. It also adds the
+ProjectInit adds user and group IDs to link:../../.env.docker[`.env.docker`] file during project creation. It also adds the
 `.env.docker` file to `.gitignore`, because these IDs can be different on other computers that are cloning your
 project's repository.
 

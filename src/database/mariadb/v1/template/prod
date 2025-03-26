@@ -1,6 +1,8 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: mariadb:~~~database server version~~~
+    build:
+      context: ./
+      dockerfile: ./projectinit_docker/prod/mariadb/Dockerfile
     restart: always
     environment:
       MARIADB_DATABASE_FILE: /run/secrets/mariadb_database
@@ -8,9 +10,14 @@
       MARIADB_PASSWORD_FILE: /run/secrets/mariadb_password
       MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
     ports:
-      - '~~~database host port~~~:3306'
+      - "~~~database host port~~~:3306"
+      - "~~~x plugin host port~~~:33060"
     volumes:
-      - ./database_volume:/var/lib/mysql
+      - ~~~database service name~~~_volume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 10s
+      start_period: 1m
     secrets:
       - mariadb_database
       - mariadb_user

@@ -1,0 +1,8 @@
+FROM mariadb:~~~database server version~~~
+
+ENV MARIADB_MYSQL_LOCALHOST_USER=1
+
+COPY --chown=mysql:mysql --chmod=644 ./projectinit_docker/dev/mariadb/etc/mysql/conf.d/*.cnf /etc/mysql/conf.d/
+COPY --chown=mysql:mysql ./projectinit_docker/dev/mariadb/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
