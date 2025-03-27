@@ -4,7 +4,7 @@ setup_memcached_docker_compose_dev() {
   local target_file
   target_file="${project_root_dir}/compose.yaml"
 
-  perl -pi -e "s/~~~tools~~~/$(<"${tool_dir}/src/tools/cache/memcached/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~tools~~~/$(<"${tool_dir}/src/tools/cache/memcached/container/docker/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~memcached service name~~~/${projectinit_memcached_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~memcached version~~~/${projectinit_memcached_version}/g" "${target_file}"
   perl -pi -e "s/~~~memcached host port~~~/${projectinit_memcached_host_port}/g" "${target_file}"
@@ -18,7 +18,7 @@ setup_memcached_docker_compose_prod() {
     mkdir "${project_root_dir}/projectinit_docker/prod"
   fi
 
-  perl -pi -e "s/~~~tools~~~/$(<"${tool_dir}/src/tools/cache/memcached/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~tools~~~/$(<"${tool_dir}/src/tools/cache/memcached/container/docker/v1/template/dev" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
   perl -pi -e "s/~~~memcached service name~~~/${projectinit_memcached_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~memcached version~~~/${projectinit_memcached_version}/g" "${target_file}"
   perl -pi -e "s/~~~memcached host port~~~/${projectinit_memcached_host_port}/g" "${target_file}"
