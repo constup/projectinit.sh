@@ -14,10 +14,6 @@
       - "~~~x plugin host port~~~:33060"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-      timeout: 10s
-      start_period: 1m
     secrets:
       - mariadb_database
       - mariadb_user
