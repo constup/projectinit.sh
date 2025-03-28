@@ -8,6 +8,17 @@ source ../src/language/flow.sh
 source ../src/language/ask_flow.sh
 source ../src/tools/documentation/documentation.sh
 
+cat << EOF
+    ____               _           __  ____      _ __         __
+   / __ \_________    (_)__  _____/ /_/  _/___  (_) /_  _____/ /_
+  / /_/ / ___/ __ \  / / _ \/ ___/ __// // __ \/ / __/ / ___/ __ \\
+ / ____/ /  / /_/ / / /  __/ /__/ /__/ // / / / / /__ (__  ) / / /
+/_/   /_/   \____/_/ /\___/\___/\__/___/_/ /_/_/\__(_)____/_/ /_/
+                /___/
+EOF
+cat ../version
+echo ""
+
 check_user_configuration
 
 # Directory setup
