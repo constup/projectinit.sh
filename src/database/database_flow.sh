@@ -7,9 +7,11 @@ setup_database_docker_compose_dev() {
       perl -i -ne 'print unless /~~~database creation and migration~~~/;' "${project_root_dir}/start.sh"
       ;;
     "pgsql" )
+      projectinit_compose_has_root_volumes=1
       # shellcheck source=pgsql/container/docker/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/container/docker/v1/pqsql.sh"
       setup_pgsql_docker_compose_dev
+      setup_pgsql_dev_dockerfile
       ;;
     "mysql" )
       projectinit_compose_has_root_volumes=1
@@ -58,6 +60,7 @@ setup_database_docker_compose_prod() {
       # shellcheck source=pgsql/container/docker/v1/pqsql.sh
       source "${tool_dir}/src/database/pgsql/container/docker/v1/pqsql.sh"
       setup_pgsql_docker_compose_prod
+      setup_pgsql_prod_dockerfile
       ;;
     "mysql" )
       # shellcheck source=../database/mysql/v1/mysql.sh

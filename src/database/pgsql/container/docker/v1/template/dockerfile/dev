@@ -1,0 +1,8 @@
+FROM postgres:~~~database server version~~~
+
+HEALTHCHECK --timeout=10s --start-period=1m \
+    CMD pg_isready \
+        -h 127.0.0.1 \
+        -d $(cat $POSTGRES_DB_FILE) \
+        -U $(cat $POSTGRES_USER_FILE) \
+        -q

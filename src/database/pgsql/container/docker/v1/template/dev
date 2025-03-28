@@ -1,6 +1,8 @@
 ~~~database service name~~~:
     container_name: ~~~database container name~~~
-    image: postgres:~~~database server version~~~
+    build:
+      context: ./
+      dockerfile: ./projectinit_docker/dev/pgsql/Dockerfile
     restart: always
     environment:
       POSTGRES_DB_FILE: /run/secrets/postgres_db
@@ -9,7 +11,7 @@
     ports:
       - "~~~database host port~~~:5432"
     volumes:
-      - ./database_volume:/var/lib/database/data
+      - ~~~database service name~~~_volume:/var/lib/postgresql/data
     secrets:
       - postgres_db
       - postgres_user

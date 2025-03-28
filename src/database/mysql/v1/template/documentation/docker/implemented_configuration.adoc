@@ -4,7 +4,7 @@ The following configuration has been implemented by ProjectInit:
 
 * Database credentials as Docker compose secrets.
 * Docker volume is used for persisting data on the host.
-* Healthcheck is implemented in Docker Compose.
+* Healthcheck is implemented directly in the Docker image (custom Dockerfile).
 * Custom `my.cnf` MySQL configuration file and directory are prepared.
 
 === Configuration files
@@ -50,12 +50,12 @@ Resources:
 
 === Healthcheck
 
-Basic healthcheck mechanism has been implemented in Docker Compose. It makes sure that the MySQL container is up before
-allowing your application to run.
+Basic healthcheck mechanism has been implemented in the custom Dockerfile. It makes sure that the database service is up
+before allowing your application to run.
 
 Resources:
 
-* link:https://docs.docker.com/reference/compose-file/services/#healthcheck[Healthcheck Docker service property]
+* link:https://docs.docker.com/reference/dockerfile/#healthcheck[Healthcheck in Dockerfile]
 
 === Custom MySQL configuration
 
