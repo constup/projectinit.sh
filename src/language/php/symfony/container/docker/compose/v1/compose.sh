@@ -24,8 +24,8 @@ setup_dev_compose() {
   setup_database_docker_compose_dev
 
   if [ "${projectinit_use_memcached}" -eq 1 ]; then
-    # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
-    source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+    # shellcheck source=../../../../../../../tools/cache/memcached/container/docker/v1/memcached.sh
+    source "${tool_dir}/src/tools/cache/memcached/container/docker/v1/memcached.sh"
     setup_memcached_docker_compose_dev
   fi
 
@@ -56,8 +56,8 @@ setup_prod_compose() {
   setup_database_docker_compose_prod
 
   if [ "${projectinit_use_memcached}" -eq 1 ]; then
-    # shellcheck source=../../../../../../../tools/cache/memcached/v1/memcached.sh
-    source "${tool_dir}/src/tools/cache/memcached/v1/memcached.sh"
+    # shellcheck source=../../../../../../../tools/cache/memcached/container/docker/v1/memcached.sh
+    source "${tool_dir}/src/tools/cache/memcached/container/docker/v1/memcached.sh"
     setup_memcached_docker_compose_prod
   fi
 
