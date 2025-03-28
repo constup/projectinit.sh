@@ -8,6 +8,7 @@ setup_pgsql_docker_compose_dev() {
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
+  perl -pi -e "s/~~~root volumes~~~/~~~root volumes~~~\n  ${projectinit_database_service_name}_volume:/g" "${target_file}"
 
   projectinit_compose_has_secrets=1
   mkdir -p "${project_root_dir}/compose_secrets"
@@ -32,6 +33,7 @@ setup_pgsql_docker_compose_prod() {
   perl -pi -e "s/~~~database service name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database container name~~~/${projectinit_database_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
+  perl -pi -e "s/~~~root volumes~~~/~~~root volumes~~~\n  ${projectinit_database_service_name}_volume:/g" "${target_file}"
 
   perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/pgsql/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }

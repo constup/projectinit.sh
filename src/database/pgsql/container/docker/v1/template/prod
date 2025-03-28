@@ -11,7 +11,7 @@
     ports:
       - "~~~database host port~~~:5432"
     volumes:
-      - ./database_volume:/var/lib/database/data
+      - ~~~database service name~~~_volume:/var/lib/postgresql/data
     secrets:
       - postgres_db
       - postgres_user
