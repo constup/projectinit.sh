@@ -1,0 +1,24 @@
+= PostgreSQL
+:toc:
+:toclevels: 5
+
+== Introduction
+
+|===
+|Description|Link
+
+|Homepage
+|https://www.postgresql.org/
+
+|Docker Official image (used here)
+|https://hub.docker.com/_/postgres
+
+|===
+
+[IMPORTANT]
+====
+PostgreSQL server has been set up with *minimum configuration only*, so you can start working. It's up to you how you'd
+like to configure it for development and production.
+====
+
+~~~implemented configuration~~~
