@@ -46,6 +46,11 @@ print_container_block() {
         echo "| Version: ${projectinit_language_version}"
         echo "| Application Docker service: ${projectinit_app_service_name}"
         echo "| Application host port: ${projectinit_app_host_port}"
+        if [ "${projectinit_build_containers}" -eq 1 ]; then
+          echo "| Containers are built automatically by ProjectInit"
+        else
+          echo "| Containers are not build. Use 'docker compose --env-file .env.docker build' to build."
+        fi
         ;;
     esac
   fi

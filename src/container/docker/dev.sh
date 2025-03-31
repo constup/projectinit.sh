@@ -5,11 +5,13 @@ build_dev() {
   echo "Performing configuration cleanup..."
   cleanup_before_build
   echo "Configuration ready..."
-  echo ""
-  echo "Building Dev container..."
-  cd "${project_root_dir}" || exit 1
-  docker compose --env-file .env.docker build
-  echo "  Dev container built..."
+  if [ "${projectinit_build_containers}" -eq 1 ]; then
+    echo ""
+    echo "Building Dev container..."
+    cd "${project_root_dir}" || exit 1
+    docker compose --env-file .env.docker build
+    echo "  Dev container built..."
+  fi
 }
 
 cleanup_before_build() {
