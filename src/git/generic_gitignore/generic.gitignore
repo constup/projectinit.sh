@@ -86,3 +86,6 @@ yarn-error.log
 # Docker volumes
 ## Database
 /database_volume/
+
+# ProjectInit
+projectinit_cli.sh

@@ -26,3 +26,6 @@ database_volume/
 
 # Docker Compose secrets
 compose_secrets/
+
+# ProjectInit CLI
+projectinit_cli.sh

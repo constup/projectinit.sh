@@ -50,6 +50,7 @@ configure_gitignore() {
     echo "compose_secrets/" >> "${target_file}"
     echo "database_volume/" >> "${target_file}"
     echo "codeCoverage/" >> "${target_file}"
+    echo "projectinit_cli.sh" >> "${target_file}"
   fi
   echo "  .gitignore configured..."
 }
