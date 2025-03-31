@@ -77,8 +77,8 @@ ask_symfony_version() {
   while true; do
     read -r -p "Are you sure (y/n)?" confirmation_options
     case "${confirmation_options,,}" in
-      "y"|"yes"|"yup"|"yeah" ) break;;
-      "n"|"no"|"nope" ) ask_symfony_version; break;;
+      "y"|"yes"|"yup"|"yeah"|"1" ) break;;
+      "n"|"no"|"nope"|"2" ) ask_symfony_version; break;;
       * ) echo "Invalid input. Asking again..."
     esac
   done

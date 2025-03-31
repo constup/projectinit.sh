@@ -166,8 +166,8 @@ ask_generate_project_id_card_text() {
   while true; do
     read -r -p "Do you want to save this Project ID card as a text file inside your project (y/n)?" options
     case "${options,,}" in
-      "y"|"yes"|"yup"|"yeah" ) projectinit_generate_id_card_text=1; break;;
-      "n"|"no"|"nope" ) projectinit_generate_id_card_text=0; break;;
+      "y"|"yes"|"yup"|"yeah"|"1" ) projectinit_generate_id_card_text=1; break;;
+      "n"|"no"|"nope"|"2" ) projectinit_generate_id_card_text=0; break;;
       * ) echo "Invalid input. Asking again..." ;;
     esac
   done

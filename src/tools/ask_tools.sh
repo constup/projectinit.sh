@@ -27,8 +27,8 @@ ask_tools() {
     while true; do
       read -r -p "Do you want to install more tools (y/n)?"
       case "${more_options,,}" in
-        "y"|"yes"|"yup"|"yeah" ) ask_tools; break;;
-        "n"|"no"|"nope" ) echo "  All tools picked..."; break;;
+        "y"|"yes"|"yup"|"yeah"|"1" ) ask_tools; break;;
+        "n"|"no"|"nope"|"2" ) echo "  All tools picked..."; break;;
         * ) echo "Invalid input. Asking again..." ;;
       esac
     done

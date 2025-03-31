@@ -29,8 +29,8 @@ ask_typescript_strict_mode() {
   while true; do
     read -r -p "TypeScript strict mode (y/n)?" options
     case "${options,,}" in
-      "y"|"yes"|"yup"|"yeah" ) projectinit_typescript_strict_mode=1; break;;
-      "n"|"no"|"nope" ) projectinit_typescript_strict_mode=0; break;;
+      "y"|"yes"|"yup"|"yeah"|"1" ) projectinit_typescript_strict_mode=1; break;;
+      "n"|"no"|"nope"|"2" ) projectinit_typescript_strict_mode=0; break;;
       * ) echo "Invalid input. Asking again..." ;;
     esac
   done

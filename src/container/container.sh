@@ -6,8 +6,8 @@ ask_to_use_container() {
   while true; do
     read -r -p "Would you like to use a container (Docker, Podman,...) (y/n)?" options
     case "${options,,}" in
-      "y"|"yes"|"yup"|"yeah" ) ask_container_type; break;;
-      "n"|"no"|"nope" ) projectinit_container_type="none"; break;;
+      "y"|"yes"|"yup"|"yeah"|"1" ) ask_container_type; break;;
+      "n"|"no"|"nope"|"2" ) projectinit_container_type="none"; break;;
       * ) echo "Invalid input. Asking again..." ;;
     esac
   done
