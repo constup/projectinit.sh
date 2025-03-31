@@ -23,6 +23,8 @@ made.
 == Variables
 
 . All global variable names MUST start with `projectinit_`.
+. All global variable names MUST use `snake_case` and be lowercase. When a variable is in uppercase, it SHOULD mean that
+it's holding an environment variable.
 . You SHOULD reuse existing global variables whenever possible. When you are developing a new feature, take a look at
 link:globals.adoc[Global variables documentation] first and see if any of the already existing global variables can be
 used.
