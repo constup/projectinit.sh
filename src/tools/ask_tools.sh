@@ -23,17 +23,13 @@ ask_tools() {
 
   if [ "${install_additional_tools}" -eq 1 ]; then
     echo ""
-    echo "Do you want to install more tools?"
-    local more_options=("yes" "no")
-    local more_option
-    select more_option in "${more_options[@]}"; do
-      case $more_option in
-        "yes" )
-          ask_tools
-          break;;
-        "no" )
-          echo "  All tools picked..."
-          break;;
+    local more_options
+    while true; do
+      read -r -p "Do you want to install more tools (y/n)?"
+      case "${more_options,,}" in
+        "y"|"yes"|"yup"|"yeah" ) ask_tools; break;;
+        "n"|"no"|"nope" ) echo "  All tools picked..."; break;;
+        * ) echo "Invalid input. Asking again..." ;;
       esac
     done
   fi

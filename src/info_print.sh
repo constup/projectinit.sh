@@ -161,17 +161,14 @@ print_tools_block() {
 }
 
 ask_generate_project_id_card_text() {
-  echo "Do you want to save this Project ID card as a text file inside your project?"
-  local options=("yes" "no")
-  local option
-  select option in "${options[@]}"; do
-    case $option in
-      "yes" )
-        projectinit_generate_id_card_text=1
-        break;;
-      "no" )
-        projectinit_generate_id_card_text=0
-        nreak;;
+  local options
+
+  while true; do
+    read -r -p "Do you want to save this Project ID card as a text file inside your project (y/n)?" options
+    case "${options,,}" in
+      "y"|"yes"|"yup"|"yeah" ) projectinit_generate_id_card_text=1; break;;
+      "n"|"no"|"nope" ) projectinit_generate_id_card_text=0; break;;
+      * ) echo "Invalid input. Asking again..." ;;
     esac
   done
 }

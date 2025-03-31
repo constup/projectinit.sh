@@ -2,17 +2,13 @@
 
 ask_to_use_container() {
   echo ""
-  echo "Would you like to use a container (Docker, Podman,...)?"
-  local options=("yes" "no")
-  local option
-  select option in "${options[@]}"; do
-    case $option in
-      "yes" )
-        ask_container_type
-        break;;
-      "no" )
-        projectinit_container_type="none"
-        break;;
+  local options
+  while true; do
+    read -r -p "Would you like to use a container (Docker, Podman,...) (y/n)?" options
+    case "${options,,}" in
+      "y"|"yes"|"yup"|"yeah" ) ask_container_type; break;;
+      "n"|"no"|"nope" ) projectinit_container_type="none"; break;;
+      * ) echo "Invalid input. Asking again..." ;;
     esac
   done
 }
