@@ -11,7 +11,7 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 
 == General user experience
 
-. All questions the user should answer when running ProjectInit MUST be asked before any changes to the filesystem are
+. All questions a user should answer when running ProjectInit MUST be asked before any changes to the filesystem are
 made.
 
 == Prompts
