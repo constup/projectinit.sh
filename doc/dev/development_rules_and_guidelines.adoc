@@ -1,0 +1,21 @@
+= Development rules and guidelines
+:toc:
+:toclevels: 5
+
+== Introduction
+
+These rules and guidelines will help and guide you when implementing features and working on ProjectInit.sh development.
+
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in link:https://www.ietf.org/rfc/rfc2119.txt[RFC 2119].
+
+== General user experience
+
+. All questions the user should answer when running ProjectInit MUST be asked before any changes to the filesystem are
+made.
+
+== Prompts
+
+. All "yes/no" prompts MUST implement the following acceptable input:
+- for "yes": `"y"|"yes"|"yup"|"yeah"|"1"`
+- for "no": `"n"|"no"|"nope"|"2"`
