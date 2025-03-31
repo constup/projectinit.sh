@@ -12,6 +12,7 @@
       - "~~~database host port~~~:5432"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/postgresql/data
+      - ./projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     secrets:
       - postgres_db
       - postgres_user

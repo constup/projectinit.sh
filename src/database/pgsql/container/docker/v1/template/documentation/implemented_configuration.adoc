@@ -5,6 +5,7 @@ The following configuration has been implemented by ProjectInit:
 * Database credentials as Docker compose secrets.
 * Docker volume is used for persisting data on the host.
 * Healthcheck is implemented directly in the Docker image (custom Dockerfile).
+* Bind mount of database initialization directory
 
 === Configuration files
 
@@ -15,6 +16,9 @@ The following configuration has been implemented by ProjectInit:
 * Dockerfile:
 ** link:../../projectinit_docker/dev/pgsql/Dockerfile[`projectinit_docker/dev/pgsql/Dockerfile`]
 ** link:../../projectinit_docker/prod/pgsql/Dockerfile[`projectinit_docker/prod/pgsql/Dockerfile`]
+* Database initialization directory:
+** link:../../projectinit_docker/dev/pgsql/docker-entrypoint-initdb.d[`projectinit_docker/dev/pgsql/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d[`projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d`]
 
 === Database credentials
 
@@ -46,3 +50,15 @@ Resources:
 
 * link:https://docs.docker.com/reference/dockerfile/#healthcheck[Healthcheck in Dockerfile]
 * link:https://www.postgresql.org/docs/current/app-pg-isready.html[`pg_isready`]
+
+== Database initialization directory
+
+When a container is started for the first time, a new database with the specified name will be created and initialized
+with the provided configuration variables. Furthermore, it will execute files with extensions `.sh`, `.sql` and
+`.sql.gz` that are found in `/docker-entrypoint-initdb.d`.
+
+A bind mount of this container directory is available at:
+
+** link:../../projectinit_docker/dev/pgsql/docker-entrypoint-initdb.d[`projectinit_docker/dev/pgsql/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d[`projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d`]
+
