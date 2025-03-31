@@ -70,7 +70,6 @@ this directory will be added to the container when you build it.
 
 You can also use already added `my.cnf` file.
 
-
 == Database initialization directory
 
 When a container is started for the first time, a new database with the specified name will be created and initialized

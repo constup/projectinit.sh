@@ -15,6 +15,7 @@
       - "~~~x plugin host port~~~:33060"
     volumes:
       - ~~~database service name~~~_volume:/var/lib/mysql
+      - ./projectinit_docker/dev/percona/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     secrets:
       - mysql_database
       - mysql_user
