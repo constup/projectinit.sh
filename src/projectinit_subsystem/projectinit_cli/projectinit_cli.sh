@@ -16,9 +16,3 @@ cleanup_projectinit_cli() {
 
   perl -i -ne 'print unless /~~~include file~~~/;' "${target_file}"
 }
-
-project_root_dir="/w/temp/cli"
-tool_dir="/w/constup/projects/projectinit.sh"
-mkdir -p "${project_root_dir}"
-generate_base_projectinit_cli
-cleanup_projectinit_cli
