@@ -6,6 +6,7 @@ The following configuration has been implemented by ProjectInit:
 * Docker volume is used for persisting data on the host.
 * Healthcheck is implemented directly in the Docker image (custom Dockerfile).
 * Custom `my.cnf` MySQL configuration file and directory are prepared.
+* Bind mount of database initialization directory
 
 === Configuration files
 
@@ -26,6 +27,9 @@ The following configuration has been implemented by ProjectInit:
 * Custom MySQL configuration file:
 ** link:../../projectinit_docker/dev/mysql/etc/mysql/conf.d/my.cnf[`projectinit_docker/dev/mysql/etc/mysql/conf.d/my.cnf`]
 ** link:../../projectinit_docker/prod/mysql/etc/mysql/conf.d/my.cnf[`projectinit_docker/prod/mysql/etc/mysql/conf.d/my.cnf`]
+* Database initialization directory:
+** link:../../projectinit_docker/dev/mysql/docker-entrypoint-initdb.d[`projectinit_docker/dev/mysql/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/mysql/docker-entrypoint-initdb.d[`projectinit_docker/prod/mysql/docker-entrypoint-initdb.d`]
 
 === Database credentials
 
@@ -65,3 +69,15 @@ link:../../projectinit_docker/prod/mysql/etc/mysql/conf.d/[`projectinit_docker/p
 this directory will be added to the container when you build it.
 
 You can also use already added `my.cnf` file.
+
+
+== Database initialization directory
+
+When a container is started for the first time, a new database with the specified name will be created and initialized
+with the provided configuration variables. Furthermore, it will execute files with extensions `.sh`, `.sql` and
+`.sql.gz` that are found in `/docker-entrypoint-initdb.d`.
+
+A bind mount of this container directory is available at:
+
+** link:../../projectinit_docker/dev/mysql/docker-entrypoint-initdb.d[`projectinit_docker/dev/mysql/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/mysql/docker-entrypoint-initdb.d[`projectinit_docker/prod/mysql/docker-entrypoint-initdb.d`]
