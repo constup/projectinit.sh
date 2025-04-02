@@ -55,16 +55,13 @@ ask_symfony_phpunit_version() {
     esac
   done
 
-  echo "Are you sure?"
-  local confirmation_options=("yes" "no")
-  local confirmation_option
-  select confirmation_option in "${confirmation_options[@]}"; do
-    case $confirmation_option in
-      "yes" )
-        break;;
-      "no" )
-        ask_symfony_phpunit_version
-        break;;
+  local confirmation_options
+  while true; do
+    read -r -p "Are you sure (y/n)?" confirmation_options
+    case "${confirmation_options,,}" in
+      "y"|"yes"|"yup"|"yeah"|"1" ) break;;
+      "n"|"no"|"nope"|"2" ) ask_symfony_phpunit_version; break;;
+      * ) echo "Invalid input. Asking again..."
     esac
   done
 }

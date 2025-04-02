@@ -46,6 +46,11 @@ print_container_block() {
         echo "| Version: ${projectinit_language_version}"
         echo "| Application Docker service: ${projectinit_app_service_name}"
         echo "| Application host port: ${projectinit_app_host_port}"
+        if [ "${projectinit_build_containers}" -eq 1 ]; then
+          echo "| Containers are built automatically by ProjectInit"
+        else
+          echo "| Containers are not build. Use 'docker compose --env-file .env.docker build' to build."
+        fi
         ;;
     esac
   fi
@@ -133,7 +138,7 @@ print_database_block() {
     fi
     echo "| Database name: ${projectinit_database_name}"
     echo "| Host port: ${projectinit_database_host_port}"
-    if [[ ! -v "${projectinit_database_x_plugin_host_port}" ]]; then
+    if [[ ! -v projectinit_database_x_plugin_host_port ]]; then
       echo "| X Protocol host port: ${projectinit_database_x_plugin_host_port}"
     fi
   fi
@@ -161,17 +166,14 @@ print_tools_block() {
 }
 
 ask_generate_project_id_card_text() {
-  echo "Do you want to save this Project ID card as a text file inside your project?"
-  local options=("yes" "no")
-  local option
-  select option in "${options[@]}"; do
-    case $option in
-      "yes" )
-        projectinit_generate_id_card_text=1
-        break;;
-      "no" )
-        projectinit_generate_id_card_text=0
-        nreak;;
+  local options
+
+  while true; do
+    read -r -p "Do you want to save this Project ID card as a text file inside your project (y/n)?" options
+    case "${options,,}" in
+      "y"|"yes"|"yup"|"yeah"|"1" ) projectinit_generate_id_card_text=1; break;;
+      "n"|"no"|"nope"|"2" ) projectinit_generate_id_card_text=0; break;;
+      * ) echo "Invalid input. Asking again..." ;;
     esac
   done
 }

@@ -121,6 +121,13 @@ up or run servers or services on your system. Once it's done, it's done.
 be up in order for ProjectInit to work. Even if development and maintenance of ProjectInit stops, you will still have
 the latest version of a working tool.
 
+== Development and code contributions
+
+The following resources are available for development and code contributions:
+
+- link:doc/dev/development_rules_and_guidelines.adoc[Development rules and guidelines]
+- link:doc/dev/globals.adoc[Global variables documentation]
+
 == Supporting development
 
 If you like this tool or find it useful, consider buying me a nice cup of coffee. Coffee fuels open source.

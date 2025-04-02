@@ -7,6 +7,7 @@ The following configuration has been implemented by ProjectInit:
 * Healthcheck is implemented directly in the Docker image (custom Dockerfile).
 * Custom `my.cnf` MySQL configuration file and directory are prepared.
 * Default authentication is set to non-deprecated `caching_sha2_password` method for both MySQL daemon and client.
+* Bind mount of database initialization directory
 * Percona telemetry is disabled.
 
 === Configuration files
@@ -28,6 +29,9 @@ The following configuration has been implemented by ProjectInit:
 * Custom MySQL configuration file:
 ** link:../../projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/dev/percona/etc/my.cnf.d/my.cnf`]
 ** link:../../projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf[`projectinit_docker/prod/percona/etc/my.cnf.d/my.cnf`]
+* Database initialization directory:
+** link:../../projectinit_docker/dev/percona/docker-entrypoint-initdb.d[`projectinit_docker/dev/percona/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/percona/docker-entrypoint-initdb.d[`projectinit_docker/prod/percona/docker-entrypoint-initdb.d`]
 
 === Database credentials
 
@@ -75,3 +79,14 @@ Default authentication methods for MySQL daemon and the Client are set to `cachi
 
 By default, Percona sets deprecated `sha256_password` and `mysql_native_password` as authentication methods for the
 daemon and the client, which ends up filling logs with deprecation warnings.
+
+== Database initialization directory
+
+When a container is started for the first time, a new database with the specified name will be created and initialized
+with the provided configuration variables. Furthermore, it will execute files with extensions `.sh`, `.sql` and
+`.sql.gz` that are found in `/docker-entrypoint-initdb.d`.
+
+A bind mount of this container directory is available at:
+
+** link:../../projectinit_docker/dev/percona/docker-entrypoint-initdb.d[`projectinit_docker/dev/percona/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/percona/docker-entrypoint-initdb.d[`projectinit_docker/prod/percona/docker-entrypoint-initdb.d`]

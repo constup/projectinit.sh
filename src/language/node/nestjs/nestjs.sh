@@ -25,16 +25,13 @@ ask_nestjs_version() {
 
 ask_typescript_strict_mode() {
   echo ""
-  echo "TypeScript strict mode (yes):"
-  local options=("yes" "no")
-  local option
-  select option in "${options[@]}"; do
-    case $option in
-      "yes"|"" )
-        projectinit_typescript_strict_mode=1
-        break;;
-      "no" )
-        projectinit_typescript_strict_mode=0
+  local options
+  while true; do
+    read -r -p "TypeScript strict mode (y/n)?" options
+    case "${options,,}" in
+      "y"|"yes"|"yup"|"yeah"|"1" ) projectinit_typescript_strict_mode=1; break;;
+      "n"|"no"|"nope"|"2" ) projectinit_typescript_strict_mode=0; break;;
+      * ) echo "Invalid input. Asking again..." ;;
     esac
   done
 }
