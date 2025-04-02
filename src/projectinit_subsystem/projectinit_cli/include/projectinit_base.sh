@@ -9,7 +9,7 @@ help() {
   echo "----------"
   echo ""
   echo "Overview of features:"
-  ~~~feature~~~
+  ~~~help for feature~~~
 }
 
 main() {

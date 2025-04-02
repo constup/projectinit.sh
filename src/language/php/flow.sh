@@ -7,6 +7,9 @@ run_php_flow() {
       ;;
     "docker" )
       run_php_docker_flow
+      # shellcheck source=../../container/docker/projectinit_cli/docker_projectinit_cli.sh
+      source "${tool_dir}/src/container/docker/projectinit_cli/docker_projectinit_cli.sh"
+      setup_docker_projectinit_cli
       ;;
   esac
 }

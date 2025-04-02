@@ -15,5 +15,5 @@ cleanup_projectinit_cli() {
   target_file="${project_root_dir}/projectinit_cli.sh"
 
   perl -i -ne 'print unless /~~~include file~~~/;' "${target_file}"
-  perl -i -ne 'print unless /~~~feature~~~/;' "${target_file}"
+  perl -i -ne 'print unless /~~~help for feature~~~/;' "${target_file}"
 }

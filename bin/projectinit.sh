@@ -7,6 +7,7 @@ source ../src/info_print.sh
 source ../src/language/flow.sh
 source ../src/language/ask_flow.sh
 source ../src/tools/documentation/documentation.sh
+source ../src/projectinit_subsystem/projectinit_cli/projectinit_cli.sh
 
 cat << "EOF"
     ____               _           __  ____      _ __         __
@@ -51,7 +52,9 @@ configure_git_user
 configure_gitattributes
 #---
 
+generate_base_projectinit_cli
 run_flow
+cleanup_projectinit_cli
 setup_documentation
 generate_project_id_card_text
 
