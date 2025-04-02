@@ -26,8 +26,8 @@ setup_database_docker_compose_dev() {
     "percona" )
       projectinit_compose_has_root_volumes=1
       projectinit_compose_has_secrets=1
-      # shellcheck source=../database/percona/v1/percona.sh
-      source "${tool_dir}/src/database/percona/v1/percona.sh"
+      # shellcheck source=percona/container/docker/v1/percona.sh
+      source "${tool_dir}/src/database/percona/container/docker/v1/percona.sh"
       setup_percona_docker_compose_dev
       setup_percona_my_cnf_dev
       setup_percona_dev_entrypoint
@@ -71,8 +71,8 @@ setup_database_docker_compose_prod() {
       setup_mysql_prod_dockerfile
       ;;
     "percona" )
-      # shellcheck source=../database/percona/v1/percona.sh
-      source "${tool_dir}/src/database/percona/v1/percona.sh"
+      # shellcheck source=percona/container/docker/v1/percona.sh
+      source "${tool_dir}/src/database/percona/container/docker/v1/percona.sh"
       setup_percona_docker_compose_prod
       setup_percona_my_cnf_prod
       setup_percona_prod_entrypoint

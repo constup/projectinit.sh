@@ -19,10 +19,10 @@ setup_database_documentation() {
       esac
       ;;
     "percona" )
-      cp -f "${tool_dir}/src/database/percona/v1/template/documentation/index.adoc" "${project_root_dir}/doc/projectinit/percona_mysql.adoc"
+      cp -f "${tool_dir}/src/database/percona/container/docker/v1/template/documentation/index.adoc" "${project_root_dir}/doc/projectinit/percona_mysql.adoc"
       case $projectinit_container_type in
         "docker" )
-          perl -pi -e "s/~~~implemented configuration~~~/$(<"${tool_dir}/src/database/percona/v1/template/documentation/docker/implemented_configuration.adoc" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${project_root_dir}/doc/projectinit/percona_mysql.adoc"
+          perl -pi -e "s/~~~implemented configuration~~~/$(<"${tool_dir}/src/database/percona/container/docker/v1/template/documentation/docker/implemented_configuration.adoc" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${project_root_dir}/doc/projectinit/percona_mysql.adoc"
           ;;
       esac
       ;;
