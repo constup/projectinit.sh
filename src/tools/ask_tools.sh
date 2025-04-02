@@ -25,7 +25,7 @@ ask_tools() {
     echo ""
     local more_options
     while true; do
-      read -r -p "Do you want to install more tools (y/n)?"
+      read -r -p "Do you want to install more tools (y/n)?" more_options
       case "${more_options,,}" in
         "y"|"yes"|"yup"|"yeah"|"1" ) ask_tools; break;;
         "n"|"no"|"nope"|"2" ) echo "  All tools picked..."; break;;

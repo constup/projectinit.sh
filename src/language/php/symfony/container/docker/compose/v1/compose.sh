@@ -31,7 +31,9 @@ setup_dev_compose() {
 
   perl -i -ne 'print unless /~~~compose secrets~~~/;' "${target_file}"
   if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
-    perl -i -ne 'print unless /depends_on:/;' "${target_file}"
+    perl -i -ne 'print unless /~~~main application dependencies~~~/;' "${target_file}"
+  else
+    perl -pi -e "s/~~~main application dependencies~~~/depends_on:/g"  "${target_file}"
   fi
   if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
     perl -i -ne 'print unless /secrets:/;' "${target_file}"
@@ -63,7 +65,9 @@ setup_prod_compose() {
 
   perl -i -ne 'print unless /~~~compose secrets~~~/;' "${target_file}"
   if [ "$projectinit_docker_service_dependencies" -eq 0 ]; then
-    perl -i -ne 'print unless /depends_on:/;' "${target_file}"
+    perl -i -ne 'print unless /~~~main application dependencies~~~/;' "${target_file}"
+  else
+    perl -pi -e "s/~~~main application dependencies~~~/depends_on:/g"  "${target_file}"
   fi
   if [ "$projectinit_compose_has_secrets" -eq 0 ]; then
     perl -i -ne 'print unless /secrets:/;' "${target_file}"

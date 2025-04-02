@@ -46,7 +46,7 @@ setup_database_docker_compose_dev() {
   esac
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
-    perl -pi -e "s/(.*depends_on:.*)/\1\n      ${projectinit_database_service_name}:\n        condition: service_healthy/" "${project_root_dir}/compose.yaml"
+    perl -pi -e "s/(.*~~~main application dependencies~~~.*)/\1\n      ${projectinit_database_service_name}:\n        condition: service_healthy/" "${project_root_dir}/compose.yaml"
   fi
 }
 
@@ -89,7 +89,7 @@ setup_database_docker_compose_prod() {
   esac
 
   if [ ! "${projectinit_database_type}" = "no database" ]; then
-    perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_database_service_name}/" "${project_root_dir}/projectinit_docker/prod/compose.yaml"
+    perl -pi -e "s/(.*~~~main application dependencies~~~.*)/\1\n      ${projectinit_database_service_name}:\n        condition: service_healthy/" "${project_root_dir}/projectinit_docker/prod/compose.yaml"
   fi
 }
 
