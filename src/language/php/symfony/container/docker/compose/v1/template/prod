@@ -3,7 +3,7 @@ services:
   ~~~tools~~~
   ~~~service name~~~:
     container_name: ~~~container name~~~
-    depends_on:
+    ~~~main application dependencies~~~
     build:
       context: ./
       dockerfile: Dockerfile

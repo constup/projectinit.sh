@@ -8,7 +8,7 @@ setup_memcached_docker_compose_dev() {
   perl -pi -e "s/~~~memcached service name~~~/${projectinit_memcached_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~memcached version~~~/${projectinit_memcached_version}/g" "${target_file}"
   perl -pi -e "s/~~~memcached host port~~~/${projectinit_memcached_host_port}/g" "${target_file}"
-  perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_memcached_service_name}/" "${target_file}"
+  perl -pi -e "s/(.*~~~main application dependencies~~~.*)/\1\n      ${projectinit_memcached_service_name}:\n        condition: service_started/" "${target_file}"
 }
 
 setup_memcached_docker_compose_prod() {
@@ -22,7 +22,7 @@ setup_memcached_docker_compose_prod() {
   perl -pi -e "s/~~~memcached service name~~~/${projectinit_memcached_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~memcached version~~~/${projectinit_memcached_version}/g" "${target_file}"
   perl -pi -e "s/~~~memcached host port~~~/${projectinit_memcached_host_port}/g" "${target_file}"
-  perl -pi -e "s/(.*depends_on:.*)/\1\n      - ${projectinit_memcached_service_name}/" "${target_file}"
+  perl -pi -e "s/(.*~~~main application dependencies~~~.*)/\1\n      ${projectinit_memcached_service_name}:\n        condition: service_started/" "${target_file}"
 }
 
 setup_memcached_dockerfile_dev() {
