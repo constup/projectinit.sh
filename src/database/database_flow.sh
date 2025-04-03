@@ -16,8 +16,8 @@ setup_database_docker_compose_dev() {
     "mysql" )
       projectinit_compose_has_root_volumes=1
       projectinit_compose_has_secrets=1
-      # shellcheck source=../database/mysql/v1/mysql.sh
-      source "${tool_dir}/src/database/mysql/v1/mysql.sh"
+      # shellcheck source=mysql/container/docker/v1/mysql.sh
+      source "${tool_dir}/src/database/mysql/container/docker/v1/mysql.sh"
       setup_mysql_docker_compose_dev
       setup_mysql_my_cnf_dev
       setup_mysql_dev_entrypoint
@@ -26,8 +26,8 @@ setup_database_docker_compose_dev() {
     "percona" )
       projectinit_compose_has_root_volumes=1
       projectinit_compose_has_secrets=1
-      # shellcheck source=../database/percona/v1/percona.sh
-      source "${tool_dir}/src/database/percona/v1/percona.sh"
+      # shellcheck source=percona/container/docker/v1/percona.sh
+      source "${tool_dir}/src/database/percona/container/docker/v1/percona.sh"
       setup_percona_docker_compose_dev
       setup_percona_my_cnf_dev
       setup_percona_dev_entrypoint
@@ -36,8 +36,8 @@ setup_database_docker_compose_dev() {
     "mariadb" )
       projectinit_compose_has_root_volumes=1
       projectinit_compose_has_secrets=1
-      # shellcheck source=../database/mariadb/v1/mariadb.sh
-      source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
+      # shellcheck source=mariadb/container/docker/v1/mariadb.sh
+      source "${tool_dir}/src/database/mariadb/container/docker/v1/mariadb.sh"
       setup_mariadb_docker_compose_dev
       setup_mariadb_my_cnf_dev
       setup_mariadb_dev_entrypoint
@@ -63,24 +63,24 @@ setup_database_docker_compose_prod() {
       setup_pgsql_prod_dockerfile
       ;;
     "mysql" )
-      # shellcheck source=../database/mysql/v1/mysql.sh
-      source "${tool_dir}/src/database/mysql/v1/mysql.sh"
+      # shellcheck source=mysql/container/docker/v1/mysql.sh
+      source "${tool_dir}/src/database/mysql/container/docker/v1/mysql.sh"
       setup_mysql_docker_compose_prod
       setup_mysql_my_cnf_prod
       setup_mysql_prod_entrypoint
       setup_mysql_prod_dockerfile
       ;;
     "percona" )
-      # shellcheck source=../database/percona/v1/percona.sh
-      source "${tool_dir}/src/database/percona/v1/percona.sh"
+      # shellcheck source=percona/container/docker/v1/percona.sh
+      source "${tool_dir}/src/database/percona/container/docker/v1/percona.sh"
       setup_percona_docker_compose_prod
       setup_percona_my_cnf_prod
       setup_percona_prod_entrypoint
       setup_percona_prod_dockerfile
       ;;
     "mariadb" )
-      # shellcheck source=../database/mariadb/v1/mariadb.sh
-      source "${tool_dir}/src/database/mariadb/v1/mariadb.sh"
+      # shellcheck source=mariadb/container/docker/v1/mariadb.sh
+      source "${tool_dir}/src/database/mariadb/container/docker/v1/mariadb.sh"
       setup_mariadb_docker_compose_prod
       setup_mariadb_my_cnf_prod
       setup_mariadb_prod_entrypoint
