@@ -26,9 +26,14 @@ run_php_docker_ask_flow() {
       # shellcheck source=../../database/ask_database.sh
       source "${tool_dir}/src/database/ask_database.sh"
       ask_database_engine
-      if [ "${projectinit_database_type}" != "no database" ]; then
-        projectinit_orm="Doctrine"
-      fi
+      case "${projectinit_database_type}" in
+        "mysql"|"mariadb"|"percona"|"pgsql" )
+          projectinit_orm="Doctrine ORM Bundle"
+          ;;
+        "mongodb" )
+          projectinit_orm="Doctrine MongoDB ODM Bundle"
+          ;;
+      esac
 
       # shellcheck source=../../tools/ask_tools.sh
       source "${tool_dir}/src/tools/ask_tools.sh"

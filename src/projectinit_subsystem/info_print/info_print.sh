@@ -138,7 +138,7 @@ print_database_block() {
     fi
     echo "| Database name: ${projectinit_database_name}"
     echo "| Host port: ${projectinit_database_host_port}"
-    if [[ ! -v projectinit_database_x_plugin_host_port ]]; then
+    if [[ -v projectinit_database_x_plugin_host_port ]]; then
       echo "| X Protocol host port: ${projectinit_database_x_plugin_host_port}"
     fi
   fi

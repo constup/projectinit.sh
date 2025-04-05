@@ -3,7 +3,7 @@
 ask_database_engine() {
   echo ""
   echo "Database engine:"
-  local options=("no database" "PostgreSQL" "MySQL" "Percona" "MariaDB")
+  local options=("no database" "PostgreSQL" "MySQL" "Percona" "MariaDB" "MongoDB")
   local option
   select option in "${options[@]}"; do
     case $option in
@@ -33,6 +33,12 @@ ask_database_engine() {
         # shellcheck source=./mariadb/ask_mariadb.sh
         source "${tool_dir}/src/database/mariadb/ask_mariadb.sh"
         ask_mariadb_config
+        break;;
+      "MongoDB" )
+        projectinit_database_type="mongodb"
+        # shellcheck source=./mongodb/ask_mongodb.sh
+        source "${tool_dir}/src/database/mongodb/ask_mongodb.sh"
+        ask_mongodb_config
         break;;
     esac
   done

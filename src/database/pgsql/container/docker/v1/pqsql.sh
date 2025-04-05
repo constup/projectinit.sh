@@ -10,7 +10,6 @@ setup_pgsql_docker_compose_dev() {
   perl -pi -e "s/~~~database host port~~~/${projectinit_database_host_port}/g" "${target_file}"
   perl -pi -e "s/~~~root volumes~~~/~~~root volumes~~~\n  ${projectinit_database_service_name}_volume:/g" "${target_file}"
 
-  projectinit_compose_has_secrets=1
   mkdir -p "${project_root_dir}/compose_secrets"
   touch "${project_root_dir}/compose_secrets/postgres_password.txt"
   echo "${projectinit_database_password}" >> "${project_root_dir}/compose_secrets/postgres_password.txt"

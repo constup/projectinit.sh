@@ -32,7 +32,7 @@ setup_mariadb_docker_compose_prod() {
   local target_file
   target_file="${project_root_dir}/projectinit_docker/prod/compose.yaml"
   if [ ! -d "${project_root_dir}/projectinit_docker/prod" ]; then
-    mkdir "${project_root_dir}/projectinit_docker/prod"
+    mkdir -p "${project_root_dir}/projectinit_docker/prod"
   fi
     
   perl -pi -e "s/~~~database service~~~/$(<"${tool_dir}/src/database/mariadb/container/docker/v1/template/prod" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"

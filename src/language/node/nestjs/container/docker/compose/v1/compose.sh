@@ -38,4 +38,10 @@ setup_prod_compose() {
   perl -pi -e "s/~~~container name~~~/${projectinit_app_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~image name~~~/${projectinit_app_service_name}/g" "${target_file}"
   perl -pi -e "s/~~~host port~~~/${projectinit_app_host_port}/g" "${target_file}"
+
+  if [ "${projectinit_compose_has_root_volumes}" = 1 ]; then
+    perl -pi -e "s/~~~root volumes~~~/volumes:/g" "${target_file}"
+  else
+    perl -pi -e "s/~~~root volumes~~~//g" "${target_file}"
+  fi
 }

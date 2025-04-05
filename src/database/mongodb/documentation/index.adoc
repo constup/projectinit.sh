@@ -1,0 +1,26 @@
+= MongoDB
+:toc:
+:toclevels: 5
+
+== Introduction
+
+|===
+|Description|Link
+
+|Homepage
+|https://www.mongodb.com/
+
+|Docker Official image (used here)
+|https://hub.docker.com/_/mongo
+
+|MariaDB Official image
+|https://hub.docker.com/r/mongodb/mongodb-community-server
+|===
+
+[IMPORTANT]
+====
+MongoDB server has been set up with *minimum configuration only*, so you can start working. It's up to you how you'd
+like to configure it for development and production.
+====
+
+~~~implemented configuration~~~

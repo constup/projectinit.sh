@@ -3,7 +3,7 @@
 build_dev() {
   echo ""
   echo "Performing configuration cleanup..."
-  cleanup_before_build
+  cleanup_dev_docker_compose
   echo "Configuration ready..."
   if [ "${projectinit_build_containers}" -eq 1 ]; then
     echo ""
@@ -14,7 +14,7 @@ build_dev() {
   fi
 }
 
-cleanup_before_build() {
+cleanup_dev_docker_compose() {
   if [ "${projectinit_compose_has_root_volumes}" = 1 ]; then
     perl -pi -e "s/~~~root volumes~~~/volumes:/g" "${project_root_dir}/compose.yaml"
   else
