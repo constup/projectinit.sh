@@ -8,7 +8,7 @@ source ../src/filesystem/directory_management.sh
 source ../src/projectinit_subsystem/info_print/info_print.sh
 source ../src/language/flow.sh
 source ../src/language/ask_flow.sh
-source ../src/tools/documentation/documentation.sh
+source ../src/projectinit_subsystem/documentation/documentation.sh
 source ../src/projectinit_subsystem/projectinit_cli/projectinit_cli.sh
 
 cat << "EOF"
