@@ -26,7 +26,8 @@
 
 |`projectinit_tools_count`
 |integer
-|The number of additional tools configured for the project (example: memcached, redis,...)
+|The number of additional tools configured for the project (example: memcached, redis,...). Should be used only in info
+print.
 
 |`projectinit_generate_id_card_text`
 |0/1 flag
