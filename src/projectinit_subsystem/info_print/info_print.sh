@@ -127,7 +127,7 @@ print_node_tech_stack() {
 print_database_block() {
   echo "|                                Database"
   echo "|---------------------------------------------------------------------"
-  if [ "$projectinit_container_type" = "docker" ]; then
+  if [[ "$projectinit_container_type" = "docker"  && "$projectinit_database_type" != "no database" ]]; then
     echo "| Docker service: ${projectinit_database_service_name}"
   fi
   echo "| Database engine: ${projectinit_database_type}"

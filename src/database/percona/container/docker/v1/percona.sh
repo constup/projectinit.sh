@@ -26,7 +26,7 @@ setup_percona_docker_compose_dev() {
   fi
 
 
-  perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/percona/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~secrets~~~/$(<"${tool_dir}/src/database/percona/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
 setup_percona_docker_compose_prod() {
@@ -47,7 +47,7 @@ setup_percona_docker_compose_prod() {
     mkdir -p "${project_root_dir}/projectinit_docker/prod/percona/docker-entrypoint-initdb.d"
   fi
 
-  perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/percona/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~secrets~~~/$(<"${tool_dir}/src/database/percona/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
 setup_percona_dev_dockerfile() {

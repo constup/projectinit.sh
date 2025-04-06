@@ -18,5 +18,4 @@ services:
       - ./:/usr/src/app
       - ./projectinit_docker/dev/php/usr/local/etc/php/conf.d/zz_php.ini:/usr/local/etc/php/conf.d/zz_php.ini
 ~~~root volumes~~~
-secrets:
-  ~~~compose secrets~~~
+~~~secrets~~~

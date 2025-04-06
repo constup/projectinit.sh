@@ -22,7 +22,7 @@ setup_pgsql_docker_compose_dev() {
     mkdir -p "${project_root_dir}/projectinit_docker/dev/pgsql/docker-entrypoint-initdb.d"
   fi
 
-  perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/pgsql/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~secrets~~~/$(<"${tool_dir}/src/database/pgsql/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
 setup_pgsql_docker_compose_prod() {
@@ -42,7 +42,7 @@ setup_pgsql_docker_compose_prod() {
     mkdir -p "${project_root_dir}/projectinit_docker/prod/pgsql/docker-entrypoint-initdb.d"
   fi
 
-  perl -pi -e "s/~~~compose secrets~~~/$(<"${tool_dir}/src/database/pgsql/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
+  perl -pi -e "s/~~~secrets~~~/$(<"${tool_dir}/src/database/pgsql/container/docker/v1/template/secrets" perl -pe 's/([\/\& \t])/\\$1/g')/g" "${target_file}"
 }
 
 setup_pgsql_dev_dockerfile() {
