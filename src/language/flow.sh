@@ -20,5 +20,4 @@ init_globals_before_starting_flow() {
   if [ "${projectinit_database_type}" != "no database" ]; then
     projectinit_database_service_name="${projectinit_project_name}_database"
   fi
-  projectinit_memcached_service_name="${projectinit_project_name}_memcached"
 }

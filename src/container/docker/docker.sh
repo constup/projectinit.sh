@@ -15,12 +15,26 @@ ask_base_service_properties() {
   read -r -e projectinit_app_host_port
 }
 
-calculate_app_service_dependencies() {
-  projectinit_docker_service_dependencies=0
-  if [ ! "${projectinit_database_type}" = "no database" ]; then
-    projectinit_docker_service_dependencies=$((projectinit_docker_service_dependencies + 1))
+cleanup_docker_compose() {
+  local target_file="$1"
+
+  if [ "${projectinit_compose_has_secrets}" -eq 1 ]; then
+    perl -pi -e "s/~~~secrets~~~/secrets:/g" "${target_file}"
+  else
+    perl -i -ne 'print unless /~~~secrets~~~/;' "${target_file}"
   fi
-  if [ "${projectinit_use_memcached}" -eq 1 ]; then
-    projectinit_docker_service_dependencies=$((projectinit_docker_service_dependencies + 1))
+
+  if [[ ! -v projectinit_main_app_dependencies_list ]]; then
+    perl -i -ne 'print unless /~~~main application dependencies~~~/;' "${target_file}"
+  else
+    perl -pi -e "s/~~~main application dependencies~~~/depends_on:/g"  "${target_file}"
   fi
+
+  if [ "${projectinit_compose_has_root_volumes}" = 1 ]; then
+    perl -pi -e "s/~~~root volumes~~~/volumes:/g" "${target_file}"
+  else
+    perl -i -ne 'print unless /~~~root volumes~~~/;' "${target_file}"
+  fi
+
+  perl -i -ne 'print unless /~~~tools~~~/;' "${target_file}"
 }

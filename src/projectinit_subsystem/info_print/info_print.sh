@@ -1,6 +1,9 @@
 #!/bin/bash
 
 print_project_configuration() {
+  # shellcheck source=../../general.sh
+  source "${tool_dir}/src/general.sh"
+
   echo ""
   echo "Project identity card:"
   echo "┌---------------------------------------------------------------------"
@@ -148,21 +151,25 @@ print_database_block() {
 print_tools_block() {
   echo "|                                Tools"
   echo "|---------------------------------------------------------------------"
-  if [ "${projectinit_tools_count}" = 0 ]; then
+  if [[ ! -v projectinit_tools_list ]]; then
     echo "| No additional tools are configured."
   else
-    if [ "${projectinit_use_memcached}" = 1 ]; then
+    print_memcached_block
+  fi
+  echo "|---------------------------------------------------------------------"
+}
+
+print_memcached_block() {
+  if in_array "memcached" "${projectinit_tools_list[@]}"; then
       echo "| Memcached"
       echo "|------------------------------"
       if [ "${projectinit_container_type}" = "docker" ]; then
-        echo "| Docker service: ${projectinit_memcached_service_name}"
+        echo "| Docker service: ${projectinit_project_name}_memcached"
       fi
       echo "| Memcached version: ${projectinit_memcached_version}"
       echo "| Memcached host port: ${projectinit_memcached_host_port}"
       echo "|------------------------------"
-    fi
   fi
-  echo "|---------------------------------------------------------------------"
 }
 
 ask_generate_project_id_card_text() {
