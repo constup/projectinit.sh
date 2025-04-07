@@ -9,9 +9,6 @@ ask_project_type() {
     case $option in
       "Composer package" )
         projectinit_project_type="composer"
-        # shellcheck source=./composer_package/phpunit.sh
-        source "${tool_dir}/src/language/php/composer_package/phpunit.sh"
-        ask_composer_phpunit_version
         break;;
       "Symfony" )
         projectinit_project_type="symfony"
@@ -19,9 +16,6 @@ ask_project_type() {
         source "${tool_dir}/src/language/php/symfony/symfony.sh"
         ask_symfony_version
         ask_symfony_app_type
-        # shellcheck source=./symfony/phpunit.sh
-        source "${tool_dir}/src/language/php/symfony/phpunit.sh"
-        ask_symfony_phpunit_version
         break;;
     esac
   done

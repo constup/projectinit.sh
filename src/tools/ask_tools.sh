@@ -3,7 +3,7 @@
 ask_tools() {
   echo ""
   echo "Install additional tools:"
-  local options=("none" "cache")
+  local options=("none" "Testing (internal)" "Cache")
   local option
   local install_additional_tools
   install_additional_tools=1
@@ -13,7 +13,12 @@ ask_tools() {
         install_additional_tools=0
         echo "  No additional tools will be installed."
         break;;
-      "cache" )
+      "Testing (internal)" )
+        # shellcheck source=./testing_internal/ask_testing_internal.sh
+        source "${tool_dir}/src/tools/testing_internal/ask_testing_internal.sh"
+        ask_testing_internal
+        break;;
+      "Cache" )
         # shellcheck source=./cache/ask_cache.sh
         source "${tool_dir}/src/tools/cache/ask_cache.sh"
         ask_cache
