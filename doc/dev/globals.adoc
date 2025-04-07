@@ -4,7 +4,6 @@
 
 == ProjectInit
 
-
 |===
 |variable |type |description
 
@@ -29,6 +28,20 @@
 |Flag to determine whether to generate the text version of the Project ID card (`projectinit_id_card.txt`) in project's
 root directory.
 
+|===
+
+=== ProjectInit Integrations subsystem
+
+|===
+|variable |type |description
+
+|`projectinit_tools_list`
+|array (strings)
+|List of tools to be integrated into the project. Example: `memcached`
+
+|`projectinit_main_app_dependencies_list`
+|array (strings)
+|List of main application dependencies (service names). Example: `sample_project_memcached`
 |===
 
 == Git
