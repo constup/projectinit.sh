@@ -158,7 +158,7 @@ contains your application
 
 |`projectinit_composer_library_name`
 |string value
-|Composer library name. Format: `<your_brand>/<your_livrary_name>`
+|Composer library name. Format: `<your_brand>/<your_livrary_name>`. Used when creating a new Composer library project.
 
 |===
 ==== Symfony
