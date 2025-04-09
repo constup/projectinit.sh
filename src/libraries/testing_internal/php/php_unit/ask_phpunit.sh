@@ -9,6 +9,9 @@ ask_phpunit() {
       ask_phpunit_symfony
       break;;
   esac
+
+  projectinit_libraries_list+=("phpunit")
+  ask_phpunit_config
 }
 
 ask_phpunit_composer() {
@@ -130,6 +133,23 @@ ask_phpunit_symfony() {
       "y"|"yes"|"yup"|"yeah"|"1" ) break;;
       "n"|"no"|"nope"|"2" ) ask_symfony_phpunit_version; break;;
       * ) echo "Invalid input. Asking again..."
+    esac
+  done
+}
+
+ask_phpunit_config() {
+  echo ""
+  echo "Do you want to use default PHPUnit configuration (if there is any) or ProjectInit's PHPUnit configuration?"
+  local options=("Use default phpunit.dist.xml" "Use ProjectInit's phpunit.dist.xml")
+  local option
+  select option in "${options[@]}"; do
+    case $option in
+      "Use default phpunit.dist.xml" )
+        projectinit_use_projectinit_phpunit_dist=0
+        break;;
+      "Use ProjectInit's phpunit.dist.xml" )
+        projectinit_use_projectinit_phpunit_dist=1
+        break;;
     esac
   done
 }

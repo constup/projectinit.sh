@@ -20,9 +20,6 @@ ask_language() {
         # shellcheck source=./php/tools/style_fixer/php_cs_fixer.sh
         source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
         ask_php_cs_fixer_config
-        # shellcheck source=./php/tools/unit_testing/phpunit.sh
-        source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
-        ask_phpunit_config
         break;;
       "Node" )
         projectinit_language="node"

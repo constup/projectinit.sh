@@ -15,6 +15,7 @@ print_project_configuration() {
     print_database_block
   fi
   print_tools_block
+  print_libraries_block
 }
 
 print_directory_block() {
@@ -99,16 +100,6 @@ print_php_tech_stack() {
           ;;
       esac
   esac
-  echo "| PHPUnit version: ${projectinit_phpunit_version}"
-  if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
-    if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-      echo "| Default phpunit.dist.xml is used"
-    else
-      echo "| ProjectInit's phpunit.dist.xml is used"
-    fi
-  else
-      echo "| Symfony Test Pack was used. Configure phpunit.dist.xml manually"
-  fi
   echo "| CS Fixer: PHP CS Fixer"
   if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
     echo "| Default .php-cs-fixer.dist.php is used"
@@ -148,28 +139,30 @@ print_database_block() {
   echo "|---------------------------------------------------------------------"
 }
 
+print_libraries_block() {
+  echo "|                              Libraries"
+  echo "|---------------------------------------------------------------------"
+  if [[ ! -v projectinit_libraries_list ]]; then
+    echo "| No additional libraries are configured."
+  else
+    # shellcheck source=../../libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh"
+    print_phpunit_info_print
+  fi
+  echo "|---------------------------------------------------------------------"
+}
+
 print_tools_block() {
   echo "|                                Tools"
   echo "|---------------------------------------------------------------------"
   if [[ ! -v projectinit_tools_list ]]; then
     echo "| No additional tools are configured."
   else
-    print_memcached_block
+    # shellcheck source=../../tools/cache/memcached/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/tools/cache/memcached/subsystems/info_print/info_print.sh"
+    print_memcached_info_print
   fi
   echo "|---------------------------------------------------------------------"
-}
-
-print_memcached_block() {
-  if in_array "memcached" "${projectinit_tools_list[@]}"; then
-      echo "| Memcached"
-      echo "|------------------------------"
-      if [ "${projectinit_container_type}" = "docker" ]; then
-        echo "| Docker service: ${projectinit_project_name}_memcached"
-      fi
-      echo "| Memcached version: ${projectinit_memcached_version}"
-      echo "| Memcached host port: ${projectinit_memcached_host_port}"
-      echo "|------------------------------"
-  fi
 }
 
 ask_generate_project_id_card_text() {

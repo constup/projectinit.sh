@@ -36,5 +36,5 @@ cleanup_docker_compose() {
     perl -i -ne 'print unless /~~~root volumes~~~/;' "${target_file}"
   fi
 
-  perl -i -ne 'print unless /~~~tools~~~/;' "${target_file}"
+  perl -i -ne 'print unless /~~~container services~~~/;' "${target_file}"
 }

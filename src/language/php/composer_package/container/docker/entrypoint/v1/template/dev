@@ -2,5 +2,6 @@
 
 if [ ! -f "/usr/src/app/composer.json" ]; then
   composer init --name "~~~composer library name~~~"
+# composer require --dev --no-cache ~~~phpunit version~~~
 fi
 php -S 0.0.0.0:8080 -t /usr/src/app/public /usr/src/app/public/index.php

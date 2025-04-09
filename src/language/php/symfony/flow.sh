@@ -27,7 +27,8 @@ run_symfony_flow_docker() {
   setup_installer_entrypoint
   setup_installer_compose
   add_user_and_group_ids
-  run_integrations "installer"
+  run_service_integrations "installer"
+  run_library_integrations "installer"
   echo "  Installer container set up..."
 
   # shellcheck source=../../../container/docker/installer.sh
@@ -41,15 +42,13 @@ run_symfony_flow_docker() {
   setup_dev_dockerfile
   setup_dev_entrypoint
   setup_dev_compose
-  run_integrations "dev"
+  run_service_integrations "dev"
+  run_library_integrations "dev"
   echo "  Dev container set up..."
 
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../tools/unit_testing/phpunit.sh
-  source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
-  configure_phpunit
   # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
   source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
   configure_php_cs_fixer
@@ -75,7 +74,8 @@ run_symfony_flow_docker() {
   setup_prod_dockerfile
   setup_prod_entrypoint
   setup_prod_compose
-  run_integrations "prod"
+  run_service_integrations "prod"
+  run_library_integrations "prod"
   cleanup_docker_compose "${project_root_dir}/projectinit_docker/prod/compose.yaml"
   configure_php_ini_docker_prod
 }

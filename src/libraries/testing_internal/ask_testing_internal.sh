@@ -11,7 +11,7 @@ ask_testing_internal() {
         case $selected in
           "PHP Unit" )
             # shellcheck source=./php/php_unit/ask_phpunit.sh
-            source "${tool_dir}/src/tools/testing_internal/php/php_unit/ask_phpunit.sh"
+            source "${tool_dir}/src/libraries/testing_internal/php/php_unit/ask_phpunit.sh"
             ask_phpunit
             break;;
         esac

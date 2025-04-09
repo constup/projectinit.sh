@@ -1,6 +1,6 @@
 services:
   ~~~database service~~~
-  ~~~tools~~~
+  ~~~container services~~~
   ~~~service name~~~:
     container_name: ~~~container name~~~
     ~~~main application dependencies~~~

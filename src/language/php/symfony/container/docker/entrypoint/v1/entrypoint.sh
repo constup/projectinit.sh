@@ -6,9 +6,6 @@ setup_installer_entrypoint() {
 
   cp -f "${tool_dir}/src/language/php/symfony/container/docker/entrypoint/v1/template/installer" "${target_file}"
   perl -pi -e "s/~~~framework version~~~/${projectinit_symfony_version}/g" "${target_file}"
-  local phpunit_string
-  phpunit_string=$(perl -e 'print quotemeta($ARGV[0])' "$projectinit_phpunit_version")
-  perl -pi -e "s/~~~unit testing~~~/ ${phpunit_string}/g" "${target_file}"
   case "$projectinit_database_type" in
     "mysql"|"mariadb"|"percona"|"pgsql" )
       perl -pi -e "s/#composer require --no-cache symfony\/orm-pack/composer require --no-cache symfony\/orm-pack/g" "${target_file}"

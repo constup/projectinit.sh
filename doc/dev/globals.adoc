@@ -42,6 +42,10 @@ root directory.
 |`projectinit_main_app_dependencies_list`
 |array (strings)
 |List of main application dependencies (service names). Example: `sample_project_memcached`
+
+|`projectinit_libraries_list`
+|array (strings)
+|List of libraries to be integrated into the project. Example: `phpunit`
 |===
 
 == Git
