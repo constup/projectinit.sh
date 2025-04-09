@@ -3,7 +3,7 @@
 ask_libraries() {
   echo ""
   echo "Install additional libraries:"
-  local options=("none" "Testing (internal)")
+  local options=("none" "Testing (internal)" "Linters, analyzers and fixers")
   local option
   local install_additional_libraries
   install_additional_libraries=1
@@ -17,6 +17,11 @@ ask_libraries() {
         # shellcheck source=./testing_internal/ask_testing_internal.sh
         source "${tool_dir}/src/libraries/testing_internal/ask_testing_internal.sh"
         ask_testing_internal
+        break;;
+      "Linters, analyzers and fixers" )
+        # shellcheck source=./linters_analyzers_fixers/ask_linters_analyzers_fixers.sh
+        source "${tool_dir}/src/libraries/linters_analyzers_fixers/ask_linters_analyzers_fixers.sh"
+        ask_linters_analyzers_fixers
         break;;
     esac
   done

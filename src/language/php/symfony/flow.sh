@@ -49,9 +49,6 @@ run_symfony_flow_docker() {
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
-  configure_php_cs_fixer
   # shellcheck source=./container/docker/configuration/dot_env.sh
   source "${tool_dir}/src/language/php/symfony/container/docker/configuration/dot_env.sh"
   add_database_connection_to_env_dev

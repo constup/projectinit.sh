@@ -100,12 +100,6 @@ print_php_tech_stack() {
           ;;
       esac
   esac
-  echo "| CS Fixer: PHP CS Fixer"
-  if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
-    echo "| Default .php-cs-fixer.dist.php is used"
-  else
-    echo "| ProjectInit's .php-cs-fixer.dist.php is used"
-  fi
 }
 
 print_node_tech_stack() {
@@ -148,6 +142,9 @@ print_libraries_block() {
     # shellcheck source=../../libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh
     source "${tool_dir}/src/libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh"
     print_phpunit_info_print
+    # shellcheck source=../../libraries/linters_analyzers_fixers/php/php_cs_fixer/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/libraries/linters_analyzers_fixers/php/php_cs_fixer/subsystems/info_print/info_print.sh"
+    print_php_cs_fixer_info_print
   fi
   echo "|---------------------------------------------------------------------"
 }

@@ -38,8 +38,8 @@ run_php_bare_metal_flow() {
   # shellcheck source=../../libraries/testing_internal/php/php_unit/phpunit.sh
   source "${tool_dir}/src/tools/testing_internal/php/php_unit/phpunit.sh"
   install_phpunit_bare_metal
-  # shellcheck source=./tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
+  # shellcheck source=../../libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh
+  source "${tool_dir}/src/libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh"
   install_php_cs_fixer_bare_metal
   configure_php_cs_fixer
   # shellcheck source=../../git/git.sh

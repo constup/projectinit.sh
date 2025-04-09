@@ -10,6 +10,7 @@ ask_testing_internal() {
       select selected in "${options[@]}"; do
         case $selected in
           "PHP Unit" )
+            projectinit_libraries_list+=("phpunit")
             # shellcheck source=./php/php_unit/ask_phpunit.sh
             source "${tool_dir}/src/libraries/testing_internal/php/php_unit/ask_phpunit.sh"
             ask_phpunit

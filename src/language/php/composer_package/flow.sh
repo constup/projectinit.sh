@@ -28,9 +28,6 @@ run_composer_package_flow_docker() {
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
-  configure_php_cs_fixer
   # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
   source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
   add_user_and_group_ids

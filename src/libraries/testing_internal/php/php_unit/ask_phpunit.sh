@@ -10,7 +10,6 @@ ask_phpunit() {
       break;;
   esac
 
-  projectinit_libraries_list+=("phpunit")
   ask_phpunit_config
 }
 

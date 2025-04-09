@@ -48,6 +48,19 @@ run_library_integrations() {
         "prod" ) break;;
         "installer" ) run_phpunit_integration_installer; break;;
       esac
+      echo "      Integration completed..."
+    fi
+
+    if in_array "php_cs_fixer" "${projectinit_libraries_list[@]}"; then
+      echo "    Integrating PHP CS Fixer..."
+      # shellcheck source=../../libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh
+      source "${tool_dir}/src/libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh"
+      case $library in
+        "dev" ) run_php_cs_fixer_integration_dev; break;;
+        "prod" ) break;;
+        "installer" ) run_php_cs_fixer_integration_installer; break;;
+      esac
+      echo "      Integration completed..."
     fi
   else
     echo "  No additional libraries are configured..."
