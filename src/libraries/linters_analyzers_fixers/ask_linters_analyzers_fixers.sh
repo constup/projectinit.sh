@@ -36,8 +36,8 @@ ask_linters_analyzers_fixers() {
             break;;
         esac
       done
-      break;;
+      ;;
     "node" )
-      break;;
+      ;;
   esac
 }

@@ -36,8 +36,8 @@ ask_testing_internal() {
             break;;
         esac
       done
-      break;;
+      ;;
     "node" )
-      break;;
+      ;;
   esac
 }

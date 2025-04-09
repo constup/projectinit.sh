@@ -4,10 +4,10 @@ ask_phpunit() {
   case $projectinit_project_type in
     "composer" )
       ask_phpunit_composer
-      break;;
+      ;;
     "symfony" )
       ask_phpunit_symfony
-      break;;
+      ;;
   esac
 
   ask_phpunit_config

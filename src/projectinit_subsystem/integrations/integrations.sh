@@ -20,9 +20,9 @@ run_service_integrations() {
       # shellcheck source=../../tools/cache/memcached/container/docker/v1/memcached.sh
       source "${tool_dir}/src/tools/cache/memcached/container/docker/v1/memcached.sh"
       case $integrations_type in
-        "dev" ) run_memcached_integration_dev; break;;
-        "prod" ) run_memcached_integration_prod; break;;
-        "installer" ) break;;
+        "dev" ) run_memcached_integration_dev; ;;
+        "prod" ) run_memcached_integration_prod; ;;
+        "installer" ) ;;
       esac
     fi
   else
@@ -44,9 +44,9 @@ run_library_integrations() {
       # shellcheck source=../../libraries/testing_internal/php/php_unit/phpunit.sh
       source "${tool_dir}/src/libraries/testing_internal/php/php_unit/phpunit.sh"
       case $library in
-        "dev" ) run_phpunit_integration_dev; break;;
-        "prod" ) break;;
-        "installer" ) run_phpunit_integration_installer; break;;
+        "dev" ) run_phpunit_integration_dev; ;;
+        "prod" ) ;;
+        "installer" ) run_phpunit_integration_installer; ;;
       esac
       echo "      Integration completed..."
     fi
@@ -56,9 +56,9 @@ run_library_integrations() {
       # shellcheck source=../../libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh
       source "${tool_dir}/src/libraries/linters_analyzers_fixers/php/php_cs_fixer/php_cs_fixer.sh"
       case $library in
-        "dev" ) run_php_cs_fixer_integration_dev; break;;
-        "prod" ) break;;
-        "installer" ) run_php_cs_fixer_integration_installer; break;;
+        "dev" ) run_php_cs_fixer_integration_dev; ;;
+        "prod" ) ;;
+        "installer" ) run_php_cs_fixer_integration_installer; ;;
       esac
       echo "      Integration completed..."
     fi
