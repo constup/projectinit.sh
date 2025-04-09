@@ -64,7 +64,7 @@ ask_phpunit_composer() {
     read -r -p "Are you sure (y/n)?" confirmation_options
     case "${confirmation_options,,}" in
       "y"|"yes"|"yup"|"yeah"|"1" ) break;;
-      "n"|"no"|"nope"|"2" ) ask_composer_phpunit_version; break;;
+      "n"|"no"|"nope"|"2" ) ask_phpunit_composer; break;;
       * ) echo "Invalid input. Asking again..."
     esac
   done
@@ -130,7 +130,7 @@ ask_phpunit_symfony() {
     read -r -p "Are you sure (y/n)?" confirmation_options
     case "${confirmation_options,,}" in
       "y"|"yes"|"yup"|"yeah"|"1" ) break;;
-      "n"|"no"|"nope"|"2" ) ask_symfony_phpunit_version; break;;
+      "n"|"no"|"nope"|"2" ) ask_phpunit_symfony; break;;
       * ) echo "Invalid input. Asking again..."
     esac
   done
