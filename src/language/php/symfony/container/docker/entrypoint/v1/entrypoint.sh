@@ -54,3 +54,10 @@ setup_prod_entrypoint() {
       ;;
   esac
 }
+
+cleanup_installer_entrypoint() {
+    local target_file
+    target_file="${project_root_dir}/start.sh"
+
+    perl -i -ne 'print unless /~~~install composer library~~/;' "${target_file}"
+}

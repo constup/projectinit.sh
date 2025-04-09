@@ -6,3 +6,10 @@ setup_dev_entrypoint() {
   composer_library_name=$(perl -e 'print quotemeta($ARGV[0])' "${projectinit_composer_library_name}")
   perl -pi -e "s|~~~composer library name~~~|${composer_library_name}|g" "${project_root_dir}/start.sh"
 }
+
+cleanup_dev_entrypoint() {
+    local target_file
+    target_file="${project_root_dir}/start.sh"
+
+    perl -i -ne 'print unless /~~~install composer library~~/;' "${target_file}"
+}

@@ -23,7 +23,7 @@ setup_php_cs_fixer_entrypoint_installer() {
   local target_file
   target_file="${project_root_dir}/start.sh"
 
-  perl -pi -e "s/# composer require --dev --no-cache friendsofphp\/php-cs-fixer/  composer require --dev --no-cache friendsofphp\/php-cs-fixer/g" "${target_file}"
+  perl -pi -e "s/(.*~~~install composer library~~.*)/composer require --dev --no-cache friendsofphp\/php-cs-fixer\n  \1/g" "${target_file}"
 }
 
 run_php_cs_fixer_integration_dev() {

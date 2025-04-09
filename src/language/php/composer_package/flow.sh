@@ -49,5 +49,6 @@ run_composer_package_flow_docker() {
 
   run_library_integrations "installer"
   run_library_integrations "dev"
+  cleanup_dev_entrypoint
   build_dev
 }
