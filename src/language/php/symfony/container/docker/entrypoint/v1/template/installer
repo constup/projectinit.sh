@@ -2,7 +2,6 @@
 
 cd /usr/src/symfony_temp_install || exit 1
 #composer require --no-cache symfony/orm-pack
-# composer require --dev --no-cache ~~~phpunit version~~~
 composer require --dev --no-cache fakerphp/faker
 composer require --dev --no-cache symfony/maker-bundle
 #composer require --dev --no-cache rector/rector

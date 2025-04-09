@@ -38,8 +38,7 @@ setup_phpunit_entrypoint_installer() {
 
   local phpunit_string
   phpunit_string=$(perl -e 'print quotemeta($ARGV[0])' "$projectinit_phpunit_version")
-  perl -pi -e "s/# composer require --dev --no-cache ~~~phpunit version~~~/  composer require --dev --no-cache ~~~phpunit version~~~/g" "${target_file}"
-  perl -pi -e "s/~~~phpunit version~~~/${phpunit_string}/g" "${target_file}"
+  perl -pi -e "s/(.*~~~install composer library~~.*)/composer require --dev --no-cache ${phpunit_string}\n  \1/g" "${target_file}"
 }
 
 run_phpunit_integration_dev() {
