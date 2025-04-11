@@ -1,0 +1,79 @@
+== Implemented configuration
+
+The following configuration has been implemented by ProjectInit:
+
+* Database credentials as Docker compose secrets.
+* Docker volume is used for persisting data on the host.
+* Healthcheck is implemented directly in the Docker image (custom Dockerfile).
+* Custom `mongod.conf` MongoDB configuration file is prepared.
+* Bind mount of database initialization directory
+
+=== Configuration files
+
+* Database credentials (Docker Compose secrets):
+** link:../../compose_secrets/mongodb_database.txt[`compose_secrets/mongodb_database.txt`]
+** link:../../compose_secrets/mongodb_root_password.txt[`compose_secrets/mongodb_root_password.txt`]
+** link:../../compose_secrets/mongodb_root_user.txt[`compose_secrets/mongodb_root_user.txt`]
+* Dockerfile:
+** link:../../projectinit_docker/dev/mongodb/Dockerfile[`projectinit_docker/dev/mongodb/Dockerfile`]
+** link:../../projectinit_docker/prod/mongodb/Dockerfile[`projectinit_docker/prod/mongodb/Dockerfile`]
+* Entry point:
+** link:../../projectinit_docker/dev/mongodb/usr/local/bin/entrypoint.sh[`projectinit_docker/dev/mongodb/usr/local/bin/entrypoint.sh`]
+** link:../../projectinit_docker/prod/mongodb/usr/local/bin/entrypoint.sh[`projectinit_docker/prod/mongodb/usr/local/bin/entrypoint.sh`]
+* Custom MongoDB configuration file:
+** link:../../projectinit_docker/dev/mongodb/etc/mongod.conf[`projectinit_docker/dev/mongodb/etc/mongod.conf`]
+** link:../../projectinit_docker/prod/mongodb/etc/mongod.conf[`projectinit_docker/prod/mongodb/etc/mongod.conf`]
+* Database initialization directory:
+** link:../../projectinit_docker/dev/mongodb/docker-entrypoint-initdb.d[`projectinit_docker/dev/mongodb/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/mongodb/docker-entrypoint-initdb.d[`projectinit_docker/prod/mongodb/docker-entrypoint-initdb.d`]
+
+=== Database credentials
+
+Database credentials are stored as Docker Compose secrets. The secrets are available in
+link:../../compose_secrets[`compose_secrets`] directory of your project.
+
+Resources:
+
+* link:https://docs.docker.com/compose/how-tos/use-secrets/[How to use secrets in Docker Compose]
+
+=== Persisting data on the host
+
+Docker volume is used for persisting data on the host. This is the default method recommended in the documentation of
+the official Docker image. Volume file and directory permissions are managed by Docker. You are free to mount a local
+directory instead (bind mount), however, you will need to set up the directory, its owner (user), permissions and other
+security mechanisms yourself.
+
+Resources:
+
+* link:https://docs.docker.com/engine/storage/volumes/[Docker Volumes]
+* link:https://docs.docker.com/engine/storage/bind-mounts/[Docker bind mounts]
+
+=== Healthcheck
+
+Basic healthcheck mechanism has been implemented in the custom Dockerfile. It makes sure that the database service is up
+before allowing your application to run.
+
+Resources:
+
+* link:https://docs.docker.com/reference/dockerfile/#healthcheck[Healthcheck in Dockerfile]
+
+=== Custom MongoDB configuration
+
+Custom MongoDB configuration file is implemented and ready in
+link:../../projectinit_docker/dev/mongodb/etc/mongod.conf[`projectinit_docker/dev/mongodb/etc/mongod.conf`] and
+link:../../projectinit_docker/prod/mongodb/etc/mongod.conf[`projectinit_docker/prod/mongodb/etc/mongod.conf`].
+
+Note that MongoDB Docker images do not have default configuration file, like MySQL and its forks do. What's configured
+in this custom configuration file will be the only configuration applied.
+
+== Database initialization directory
+
+When a container is started for the first time it will execute files with extensions `.sh` and `.js` that are found in
+`/docker-entrypoint-initdb.d`. Files will be executed in alphabetical order. `.js` files will be executed by `mongosh`
+(`mongo` on versions below 6) using the database specified by the `MONGO_INITDB_DATABASE` variable, if it is present,
+or `test` otherwise. You may also switch databases within the `.js` script.
+
+A bind mount of this container directory is available at:
+
+** link:../../projectinit_docker/dev/mongodb/docker-entrypoint-initdb.d[`projectinit_docker/dev/mongodb/docker-entrypoint-initdb.d`]
+** link:../../projectinit_docker/prod/mongodb/docker-entrypoint-initdb.d[`projectinit_docker/prod/mongodb/docker-entrypoint-initdb.d`]

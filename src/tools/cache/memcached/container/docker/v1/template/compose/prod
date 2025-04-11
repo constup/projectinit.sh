@@ -8,4 +8,4 @@
     ports:
         - "~~~memcached host port~~~:11211"
     restart: always
-~~~tools~~~
+~~~container services~~~

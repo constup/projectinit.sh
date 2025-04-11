@@ -17,8 +17,9 @@ run_flow() {
 
 init_globals_before_starting_flow() {
   projectinit_app_service_name="${projectinit_project_name}_app"
-  if [ "${projectinit_database_type}" != "no database" ]; then
-    projectinit_database_service_name="${projectinit_project_name}_database"
+  if [[ -v projectinit_database_type ]]; then
+    if [ "${projectinit_database_type}" != "no database" ]; then
+      projectinit_database_service_name="${projectinit_project_name}_database"
+    fi
   fi
-  projectinit_memcached_service_name="${projectinit_project_name}_memcached"
 }

@@ -23,6 +23,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
         apcu \
         intl \
         zip \
+        ~~~php extension~~~
         gmp \
         && \
     chmod +x /usr/bin/composer
@@ -31,6 +32,7 @@ RUN (groupadd phpgroup -g ${PROJECTINIT_GID} || groupadd phpgroup || true) && \
 RUN mkdir /usr/src/symfony_temp_install && \
     cd /usr/src/symfony_temp_install && \
     symfony new . --version="~~~framework version~~~" --no-git ~~~web app~~~ && \
+    composer config --json extra.symfony.allow-contrib true && \
     composer config --json extra.symfony.docker false && \
     chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/symfony_temp_install && \
     chown -R ${PROJECTINIT_UID}:${PROJECTINIT_GID} /usr/src/app

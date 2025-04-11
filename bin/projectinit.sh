@@ -1,12 +1,14 @@
 #!/bin/bash
 
-set -e
+set -Eeuo pipefail
+trap 'echo "Error in $0 at line $LINENO: command \"$BASH_COMMAND\" exited with status $?"' ERR
+
 source ../src/git/git.sh
 source ../src/filesystem/directory_management.sh
-source ../src/info_print.sh
+source ../src/projectinit_subsystem/info_print/info_print.sh
 source ../src/language/flow.sh
 source ../src/language/ask_flow.sh
-source ../src/tools/documentation/documentation.sh
+source ../src/projectinit_subsystem/documentation/documentation.sh
 source ../src/projectinit_subsystem/projectinit_cli/projectinit_cli.sh
 
 cat << "EOF"

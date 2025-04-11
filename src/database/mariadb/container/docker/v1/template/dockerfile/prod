@@ -2,8 +2,8 @@ FROM mariadb:~~~database server version~~~
 
 ENV MARIADB_MYSQL_LOCALHOST_USER=1
 
-COPY --chown=mysql:mysql --chmod=644 ./projectinit_docker/dev/mariadb/etc/mysql/conf.d/*.cnf /etc/mysql/conf.d/
-COPY --chown=mysql:mysql ./projectinit_docker/dev/mariadb/entrypoint.sh /entrypoint.sh
+COPY --chown=mysql:mysql --chmod=644 ./projectinit_docker/prod/mariadb/etc/mysql/conf.d/*.cnf /etc/mysql/conf.d/
+COPY --chown=mysql:mysql --chmod=544 ./projectinit_docker/prod/mariadb/entrypoint.sh /entrypoint.sh
 
 HEALTHCHECK --timeout=10s --start-period=1m \
     CMD healthcheck.sh --connect --innodb_initialized

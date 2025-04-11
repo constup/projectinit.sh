@@ -23,6 +23,18 @@ add_database_connection_to_env_dev() {
       database_engine=mysql
       database_port=3306
       ;;
+    "mongodb" )
+      database_engine=mongodb
+      database_port=27017
+      ;;
   esac
-  echo "DATABASE_URL=\"${database_engine}://${projectinit_database_user}:${projectinit_database_password}@${projectinit_database_service_name}:${database_port}/${projectinit_database_name}?serverVersion=${projectinit_database_version}&charset=utf8\"" >> "${project_root_dir}/.env.dev"
+
+  case "${projectinit_database_type}" in
+    "pgsql"|"mysql"|"percona"|"mariadb" )
+      echo "DATABASE_URL=\"${database_engine}://${projectinit_database_user}:${projectinit_database_password}@${projectinit_database_service_name}:${database_port}/${projectinit_database_name}?serverVersion=${projectinit_database_version}&charset=utf8\"" >> "${project_root_dir}/.env.dev"
+      ;;
+    "mongodb" )
+      echo "MONGODB_URL=\"${database_engine}://${projectinit_database_user}:${projectinit_database_password}@${projectinit_database_service_name}:${database_port}/?authSource=auth-db\"" >> "${project_root_dir}/.env.dev"
+      ;;
+  esac
 }

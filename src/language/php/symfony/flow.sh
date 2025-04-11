@@ -9,9 +9,6 @@ run_symfony_flow_bare_metal() {
 run_symfony_flow_docker() {
   # shellcheck source=../../../container/docker/dockerignore/v1/dockerignore.sh
   source "${tool_dir}/src/container/docker/dockerignore/v1/dockerignore.sh"
-  # shellcheck source=../../../container/docker/docker.sh
-  source "${tool_dir}/src/container/docker/docker.sh"
-  calculate_app_service_dependencies
   # shellcheck source=./container/docker/dockerfile/v1/dockerfile.sh
   source "${tool_dir}/src/language/php/symfony/container/docker/dockerfile/v1/dockerfile.sh"
   # shellcheck source=./container/docker/entrypoint/v1/entrypoint.sh
@@ -20,11 +17,19 @@ run_symfony_flow_docker() {
   source "${tool_dir}/src/language/php/symfony/container/docker/compose/v1/compose.sh"
   # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
   source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
+  # shellcheck source=../../../projectinit_subsystem/integrations/integrations.sh
+  source "${tool_dir}/src/projectinit_subsystem/integrations/integrations.sh"
+
+  init_integrations
+
   echo "Setting up installer container..."
   setup_installer_dockerfile
   setup_installer_entrypoint
   setup_installer_compose
   add_user_and_group_ids
+  run_service_integrations "installer"
+  run_library_integrations "installer"
+  cleanup_installer_entrypoint
   echo "  Installer container set up..."
 
   # shellcheck source=../../../container/docker/installer.sh
@@ -38,17 +43,13 @@ run_symfony_flow_docker() {
   setup_dev_dockerfile
   setup_dev_entrypoint
   setup_dev_compose
+  run_service_integrations "dev"
+  run_library_integrations "dev"
   echo "  Dev container set up..."
 
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../tools/unit_testing/phpunit.sh
-  source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
-  configure_phpunit
-  # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
-  configure_php_cs_fixer
   # shellcheck source=./container/docker/configuration/dot_env.sh
   source "${tool_dir}/src/language/php/symfony/container/docker/configuration/dot_env.sh"
   add_database_connection_to_env_dev
@@ -60,6 +61,9 @@ run_symfony_flow_docker() {
   # shellcheck source=../tools/php_ini/v1/php_ini.sh
   source "${tool_dir}/src/language/php/tools/php_ini/v1/php_ini.sh"
   configure_php_ini_docker_dev
+  # shellcheck source=../../../container/docker/docker.sh
+  source "${tool_dir}/src/container/docker/docker.sh"
+  cleanup_docker_compose "${project_root_dir}/compose.yaml"
   build_dev
 
   # shellcheck source=../../../git/git.sh
@@ -68,5 +72,8 @@ run_symfony_flow_docker() {
   setup_prod_dockerfile
   setup_prod_entrypoint
   setup_prod_compose
+  run_service_integrations "prod"
+  run_library_integrations "prod"
+  cleanup_docker_compose "${project_root_dir}/projectinit_docker/prod/compose.yaml"
   configure_php_ini_docker_prod
 }

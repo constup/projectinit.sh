@@ -12,6 +12,12 @@ setup_installer_dockerfile() {
   else
     perl -pi -e "s/~~~web app~~~//g" "${target_file}"
   fi
+
+  # shellcheck source=../../../../../../../database/database_flow.sh
+  source "${tool_dir}/src/database/database_flow.sh"
+  setup_database_dockerfile_installer
+
+  perl -i -ne 'print unless /~~~php extension~~~/;' "${target_file}"
 }
 
 setup_dev_dockerfile() {
@@ -24,10 +30,6 @@ setup_dev_dockerfile() {
   # shellcheck source=../../../../../../../database/database_flow.sh
   source "${tool_dir}/src/database/database_flow.sh"
   setup_database_dockerfile_dev
-
-  # shellcheck source=../../../../../../../tools/cache/memcached/container/docker/v1/memcached.sh
-  source "${tool_dir}/src/tools/cache/memcached/container/docker/v1/memcached.sh"
-  setup_memcached_dockerfile_dev
 
   perl -i -ne 'print unless /~~~php extension~~~/;' "${target_file}"
 }

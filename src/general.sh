@@ -15,3 +15,15 @@ read_password() {
 
   echo "$password"
 }
+
+in_array() {
+  local needle="$1"
+  shift
+  local element
+  for element in "$@"; do
+    if [[ "$element" == "$needle" ]]; then
+      return 0  # found
+    fi
+  done
+  return 1  # not found
+}

@@ -25,7 +25,7 @@ Supports multiple programming languages and frameworks.
 
 == Key features
 
-* Written in POSIX compliant Bash. Available on Linux, Windows and MacOS
+* Written in Bash. Available on Linux, Windows and MacOS
 * Create a new project, whether it's a full application or a library
 * Set up a project using locally installed tools (languages, package managers,...) or containers (Docker)
 * Containerized projects with zero dependencies on your locally installed tech stack
@@ -73,7 +73,7 @@ Configure ProjectInit.sh by running:
 
 [source,shell]
 ----
-sh configure.sh
+bash configure.sh
 ----
 
 == How to use
@@ -83,7 +83,7 @@ Go to ProjectInit's `bin` directory and simply run it:
 [source,shell]
 ----
 cd bin
-sh projectinit.sh
+bash projectinit.sh
 ----
 
 == Supported project types (applications and libraries)

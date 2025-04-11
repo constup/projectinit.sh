@@ -22,16 +22,12 @@ run_composer_package_flow_docker() {
   source "${tool_dir}/src/language/php/composer_package/container/docker/configuration/index/v1/index.sh"
   # shellcheck source=../../../container/docker/dev.sh
   source "${tool_dir}/src/container/docker/dev.sh"
+  # shellcheck source=../../../projectinit_subsystem/integrations/integrations.sh
+  source "${tool_dir}/src/projectinit_subsystem/integrations/integrations.sh"
 
   # shellcheck source=../../../filesystem/directory_management.sh
   source "${tool_dir}/src/filesystem/directory_management.sh"
   create_php_project_base_directories
-  # shellcheck source=../tools/unit_testing/phpunit.sh
-  source "${tool_dir}/src/language/php/tools/unit_testing/phpunit.sh"
-  configure_phpunit
-  # shellcheck source=../tools/style_fixer/php_cs_fixer.sh
-  source "${tool_dir}/src/language/php/tools/style_fixer/php_cs_fixer.sh"
-  configure_php_cs_fixer
   # shellcheck source=../../../container/docker/dot_env_docker/docker_dot_env.sh
   source "${tool_dir}/src/container/docker/dot_env_docker/docker_dot_env.sh"
   add_user_and_group_ids
@@ -50,5 +46,9 @@ run_composer_package_flow_docker() {
   # shellcheck source=../tools/php_ini/v1/php_ini.sh
   source "${tool_dir}/src/language/php/tools/php_ini/v1/php_ini.sh"
   configure_php_ini_docker_dev
+
+  run_library_integrations "installer"
+  run_library_integrations "dev"
+  cleanup_dev_entrypoint
   build_dev
 }

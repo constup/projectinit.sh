@@ -1,6 +1,9 @@
 #!/bin/bash
 
 print_project_configuration() {
+  # shellcheck source=../../general.sh
+  source "${tool_dir}/src/general.sh"
+
   echo ""
   echo "Project identity card:"
   echo "┌---------------------------------------------------------------------"
@@ -12,6 +15,7 @@ print_project_configuration() {
     print_database_block
   fi
   print_tools_block
+  print_libraries_block
 }
 
 print_directory_block() {
@@ -96,22 +100,6 @@ print_php_tech_stack() {
           ;;
       esac
   esac
-  echo "| PHPUnit version: ${projectinit_phpunit_version}"
-  if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
-    if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-      echo "| Default phpunit.dist.xml is used"
-    else
-      echo "| ProjectInit's phpunit.dist.xml is used"
-    fi
-  else
-      echo "| Symfony Test Pack was used. Configure phpunit.dist.xml manually"
-  fi
-  echo "| CS Fixer: PHP CS Fixer"
-  if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 0 ]; then
-    echo "| Default .php-cs-fixer.dist.php is used"
-  else
-    echo "| ProjectInit's .php-cs-fixer.dist.php is used"
-  fi
 }
 
 print_node_tech_stack() {
@@ -127,7 +115,7 @@ print_node_tech_stack() {
 print_database_block() {
   echo "|                                Database"
   echo "|---------------------------------------------------------------------"
-  if [ "$projectinit_container_type" = "docker" ]; then
+  if [[ "$projectinit_container_type" = "docker"  && "$projectinit_database_type" != "no database" ]]; then
     echo "| Docker service: ${projectinit_database_service_name}"
   fi
   echo "| Database engine: ${projectinit_database_type}"
@@ -138,9 +126,25 @@ print_database_block() {
     fi
     echo "| Database name: ${projectinit_database_name}"
     echo "| Host port: ${projectinit_database_host_port}"
-    if [[ ! -v projectinit_database_x_plugin_host_port ]]; then
+    if [[ -v projectinit_database_x_plugin_host_port ]]; then
       echo "| X Protocol host port: ${projectinit_database_x_plugin_host_port}"
     fi
+  fi
+  echo "|---------------------------------------------------------------------"
+}
+
+print_libraries_block() {
+  echo "|                              Libraries"
+  echo "|---------------------------------------------------------------------"
+  if [[ ! -v projectinit_libraries_list ]]; then
+    echo "| No additional libraries are configured."
+  else
+    # shellcheck source=../../libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/libraries/testing_internal/php/php_unit/subsystems/info_print/info_print.sh"
+    print_phpunit_info_print
+    # shellcheck source=../../libraries/linters_analyzers_fixers/php/php_cs_fixer/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/libraries/linters_analyzers_fixers/php/php_cs_fixer/subsystems/info_print/info_print.sh"
+    print_php_cs_fixer_info_print
   fi
   echo "|---------------------------------------------------------------------"
 }
@@ -148,19 +152,12 @@ print_database_block() {
 print_tools_block() {
   echo "|                                Tools"
   echo "|---------------------------------------------------------------------"
-  if [ "${projectinit_tools_count}" = 0 ]; then
+  if [[ ! -v projectinit_tools_list ]]; then
     echo "| No additional tools are configured."
   else
-    if [ "${projectinit_use_memcached}" = 1 ]; then
-      echo "| Memcached"
-      echo "|------------------------------"
-      if [ "${projectinit_container_type}" = "docker" ]; then
-        echo "| Docker service: ${projectinit_memcached_service_name}"
-      fi
-      echo "| Memcached version: ${projectinit_memcached_version}"
-      echo "| Memcached host port: ${projectinit_memcached_host_port}"
-      echo "|------------------------------"
-    fi
+    # shellcheck source=../../tools/cache/memcached/subsystems/info_print/info_print.sh
+    source "${tool_dir}/src/tools/cache/memcached/subsystems/info_print/info_print.sh"
+    print_memcached_info_print
   fi
   echo "|---------------------------------------------------------------------"
 }

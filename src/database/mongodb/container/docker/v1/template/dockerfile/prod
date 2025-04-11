@@ -1,0 +1,9 @@
+FROM mongo:~~~database server version~~~
+
+COPY --chmod=544 ./projectinit_docker/prod/mongodb/usr/local/bin/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./projectinit_docker/prod/mongodb/etc/mongod.conf /etc/mongod.conf
+
+HEALTHCHECK --timeout=10s --start-period=1m \
+    CMD mongosh --quiet "127.0.0.1/test" --eval "quit(db.runCommand({ ping: 1}).ok ? 0 : 2)"
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["mongod", "--config", "/etc/mongod.conf"]

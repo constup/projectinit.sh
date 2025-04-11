@@ -16,20 +16,3 @@ ask_php_cs_fixer_config() {
     esac
   done
 }
-
-install_php_cs_fixer_bare_metal() {
-  if [ "${projectinit_use_global_composer}" -eq 0 ]; then
-    php composer.phar require --dev friendsofphp/php-cs-fixer
-  else
-    composer require --dev friendsofphp/php-cs-fixer
-  fi
-}
-
-configure_php_cs_fixer() {
-  echo ""
-  echo "Configuring .php-cs-fixer.dist.php..."
-  if [ "$projectinit_use_projectinit_phpcsfixer_dist" -eq 1 ]; then
-    cp -f "${tool_dir}/src/language/php/tools/style_fixer/generic_dist_files/php-cs-fixer-v3.dist.php" "${project_root_dir}/.php-cs-fixer.dist.php"
-  fi
-  echo "  .php-cs-fixer.dist.php configured"
-}

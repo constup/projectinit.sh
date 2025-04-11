@@ -1,6 +1,6 @@
 services:
   ~~~database service~~~
-  ~~~tools~~~
+  ~~~container services~~~
   ~~~service name~~~:
     container_name: ~~~container name~~~
     ~~~main application dependencies~~~
@@ -14,5 +14,4 @@ services:
     volumes:
       - ./projectinit_docker/prod/php/usr/local/etc/php/conf.d/zz_php.ini:/usr/local/etc/php/conf.d/zz_php.ini
 ~~~root volumes~~~
-secrets:
-  ~~~compose secrets~~~
+~~~secrets~~~

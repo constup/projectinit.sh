@@ -3,7 +3,7 @@
 ask_tools() {
   echo ""
   echo "Install additional tools:"
-  local options=("none" "cache")
+  local options=("none" "Cache")
   local option
   local install_additional_tools
   install_additional_tools=1
@@ -13,7 +13,7 @@ ask_tools() {
         install_additional_tools=0
         echo "  No additional tools will be installed."
         break;;
-      "cache" )
+      "Cache" )
         # shellcheck source=./cache/ask_cache.sh
         source "${tool_dir}/src/tools/cache/ask_cache.sh"
         ask_cache
