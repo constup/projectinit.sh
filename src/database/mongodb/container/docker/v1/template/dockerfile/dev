@@ -1,6 +1,6 @@
 FROM mongo:~~~database server version~~~
 
-COPY ./projectinit_docker/dev/mongodb/usr/local/bin/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY --chmod=544 ./projectinit_docker/dev/mongodb/usr/local/bin/entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY ./projectinit_docker/dev/mongodb/etc/mongod.conf /etc/mongod.conf
 
 HEALTHCHECK --timeout=10s --start-period=1m \

@@ -1,7 +1,7 @@
 FROM mysql:~~~database server version~~~
 
 COPY --chown=mysql:mysql --chmod=644 ./projectinit_docker/dev/mysql/etc/mysql/conf.d/*.cnf /etc/mysql/conf.d/
-COPY --chown=mysql:mysql ./projectinit_docker/dev/mysql/entrypoint.sh /entrypoint.sh
+COPY --chown=mysql:mysql --chmod=544 ./projectinit_docker/dev/mysql/entrypoint.sh /entrypoint.sh
 
 HEALTHCHECK --timeout=10s --start-period=1m \
     CMD mysqladmin ping \
