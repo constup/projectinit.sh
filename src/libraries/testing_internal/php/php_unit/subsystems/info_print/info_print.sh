@@ -11,12 +11,12 @@ print_phpunit_info_print() {
     # we don't know which version Symfony test pack is using
       if [ ! "$projectinit_phpunit_version" = "symfony/test-pack" ]; then
         if [ "$projectinit_use_projectinit_phpunit_dist" -eq 0 ]; then
-          echo "| Configuration: Default phpunit.dist.xml is used"
+          echo "| Configuration: Default phpunit.xml is used"
         else
-          echo "| Configuration: ProjectInit's phpunit.dist.xml is used"
+          echo "| Configuration: ProjectInit's phpunit.xml is used"
         fi
       else
-        echo "| Configuration: Symfony Test Pack was used. Configure phpunit.dist.xml manually"
+        echo "| Configuration: Symfony Test Pack was used. Configure phpunit.xml manually"
       fi
     echo "|------------------------------"
   fi

@@ -9,27 +9,27 @@ install_phpunit_bare_metal() {
 }
 
 configure_phpunit() {
-  echo "    Configuring phpunit.dist.xml..."
+  echo "    Configuring phpunit.xml..."
   if [ "$projectinit_use_projectinit_phpunit_dist" -eq 1 ]; then
     echo "      ProjectInit PHPUnit configuration is used..."
     case $projectinit_phpunit_version in
       "phpunit/phpunit:^9" )
-        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v9.xml.dist" "${project_root_dir}/phpunit.dist.xml"
+        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v9.xml.dist" "${project_root_dir}/phpunit.xml"
         ;;
       "phpunit/phpunit:^10" )
-        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v10.xml.dist" "${project_root_dir}/phpunit.dist.xml"
+        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v10.xml.dist" "${project_root_dir}/phpunit.xml"
         ;;
       "phpunit/phpunit:^11" )
-        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v11.xml.dist" "${project_root_dir}/phpunit.dist.xml"
+        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v11.xml.dist" "${project_root_dir}/phpunit.xml"
         ;;
       "phpunit/phpunit:^12" )
-        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v12.xml.dist" "${project_root_dir}/phpunit.dist.xml"
+        cp -f "${tool_dir}/src/libraries/testing_internal/php/php_unit/template/v12.xml.dist" "${project_root_dir}/phpunit.xml"
         ;;
     esac
   else
     echo "      Default phpunit configuration is used..."
   fi
-  echo "      phpunit.dist.xml configured"
+  echo "      phpunit.xml configured"
 }
 
 setup_phpunit_entrypoint_installer() {

@@ -139,14 +139,14 @@ ask_phpunit_symfony() {
 ask_phpunit_config() {
   echo ""
   echo "Do you want to use default PHPUnit configuration (if there is any) or ProjectInit's PHPUnit configuration?"
-  local options=("Use default phpunit.dist.xml" "Use ProjectInit's phpunit.dist.xml")
+  local options=("Use default phpunit.xml" "Use ProjectInit's phpunit.xml")
   local option
   select option in "${options[@]}"; do
     case $option in
-      "Use default phpunit.dist.xml" )
+      "Use default phpunit.xml" )
         projectinit_use_projectinit_phpunit_dist=0
         break;;
-      "Use ProjectInit's phpunit.dist.xml" )
+      "Use ProjectInit's phpunit.xml" )
         projectinit_use_projectinit_phpunit_dist=1
         break;;
     esac
