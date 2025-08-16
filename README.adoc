@@ -2,6 +2,12 @@
 :toc:
 :toclevels: 5
 
+== IMPORTANT NOTE
+
+*Due to GitHub being integrated into Microsoft's CoreAI division and effectivelly becoming Microsoft's data source for 
+training Microsoft's LLMs without attributing or compensating open source authors and projects, this repository is now 
+locked until it's transferred to another platform.*
+
 == Supporting development
 
 link:https://www.buymeacoffee.com/puEW3HvWvP[image:https://cdn.buymeacoffee.com/buttons/v2/default-green.png[width=200]]
